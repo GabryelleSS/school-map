@@ -8,23 +8,22 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+public class Main {
+//	@Override
+//	public void start(Stage primaryStage) {
+//		try {
+//			FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/com/senac/school/view/SendEmail.fxml"));
+//			AnchorPane pane = loader.load();
+//			Scene mainScene = new Scene(pane);
+//			primaryStage.setScene(mainScene);
+//			primaryStage.setTitle("School Map");
+//			primaryStage.show();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//	}
 
-	@Override
-	public void start(Stage primaryStage) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/com/senac/school/view/UserRegister.fxml"));
-			AnchorPane pane = loader.load();
-			Scene mainScene = new Scene(pane);
-			primaryStage.setScene(mainScene);
-			primaryStage.setTitle("School Map");
-			primaryStage.show();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static void main(String[] args) {
-		launch(args);
-	}
+//	public static void main(String[] args) {
+//		launch(args);
+//	}
 }
