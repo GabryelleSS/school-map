@@ -1,0 +1,43 @@
+.send-email-container {
+  -fx-pref-width: 800px;
+  -fx-pref-height: 600px;
+}
+
+.send-email-vbox {
+  -fx-pref-width: 800px;
+  -fx-pref-height: 600px;
+}
+
+.send-email-container-image {
+  -fx-background-color: #2778bd;
+  -fx-border-radius: 10, 10;
+  -fx-border-style: solid, segments(1, 1);
+  -fx-border-color: white;
+  -fx-border-width: 1, 1;
+}
+
+.send-email-vbox-image-background {
+  -fx-pref-width: 800px;
+  -fx-pref-height: 600px;
+}
+
+.send-email-title {
+  -fx-text-fill: #fff;
+  -fx-font-size: 24px;
+}
+
+.send-email-label {
+  -fx-text-fill: #fff;
+  -fx-font-size: 16px;
+  -fx-alignment: center;
+}
+
+.send-email-btn {
+  -fx-background-color: #28b351;
+  -fx-border-color: #28b351;
+  -fx-text-fill: #fff;
+  -fx-cursor: hand;
+  -fx-border-radius: 5, 5;
+  -fx-pref-width: 88px;
+  -fx-pref-height: 28px;
+}
