@@ -13,7 +13,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/com/senac/school/view/Home.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/com/senac/school/view/UserRegister.fxml"));
 			AnchorPane pane = loader.load();
 			Scene mainScene = new Scene(pane);
 			primaryStage.setScene(mainScene);

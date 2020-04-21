@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" styleClass="user-register-container" stylesheets="@../../assets/css/userRegister.css">
+         <children>
+            <ImageView fitHeight="252.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../assets/image/user2.png" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label text="VAMOS COMEÇAR!" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+      <Pane layoutX="400.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #FFF;" styleClass="user-register-container-form" stylesheets="@../../assets/css/userRegister.css">
+         <children>
+            <HBox alignment="BASELINE_RIGHT" layoutX="-12.0" layoutY="546.0" prefHeight="40.0" prefWidth="411.0">
+               <children>
+                  <Button mnemonicParsing="false" styleClass="user-register-btn-cancel" text="Voltar">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" styleClass="user-register-btn-next" text="Próximo">
+                     <HBox.margin>
+                        <Insets right="15.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <Label layoutX="14.0" layoutY="65.0" text="Cadastre-se para continuar" textFill="#686868">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="30.0" text="SCHOOL MAP" textFill="#404040">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <VBox layoutX="14.0" layoutY="123.0" prefHeight="415.0" prefWidth="160.0">
+               <children>
+                  <Label styleClass="teste" text="Nome">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Sobrenome">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="CPF">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Data de Nascimento">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Gênero">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Estado Civil">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Celular">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Telefone">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
+                  </Label>
+               </children></VBox>
+            <VBox layoutX="150.0" layoutY="123.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="246.0">
+               <children>
+                  <TextField styleClass="user-register-field">
+                     <VBox.margin>
+                        <Insets bottom="21.0" right="15.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField styleClass="user-register-field">
+                     <VBox.margin>
+                        <Insets bottom="21.0" right="15.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField styleClass="user-register-field">
+                     <VBox.margin>
+                        <Insets bottom="21.0" right="15.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField styleClass="user-register-field">
+                     <VBox.margin>
+                        <Insets bottom="21.0" right="15.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <HBox prefHeight="28.0" prefWidth="200.0">
+                     <children>
+                        <RadioButton mnemonicParsing="false" text="Feminino">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                        <RadioButton mnemonicParsing="false" text="Masculino">
+                           <HBox.margin>
+                              <Insets bottom="30.0" right="5.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                        <RadioButton mnemonicParsing="false" text="Sem gênero">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                     </children>
+                  </HBox>
+                  <TextField styleClass="user-register-field">
+                     <VBox.margin>
+                        <Insets bottom="21.0" right="15.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField styleClass="user-register-field">
+                     <VBox.margin>
+                        <Insets bottom="21.0" right="15.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField styleClass="user-register-field">
+                     <VBox.margin>
+                        <Insets bottom="21.0" right="15.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </children>
+   <stylesheets>
+      <URL value="@userRegister.css" />
+      <URL value="@../../assets/css/userRegister.css" />
+   </stylesheets>
+</AnchorPane>
