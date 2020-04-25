@@ -37,7 +37,14 @@
   -fx-border-color: #28b351;
   -fx-text-fill: #fff;
   -fx-cursor: hand;
+  -fx-font-size: 12px;
   -fx-border-radius: 5, 5;
   -fx-pref-width: 88px;
   -fx-pref-height: 28px;
+}
+
+.send-email-btn:hover {
+  -fx-background-color: #fff;
+  -fx-border-color: #fff;
+  -fx-text-fill: #28b351;
 }

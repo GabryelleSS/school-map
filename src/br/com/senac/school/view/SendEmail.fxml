@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="send-email-container" stylesheets="@../../assets/css/sendEmail.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="send-email-container" stylesheets="@../../assets/css/sendEmail.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox prefHeight="200.0" prefWidth="189.0" styleClass="send-email-vbox-image-background">
          <children>
@@ -34,12 +33,12 @@
             <Label prefHeight="20.0" prefWidth="431.0" styleClass="send-email-label" text="para terminar o cadastro." />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" styleClass="send-email-btn" text="Reenviar">
+                  <Button mnemonicParsing="false" styleClass="send-email-btn" stylesheets="@../../assets/css/sendEmail.css" text="Reenviar">
                      <HBox.margin>
                         <Insets bottom="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" styleClass="send-email-btn" text="Já verifiquei">
+                  <Button mnemonicParsing="false" styleClass="send-email-btn" stylesheets="@../../assets/css/sendEmail.css" text="Já verifiquei">
                      <HBox.margin>
                         <Insets bottom="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
