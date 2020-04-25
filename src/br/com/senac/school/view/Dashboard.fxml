@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import com.jfoenix.controls.JFXToolbar?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.senac.school.controller.DashboardController">
+   <children>
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="200.0" layoutX="38.0" layoutY="312.0" prefHeight="513.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+      <JFXToolbar layoutX="334.0" layoutY="33.0" prefHeight="90.0" prefWidth="1271.0" style="-fx-background-color: #4087fd;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <JFXHamburger fx:id="hamburger" prefHeight="90.0" prefWidth="103.0" BorderPane.alignment="CENTER">
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </JFXHamburger>
+         </left></JFXToolbar>
+      <ScrollPane layoutX="381.0" layoutY="210.0" prefHeight="425.0" prefWidth="819.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="381.0" AnchorPane.rightAnchor="0.0">
+         <content>
+            <VBox fx:id="schoolItems" style="-fx-background-color: white;" />
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

@@ -17,6 +17,7 @@ public class Main extends Application {
 			AnchorPane pane = loader.load();
 			Scene mainScene = new Scene(pane);
 			primaryStage.setScene(mainScene);
+			primaryStage.setResizable(false);
 			primaryStage.setTitle("School Map");
 			primaryStage.show();
 		} catch (IOException e) {
