@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="dashboard" stylesheets="@../../assets/css/dashboardSchool.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.senac.school.controller.DashboardSchoolController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="70.0" prefWidth="800.0" styleClass="dashboard-header" stylesheets="@../../assets/css/DashboardSchool.css">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="400.0">
+               <children>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" styleClass="btn-menu" stylesheets="@../../assets/css/dashboardSchool.css">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="btn-menu-image">
+                           <image>
+                              <Image url="@../../assets/image/menu-hamburguer.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" styleClass="btn-menu">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="btn-menu">
+                           <image>
+                              <Image url="@../../assets/image/config.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="400.0">
+               <children>
+                  <Pane prefHeight="60.0" prefWidth="67.0">
+                     <children>
+                        <ImageView fitHeight="48.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../assets/image/user.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Pane>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox layoutY="70.0" prefHeight="50.0" prefWidth="800.0" styleClass="dashboard-search-container" stylesheets="@../../assets/css/dashboardSchool.css" />
+      <VBox layoutY="120.0" prefHeight="481.0" prefWidth="800.0" styleClass="card-school">
+         <children>
+            <HBox prefHeight="220.0" prefWidth="800.0">
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="800.0">
+                     <children>
+                        <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-radius: 30;" styleClass="card-school-container" stylesheets="@../../assets/css/dashboardSchool.css">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                           </HBox.margin>
+                           <children>
+                              <VBox layoutY="69.0" prefHeight="141.0" prefWidth="180.0" stylesheets="@../../assets/css/dashboardSchool.css">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-info" text="Nome da escola: Afrânio Peixoto" wrappingWidth="172.53515625" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-info" text="Contato: 11 123456-7891" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-info" text="Endereço: Rua Pereira" />
+                                 </children>
+                              </VBox>
+                              <HBox prefHeight="60.0" prefWidth="180.0">
+                                 <children>
+                                    <ImageView fitHeight="51.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../assets/image/school.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-title" text="Afrânio Peixoto" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="card-school-container" stylesheets="@../../assets/css/dashboardSchool.css">
+                           <children>
+                              <VBox layoutY="69.0" prefHeight="141.0" prefWidth="180.0" stylesheets="@../../assets/css/dashboardSchool.css">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-info" text="Nome da escola: Afrânio Peixoto" wrappingWidth="172.53515625" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-info" text="Contato: 11 123456-7891" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-info" text="Endereço: Rua Pereira" />
+                                 </children>
+                              </VBox>
+                              <HBox prefHeight="60.0" prefWidth="180.0">
+                                 <children>
+                                    <ImageView fitHeight="51.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../assets/image/school.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-title" text="Afrânio Peixoto" />
+                                 </children>
+                              </HBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                           </HBox.margin>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="card-school-container" stylesheets="@../../assets/css/dashboardSchool.css">
+                           <children>
+                              <VBox layoutY="69.0" prefHeight="141.0" prefWidth="180.0" stylesheets="@../../assets/css/dashboardSchool.css">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-info" text="Nome da escola: Afrânio Peixoto" wrappingWidth="172.53515625" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-info" text="Contato: 11 123456-7891" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-info" text="Endereço: Rua Pereira" />
+                                 </children>
+                              </VBox>
+                              <HBox prefHeight="60.0" prefWidth="180.0">
+                                 <children>
+                                    <ImageView fitHeight="51.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../assets/image/school.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-title" text="Afrânio Peixoto" />
+                                 </children>
+                              </HBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                           </HBox.margin>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="card-school-container" stylesheets="@../../assets/css/dashboardSchool.css">
+                           <children>
+                              <VBox layoutY="69.0" prefHeight="141.0" prefWidth="180.0" stylesheets="@../../assets/css/dashboardSchool.css">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-info" text="Nome da escola: Afrânio Peixoto" wrappingWidth="172.53515625" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-info" text="Contato: 11 123456-7891" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-info" text="Endereço: Rua Pereira" />
+                                 </children>
+                              </VBox>
+                              <HBox prefHeight="60.0" prefWidth="180.0">
+                                 <children>
+                                    <ImageView fitHeight="51.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../assets/image/school.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-title" text="Afrânio Peixoto" />
+                                 </children>
+                              </HBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                           </HBox.margin>
+                        </Pane>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="220.0" prefWidth="800.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="800.0">
+                     <children>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="card-school-container" stylesheets="@../../assets/css/dashboardSchool.css">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                           </HBox.margin>
+                           <children>
+                              <VBox layoutY="69.0" prefHeight="141.0" prefWidth="180.0" stylesheets="@../../assets/css/dashboardSchool.css">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-info" text="Nome da escola: Afrânio Peixoto" wrappingWidth="172.53515625" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-info" text="Contato: 11 123456-7891" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-info" text="Endereço: Rua Pereira" />
+                                 </children>
+                              </VBox>
+                              <HBox prefHeight="60.0" prefWidth="180.0">
+                                 <children>
+                                    <ImageView fitHeight="51.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../assets/image/school.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-title" text="Afrânio Peixoto" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="card-school-container" stylesheets="@../../assets/css/dashboardSchool.css">
+                           <children>
+                              <VBox layoutY="69.0" prefHeight="141.0" prefWidth="180.0" stylesheets="@../../assets/css/dashboardSchool.css">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-info" text="Nome da escola: Afrânio Peixoto" wrappingWidth="172.53515625" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-info" text="Contato: 11 123456-7891" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-info" text="Endereço: Rua Pereira" />
+                                 </children>
+                              </VBox>
+                              <HBox prefHeight="60.0" prefWidth="180.0">
+                                 <children>
+                                    <ImageView fitHeight="51.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../assets/image/school.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-title" text="Afrânio Peixoto" />
+                                 </children>
+                              </HBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                           </HBox.margin>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="card-school-container" stylesheets="@../../assets/css/dashboardSchool.css">
+                           <children>
+                              <VBox layoutY="69.0" prefHeight="141.0" prefWidth="180.0" stylesheets="@../../assets/css/dashboardSchool.css">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-info" text="Nome da escola: Afrânio Peixoto" wrappingWidth="172.53515625" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-info" text="Contato: 11 123456-7891" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-info" text="Endereço: Rua Pereira" />
+                                 </children>
+                              </VBox>
+                              <HBox prefHeight="60.0" prefWidth="180.0">
+                                 <children>
+                                    <ImageView fitHeight="51.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../assets/image/school.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-title" text="Afrânio Peixoto" />
+                                 </children>
+                              </HBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                           </HBox.margin>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="card-school-container" stylesheets="@../../assets/css/dashboardSchool.css">
+                           <children>
+                              <VBox layoutY="69.0" prefHeight="141.0" prefWidth="180.0" stylesheets="@../../assets/css/dashboardSchool.css">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-info" text="Nome da escola: Afrânio Peixoto" wrappingWidth="172.53515625" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-info" text="Contato: 11 123456-7891" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-info" text="Endereço: Rua Pereira" />
+                                 </children>
+                              </VBox>
+                              <HBox prefHeight="60.0" prefWidth="180.0">
+                                 <children>
+                                    <ImageView fitHeight="51.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../assets/image/school.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-school-title" text="Afrânio Peixoto" />
+                                 </children>
+                              </HBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                           </HBox.margin>
+                        </Pane>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
