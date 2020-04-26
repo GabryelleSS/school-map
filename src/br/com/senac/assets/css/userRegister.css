@@ -1,9 +1,14 @@
+.user-register {
+  -fx-background-color: #4087fd;
+}
+
 .user-register-container {
   -fx-background-color: #4087fd;
 }
 
 .user-register-container-form {
   -fx-background-color: #fff;
+  -fx-min-width: 400;
 }
 
 .user-register-field {
