@@ -7,37 +7,79 @@
 }
 
 .btn-menu {
-  -fx-pref-width: 28px;
-  -fx-pref-height: 28px;
   -fx-background-color: #B9CFF4;
   -fx-border-radius: 30px;
   -fx-cursor: hand;
+  -fx-pref-height: 28px;
+  -fx-pref-width: 28px;
 }
 
 .btn-menu-image {
-  -fx-pref-width: 28px;
   -fx-pref-height: 28px;
+  -fx-pref-width: 28px;
 }
 
 .card-school {
   -fx-background-color: #ccc;
 }
 
-.dashboard-search-container {
+.submenu {
   -fx-background-color: #fff;
+}
+
+.submenu-btn {
+  -fx-background-color: #B9CFF4;
+  -fx-background-radius: 50px;
+  -fx-border-color: #B9CFF4;
+  -fx-border-radius: 50px;
+  -fx-cursor: hand;
+  -fx-pref-height: 50px;
+  -fx-pref-width: 25px;
+} 
+
+.submenu-search {
+  -fx-background-color: #B9CFF4;
+  -fx-background-radius: 30px;
+  -fx-border-color: #B9CFF4;
+  -fx-border-radius: 30px;
+  -fx-font-size: 14px;
+  -fx-pref-height: 30px;
+  -fx-pref-width: 330px;
+  -fx-prompt-text-fill: #000;
+  -fx-text-fill: #000;
+}
+
+.submenu-search-btn {
+  -fx-background-color: transparent;
+  -fx-background-radius: 50px;
+  -fx-border-color: transparent;
+  -fx-border-radius: 50px;
+  -fx-cursor: hand;
+  -fx-pref-height: 30px;
+  -fx-pref-width: 15px;
 }
 
 .card-school-container {
   -fx-background-color: #fff;
-  -fx-border-radius: 30;
+  -fx-background-radius: 30px;
+  -fx-border-color: #fff;
+  -fx-border-radius: 30px;
+}
+
+.card-school-header {
+  -fx-padding: 15px 10px 0 10px;
+}
+
+.card-school-main {
+  -fx-padding: 0 10px 5px 10px;
 }
 
 .card-school-title {
-  -fx-text-fill: #fff;
   -fx-font-size: 16px;
+  -fx-text-fill: #000;
 }
 
 .card-school-info {
-  -fx-text-fill: #fff;
   -fx-font-size: 14px;
+  -fx-text-fill: #000;
 }

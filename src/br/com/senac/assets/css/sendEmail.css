@@ -1,46 +1,46 @@
 .send-email-container {
-  -fx-pref-width: 800px;
   -fx-pref-height: 600px;
+  -fx-pref-width: 800px;
 }
 
 .send-email-vbox {
-  -fx-pref-width: 800px;
   -fx-pref-height: 600px;
+  -fx-pref-width: 800px;
 }
 
 .send-email-container-image {
   -fx-background-color: #2778bd;
+  -fx-border-color: white;
   -fx-border-radius: 10, 10;
   -fx-border-style: solid, segments(1, 1);
-  -fx-border-color: white;
   -fx-border-width: 1, 1;
 }
 
 .send-email-vbox-image-background {
-  -fx-pref-width: 800px;
   -fx-pref-height: 600px;
+  -fx-pref-width: 800px;
 }
 
 .send-email-title {
-  -fx-text-fill: #fff;
   -fx-font-size: 24px;
+  -fx-text-fill: #fff;
 }
 
 .send-email-label {
-  -fx-text-fill: #fff;
-  -fx-font-size: 16px;
   -fx-alignment: center;
+  -fx-font-size: 16px;
+  -fx-text-fill: #fff;
 }
 
 .send-email-btn {
   -fx-background-color: #28b351;
   -fx-border-color: #28b351;
-  -fx-text-fill: #fff;
-  -fx-cursor: hand;
-  -fx-font-size: 12px;
   -fx-border-radius: 5, 5;
-  -fx-pref-width: 88px;
+  -fx-cursor: hand;
   -fx-pref-height: 28px;
+  -fx-font-size: 12px;
+  -fx-pref-width: 88px;
+  -fx-text-fill: #fff;
 }
 
 .send-email-btn:hover {
