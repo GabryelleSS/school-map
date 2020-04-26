@@ -9,23 +9,82 @@
 .user-register-field {
   -fx-pref-width: 200px;
   -fx-pref-height: 28px;
-  -fx-border-radius: 30;
+  -fx-border-radius: 5;
+  -fx-border-color: #1890ff;
+}
+
+.user-register-field--isRequired {
+  -fx-pref-width: 200px;
+  -fx-pref-height: 28px;
+  -fx-border-radius: 5;
+  -fx-border-color: #ff4d4f;
+}
+
+.user-register-field-date-birth {
+  -fx-pref-width: 260px;
+  -fx-pref-height: 28px;
+  -fx-border-radius: 5;
+  -fx-border-color: #1890ff;
+}
+
+.user-register-gender {
+  -fx-pref-width: 38px;
+  -fx-pref-height: 38px;
 }
 
 .user-register-btn-next {
   -fx-background-color: #1890ff;
   -fx-text-fill: #fff;
-  -fx-border-radius: 30;
   -fx-pref-width: 88px;
   -fx-pref-height: 28px;
   -fx-cursor: hand;
 }
 
+.user-register-btn-next:hover {
+  -fx-background-color: #fff;
+  -fx-text-fill: #1890ff;
+  -fx-border-color: #1890ff;
+}
+
 .user-register-btn-cancel {
   -fx-background-color: #ff4d4f;
   -fx-text-fill: #fff;
-  -fx-border-radius: 30;
   -fx-pref-width: 88px;
   -fx-pref-height: 28px;
   -fx-cursor: hand;
+}
+
+.user-register-btn-cancel:hover {
+  -fx-background-color: #fff;
+  -fx-text-fill: #ff4d4f;
+  -fx-border-color: #ff4d4f;
+}
+
+.modal-notification-warning {
+  -fx-opacity: 0;
+  -fx-background-color: #FF9700;
+  -fx-pref-width: 360px;
+  -fx-pref-height: 100px;
+  -fx-border-radius: 5px;
+}
+
+.label-text-warning {
+  -fx-text-fill: #fff;
+  -fx-font-size: 14px;
+}
+
+.btn-text-warning {
+  -fx-background-color: #fff;
+  -fx-text-fill: #FF9700;
+  -fx-border-color: #fff;
+  -fx-border-radius: 5px;
+  -fx-pref-width: 88px;
+  -fx-pref-height: 28px;
+  -fx-cursor: hand;
+}
+
+.btn-text-warning:hover {
+  -fx-background-color: #FF9700;
+  -fx-text-fill: #fff;
+  -fx-border-color: #fff;
 }
