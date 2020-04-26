@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
@@ -14,9 +14,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="user-register" stylesheets="@../../assets/css/userRegister.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.senac.school.controller.UserRegisterController">
    <children>
-      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" styleClass="user-register-container" stylesheets="@../../assets/css/userRegister.css">
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" styleClass="user-register-container" stylesheets="@../../assets/css/userRegister.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="252.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -36,16 +36,16 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </VBox>
-      <Pane layoutX="400.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #FFF;" styleClass="user-register-container-form" stylesheets="@../../assets/css/userRegister.css">
+      <Pane layoutX="400.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #FFF;" styleClass="user-register-container-form" stylesheets="@../../assets/css/userRegister.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="BASELINE_RIGHT" layoutX="-12.0" layoutY="546.0" prefHeight="40.0" prefWidth="411.0">
                <children>
-                  <Button mnemonicParsing="false" styleClass="user-register-btn-cancel" text="Voltar">
+                  <Button mnemonicParsing="false" onAction="#handleBackInit" styleClass="user-register-btn-cancel" stylesheets="@../../assets/css/userRegister.css" text="Voltar">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" styleClass="user-register-btn-next" text="Próximo">
+                  <Button mnemonicParsing="false" onAction="#handleRegisterUser" styleClass="user-register-btn-next" stylesheets="@../../assets/css/userRegister.css" text="Próximo">
                      <HBox.margin>
                         <Insets right="15.0" />
                      </HBox.margin>
@@ -101,7 +101,7 @@
                         <Font size="14.0" />
                      </font>
                      <VBox.margin>
-                        <Insets bottom="30.0" />
+                        <Insets bottom="50.0" />
                      </VBox.margin>
                   </Label>
                   <Label text="Estado Civil">
@@ -131,67 +131,110 @@
                </children></VBox>
             <VBox layoutX="150.0" layoutY="123.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="246.0">
                <children>
-                  <TextField styleClass="user-register-field">
+                  <TextField fx:id="fieldFirstName" styleClass="user-register-field">
                      <VBox.margin>
                         <Insets bottom="21.0" right="15.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField styleClass="user-register-field">
+                  <TextField fx:id="fieldFirstLastName" styleClass="user-register-field">
                      <VBox.margin>
                         <Insets bottom="21.0" right="15.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField styleClass="user-register-field">
+                  <TextField fx:id="fieldCPF" styleClass="user-register-field">
                      <VBox.margin>
                         <Insets bottom="21.0" right="15.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField styleClass="user-register-field">
+                  <DatePicker fx:id="fieldDateBirth" prefWidth="117.0" styleClass="user-register-field-date-birth" stylesheets="@../../assets/css/userRegister.css">
                      <VBox.margin>
                         <Insets bottom="21.0" right="15.0" />
                      </VBox.margin>
-                  </TextField>
-                  <HBox prefHeight="28.0" prefWidth="200.0">
+                  </DatePicker>
+                  <HBox alignment="TOP_CENTER" prefHeight="34.0" prefWidth="246.0">
                      <children>
-                        <RadioButton mnemonicParsing="false" text="Feminino">
+                        <RadioButton mnemonicParsing="false">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="user-register-gender">
+                                 <image>
+                                    <Image url="@../../assets/image/female.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Masculino">
+                        <RadioButton mnemonicParsing="false">
                            <HBox.margin>
                               <Insets bottom="30.0" right="5.0" />
                            </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="user-register-gender">
+                                 <image>
+                                    <Image url="@../../assets/image/male.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Sem gênero">
+                        <RadioButton mnemonicParsing="false">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="user-register-gender">
+                                 <image>
+                                    <Image url="@../../assets/image/no-gender.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </RadioButton>
                      </children>
                   </HBox>
-                  <TextField styleClass="user-register-field">
+                  <TextField fx:id="fieldMaritalStatus" styleClass="user-register-field">
                      <VBox.margin>
                         <Insets bottom="21.0" right="15.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField styleClass="user-register-field">
+                  <TextField fx:id="fieldCell" styleClass="user-register-field">
                      <VBox.margin>
                         <Insets bottom="21.0" right="15.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField styleClass="user-register-field">
+                  <TextField fx:id="fieldTelephone" styleClass="user-register-field">
                      <VBox.margin>
                         <Insets bottom="21.0" right="15.0" />
                      </VBox.margin>
                   </TextField>
                </children>
             </VBox>
+            <Pane fx:id="modalNotificationWarning" layoutX="-157.0" layoutY="249.0" prefHeight="200.0" prefWidth="334.0" styleClass="modal-notification-warning" stylesheets="@../../assets/css/userRegister.css">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="360.0" stylesheets="@../../assets/css/userRegister.css">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="52.0" prefWidth="310.0" stylesheets="@../../assets/css/userRegister.css">
+                           <children>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/image/warning.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Label fx:id="textNotification" prefHeight="20.0" prefWidth="291.0" styleClass="label-text-warning" stylesheets="@../../assets/css/userRegister.css" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="BOTTOM_CENTER" prefHeight="33.0" prefWidth="310.0" stylesheets="@../../assets/css/userRegister.css">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#handleConfirmNotificationWarning" styleClass="btn-text-warning" stylesheets="@../../assets/css/userRegister.css" text="Entendi!" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
          </children>
       </Pane>
    </children>
-   <stylesheets>
-      <URL value="@userRegister.css" />
-      <URL value="@../../assets/css/userRegister.css" />
-   </stylesheets>
 </AnchorPane>
