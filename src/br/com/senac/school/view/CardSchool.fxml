@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="1200.0" stylesheets="@../../assets/css/cardSchool.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+<AnchorPane prefHeight="600.0" prefWidth="1200.0" stylesheets="@../../assets/css/cardSchool.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER" prefHeight="50.0" prefWidth="1200.0" styleClass="dashboard-header" stylesheets="@../../assets/css/DashboardSchool.css">
          <children>
@@ -106,7 +105,7 @@
       </HBox>
       <VBox layoutY="101.0" prefHeight="600.0" prefWidth="1200.0" styleClass="card-school-main">
          <children>
-            <VBox prefHeight="200.0" prefWidth="1200.0" styleClass="card-school-container">
+            <VBox prefHeight="292.0" prefWidth="1160.0" styleClass="card-school-container">
                <children>
                   <HBox prefHeight="60.0" prefWidth="1200.0" styleClass="card-school-header">
                      <children>
@@ -118,10 +117,41 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                         </HBox>
-                        <HBox prefHeight="100.0" prefWidth="600.0" />
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="600.0">
+                           <children>
+                              <Button mnemonicParsing="false" styleClass="btn-options" stylesheets="@../../assets/css/cardSchool.css">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../assets/image/bookmark.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children></HBox>
                      </children>
                   </HBox>
-                  <HBox prefHeight="140.0" prefWidth="200.0" styleClass="card-school-main" />
+                  <HBox prefHeight="232.0" prefWidth="1160.0" styleClass="card-school-main-image">
+                     <children>
+                        <VBox prefHeight="232.0" prefWidth="190.0" styleClass="card-school-main-container">
+                           <children>
+                              <Pane prefHeight="232.0" prefWidth="265.0" styleClass="card-school-main-image">
+                                 <children>
+                                    <ImageView fitHeight="151.0" fitWidth="151.0" layoutX="14.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../assets/image/school.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="232.0" prefWidth="383.0" styleClass="card-school-main-container" />
+                        <VBox prefHeight="232.0" prefWidth="115.0" styleClass="card-school-main-container" />
+                     </children></HBox>
                </children>
                <VBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

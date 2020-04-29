@@ -74,6 +74,12 @@
   -fx-font-size: 18px;
 }
 
-.card-school-main {
-  
+.btn-options {
+  -fx-background-color: #fff;
+  -fx-border-radius: 40px;
+  -fx-background-radius: 40px;
+  -fx-border-color: #fff;
+  -fx-cursor: hand;
+  -fx-pref-height: 40px;
+  -fx-pref-width: 40px;
 }
