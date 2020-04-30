@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1200.0" styleClass="home-container" stylesheets="@../../assets/css/home.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="1200.0" styleClass="home-container" stylesheets="@../../assets/css/home.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane layoutX="450.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -85,7 +85,7 @@
             <Font name="Ebrima Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="226.0" layoutY="403.0" text="SCHOOL SEARCH" textFill="WHITE">
+      <Label layoutX="240.0" layoutY="403.0" text="SCHOOL MAP" textFill="WHITE">
          <font>
             <Font name="Ebrima Bold" size="18.0" />
          </font>

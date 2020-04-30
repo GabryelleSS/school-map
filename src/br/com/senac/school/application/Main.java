@@ -4,8 +4,8 @@ import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -13,8 +13,8 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/com/senac/school/view/Home.fxml"));
-			AnchorPane pane = loader.load();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/com/senac/school/view/Splash.fxml"));
+			Parent pane = loader.load();
 			Scene mainScene = new Scene(pane);
 			primaryStage.setScene(mainScene);
 			primaryStage.setResizable(false);
@@ -24,7 +24,7 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
