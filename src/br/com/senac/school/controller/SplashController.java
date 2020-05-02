@@ -1,4 +1,4 @@
-package br.com.senac.school.controller;
+	package br.com.senac.school.controller;
 
 import java.io.IOException;
 import java.net.URL;
@@ -63,7 +63,7 @@ public class SplashController implements Initializable {
 				for (int i = 0; i <= 100; i++) {
 					updateProgress(i, 100);
 					updateMessage(String.valueOf(i));
-					Thread.sleep(30);
+					Thread.sleep(20);
 				}
 				return null;
 			}
@@ -72,7 +72,7 @@ public class SplashController implements Initializable {
 
 	private void loadHome() {
 		try {
-			AnchorPane parentContent = FXMLLoader.load(getClass().getResource(("/br/com/senac/school/view/Home.fxml")));
+			AnchorPane parentContent = FXMLLoader.load(getClass().getResource(("/br/com/senac/school/view/Login.fxml")));
 			root.getChildren().setAll(parentContent);
 		} catch (IOException e) {
 			e.printStackTrace();

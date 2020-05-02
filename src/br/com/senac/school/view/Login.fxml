@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,30 +13,22 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="1200.0" styleClass="home-container" stylesheets="@../../assets/css/home.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="1200.0" styleClass="home-container" stylesheets="@../../assets/css/home.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.senac.school.controller.Login">
    <children>
       <Pane layoutX="450.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane layoutX="152.0" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: white;">
                <children>
-                  <JFXTextField labelFloat="true" layoutX="175.0" layoutY="191.0" prefHeight="40.0" prefWidth="250.0" promptText="E-mail">
+                  <JFXTextField focusColor="#4087fd" labelFloat="true" layoutX="175.0" layoutY="191.0" prefHeight="40.0" prefWidth="250.0" promptText="E-mail">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </JFXTextField>
-                  <JFXPasswordField labelFloat="true" layoutX="175.0" layoutY="276.0" prefHeight="40.0" prefWidth="250.0" promptText="Password">
+                  <JFXPasswordField focusColor="#4087fd" labelFloat="true" layoutX="175.0" layoutY="276.0" prefHeight="40.0" prefWidth="250.0" promptText="Senha">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </JFXPasswordField>
-                  <Label layoutX="316.0" layoutY="341.0" text="Forgot Password?" textFill="#a3a3a3">
-                     <font>
-                        <Font name="Ebrima" size="14.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Label>
                   <JFXButton buttonType="RAISED" layoutX="150.0" layoutY="387.0" prefHeight="50.0" prefWidth="300.0" styleClass="home-login-btn" stylesheets="@../../assets/css/home.css" text="Login" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
@@ -44,29 +37,23 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </JFXButton>
-                  <Label layoutX="193.0" layoutY="466.0" text="Don't have an account?" textFill="#a3a3a3">
+                  <Label layoutX="191.0" layoutY="466.0" text="Ainda não tem uma conta?" textFill="#a3a3a3">
                      <font>
                         <Font name="Ebrima" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="347.0" layoutY="466.0" text="Subscribe" textFill="#4087fd">
-                     <font>
-                        <Font name="Ebrima" size="14.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Label>
-                  <Label layoutX="150.0" layoutY="110.0" text="Sign in to continue" textFill="#a3a3a3">
+                  <Label layoutX="150.0" layoutY="110.0" text="Faça o login para continuar" textFill="#a3a3a3">
                      <font>
                         <Font name="Ebrima Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="150.0" layoutY="81.0" text="WELCOME BACK," textFill="#545454">
+                  <Label layoutX="150.0" layoutY="81.0" text="Bem vindo de volta" textFill="#545454">
                      <font>
                         <Font name="Impact" size="24.0" />
                      </font>
                   </Label>
+                  <JFXButton fx:id="btnUserRegister" layoutX="370.0" layoutY="461.0" onAction="#btnUserRegister" styleClass="btn-user-register" text="Cadastre-se" />
+                  <Button layoutX="283.0" layoutY="341.0" mnemonicParsing="false" styleClass="btn-forgot-password" text="Esqueceu a sua senha?" />
                </children>
             </AnchorPane>
          </children>
@@ -80,7 +67,7 @@
             </ImageView>
          </children>
       </VBox>
-      <Label alignment="CENTER" layoutX="253.0" layoutY="385.0" text="WELCOME TO" textAlignment="JUSTIFY" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="253.0" layoutY="385.0" text="Bem vindo ao" textAlignment="JUSTIFY" textFill="WHITE">
          <font>
             <Font name="Ebrima Bold" size="14.0" />
          </font>
