@@ -14,25 +14,16 @@
 .user-register-field {
   -fx-pref-width: 200px;
   -fx-pref-height: 28px;
-  -fx-border-radius: 5;
-  -fx-border-color: #1890ff;
-}
-
-.user-register-field--isRequired {
-  -fx-pref-width: 200px;
-  -fx-pref-height: 28px;
-  -fx-border-radius: 5;
-  -fx-border-color: #ff4d4f;
+  -fx-font-size: 14px;
 }
 
 .user-register-field-date-birth {
   -fx-pref-width: 370px;
   -fx-pref-height: 28px;
-  -fx-border-radius: 5;
-  -fx-border-color: #1890ff;
+  -fx-font-size: 14px;
 }
 
-.user-register-gender {
+.user-register-gender-img {
   -fx-pref-width: 38px;
   -fx-pref-height: 38px;
 }
