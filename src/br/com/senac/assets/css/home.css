@@ -1,0 +1,21 @@
+.home-container{
+	 -fx-background-color: #4087fd;
+}
+
+
+.home-login-btn{
+  -fx-background-color: #4087fd;
+  -fx-text-fill: #fff;
+  -fx-pref-width: 300px;
+  -fx-pref-height: 50px;
+ } 
+  
+  .home-login-btn:hover{
+  -fx-background-color: transparent;
+  -fx-text-fill:#4087fd;
+  -fx-border-color:#4087fd;
+  -fx-border-whidth:1px;
+  -fx-border-style:solid;
+  
+  
+  }
