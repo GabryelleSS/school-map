@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXDialog?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,11 +17,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="user-register" stylesheets="@../../assets/css/userRegister.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.senac.school.controller.UserRegisterController">
+<AnchorPane prefHeight="600.0" prefWidth="1200.0" styleClass="user-register" stylesheets="@../../assets/css/userRegister.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.senac.school.controller.UserRegisterController">
    <children>
-      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" styleClass="user-register-container" stylesheets="@../../assets/css/userRegister.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" styleClass="user-register-container" stylesheets="@../../assets/css/userRegister.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
+            <JFXDialog />
             <ImageView fitHeight="252.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../assets/image/user2.png" />
@@ -36,204 +42,311 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </VBox>
-      <Pane layoutX="400.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #FFF;" styleClass="user-register-container-form" stylesheets="@../../assets/css/userRegister.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane layoutX="400.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: #FFF;" styleClass="user-register-container-form" stylesheets="@../../assets/css/userRegister.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox alignment="BASELINE_RIGHT" layoutX="-12.0" layoutY="546.0" prefHeight="40.0" prefWidth="411.0">
+            <HBox alignment="BASELINE_RIGHT" layoutY="551.0" prefHeight="35.0" prefWidth="700.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#handleBackInit" styleClass="user-register-btn-cancel" stylesheets="@../../assets/css/userRegister.css" text="Voltar">
-                     <HBox.margin>
-                        <Insets right="20.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#handleRegisterUser" styleClass="user-register-btn-next" stylesheets="@../../assets/css/userRegister.css" text="Próximo">
+                  <JFXButton buttonType="RAISED" onAction="#handleBackRegisterUser" text="Voltar">
+                     <styleClass>
+                        <String fx:value="user-register-btn-cancel" />
+                        <String fx:value="user-register-btn" />
+                     </styleClass>
                      <HBox.margin>
                         <Insets right="15.0" />
                      </HBox.margin>
-                  </Button>
+                  </JFXButton>
+                  <JFXButton fx:id="btnNextField" buttonType="RAISED" onAction="#handleNextFields" text="Pŕoximo">
+                     <styleClass>
+                        <String fx:value="user-register-btn-next" />
+                        <String fx:value="user-register-btn" />
+                     </styleClass>
+                  </JFXButton>
                </children>
+               <padding>
+                  <Insets right="40.0" />
+               </padding>
             </HBox>
-            <Label layoutX="14.0" layoutY="65.0" text="Cadastre-se para continuar" textFill="#686868">
+            <Label layoutX="45.0" layoutY="65.0" text="Cadastre-se para continuar" textFill="#686868">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="30.0" text="SCHOOL MAP" textFill="#404040">
+            <Label layoutX="40.0" layoutY="30.0" text="SCHOOL MAP" textFill="#404040">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <VBox layoutX="14.0" layoutY="123.0" prefHeight="415.0" prefWidth="160.0">
+            <VBox fx:id="formFieldsRegisterUserAddress" layoutY="125.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="404.0" prefWidth="700.0">
+               <padding>
+                  <Insets left="30.0" right="30.0" />
+               </padding>
                <children>
-                  <Label styleClass="teste" text="Nome">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="30.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label text="Sobrenome">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="30.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label text="CPF">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="30.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label text="Data de Nascimento">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="30.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label text="Gênero">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="50.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label text="Estado Civil">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="30.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label text="Celular">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="30.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label text="Telefone">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="30.0" />
-                     </VBox.margin>
-                  </Label>
-               </children></VBox>
-            <VBox layoutX="150.0" layoutY="123.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="246.0">
-               <children>
-                  <TextField fx:id="fieldFirstName" styleClass="user-register-field">
-                     <VBox.margin>
-                        <Insets bottom="21.0" right="15.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <TextField fx:id="fieldFirstLastName" styleClass="user-register-field">
-                     <VBox.margin>
-                        <Insets bottom="21.0" right="15.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <TextField fx:id="fieldCPF" styleClass="user-register-field">
-                     <VBox.margin>
-                        <Insets bottom="21.0" right="15.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <DatePicker fx:id="fieldDateBirth" prefWidth="117.0" styleClass="user-register-field-date-birth" stylesheets="@../../assets/css/userRegister.css">
-                     <VBox.margin>
-                        <Insets bottom="21.0" right="15.0" />
-                     </VBox.margin>
-                  </DatePicker>
-                  <HBox alignment="TOP_CENTER" prefHeight="34.0" prefWidth="246.0">
+                  <HBox alignment="CENTER" prefHeight="70.0" prefWidth="664.0">
                      <children>
-                        <RadioButton mnemonicParsing="false">
+                        <JFXTextField focusColor="#1890ff" labelFloat="true" promptText="Rua" styleClass="user-register-field-address">
+                           <opaqueInsets>
+                              <Insets right="20.0" />
+                           </opaqueInsets>
                            <HBox.margin>
-                              <Insets right="5.0" />
+                              <Insets right="30.0" />
                            </HBox.margin>
-                           <graphic>
-                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="user-register-gender">
-                                 <image>
-                                    <Image url="@../../assets/image/female.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </RadioButton>
-                        <RadioButton mnemonicParsing="false">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField focusColor="#1890ff" labelFloat="true" prefHeight="25.0" prefWidth="114.0" promptText="CEP">
+                           <opaqueInsets>
+                              <Insets right="20.0" />
+                           </opaqueInsets>
                            <HBox.margin>
-                              <Insets bottom="30.0" right="5.0" />
+                              <Insets left="15.0" right="10.0" />
                            </HBox.margin>
-                           <graphic>
-                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="user-register-gender">
-                                 <image>
-                                    <Image url="@../../assets/image/male.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </RadioButton>
-                        <RadioButton mnemonicParsing="false">
-                           <HBox.margin>
-                              <Insets right="5.0" />
-                           </HBox.margin>
-                           <graphic>
-                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="user-register-gender">
-                                 <image>
-                                    <Image url="@../../assets/image/no-gender.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </RadioButton>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXButton buttonType="RAISED" prefHeight="32.0" prefWidth="83.0" ripplerFill="#b0d5fc" text="Consultar">
+                           <styleClass>
+                              <String fx:value="btn-consult-cep" />
+                              <String fx:value="user-register-btn" />
+                           </styleClass>
+                        </JFXButton>
                      </children>
                   </HBox>
-                  <TextField fx:id="fieldMaritalStatus" styleClass="user-register-field">
+                  <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0">
+                     <children>
+                        <JFXTextField focusColor="#1890ff" labelFloat="true" promptText="Número" styleClass="user-register-field-address">
+                           <HBox.margin>
+                              <Insets right="30.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField focusColor="#1890ff" labelFloat="true" promptText="Bairro" styleClass="user-register-field-address">
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="1142.0" />
+                           </font>
+                        </JFXTextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0">
+                     <children>
+                        <JFXTextField focusColor="#1890ff" labelFloat="true" promptText="Complemento" styleClass="user-register-field-address">
+                           <HBox.margin>
+                              <Insets right="30.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField focusColor="#1890ff" labelFloat="true" promptText="Cidade" styleClass="user-register-field-address">
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </JFXTextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0">
+                     <children>
+                        <JFXTextField focusColor="#1890ff" labelFloat="true" promptText="Estado" styleClass="user-register-field-address">
+                           <HBox.margin>
+                              <Insets right="30.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField focusColor="#1890ff" labelFloat="true" promptText="UF" styleClass="user-register-field-address">
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </JFXTextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="68.0" prefWidth="556.0">
+                     <children>
+                        <Label text="Prefêrencia de contato:">
+                           <HBox.margin>
+                              <Insets right="25.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXCheckBox checkedColor="#1890ff" text="E-mail">
+                           <HBox.margin>
+                              <Insets right="25.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </JFXCheckBox>
+                        <JFXCheckBox checkedColor="#1890ff" text="Telefone">
+                           <font>
+                              <Font size="14.0" />
+                           </font></JFXCheckBox>
+                     </children>
                      <VBox.margin>
-                        <Insets bottom="21.0" right="15.0" />
+                        <Insets left="85.0" top="10.0" />
                      </VBox.margin>
-                  </TextField>
-                  <TextField fx:id="fieldCell" styleClass="user-register-field">
-                     <VBox.margin>
-                        <Insets bottom="21.0" right="15.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <TextField fx:id="fieldTelephone" styleClass="user-register-field">
-                     <VBox.margin>
-                        <Insets bottom="21.0" right="15.0" />
-                     </VBox.margin>
-                  </TextField>
+                  </HBox>
                </children>
             </VBox>
-            <Pane fx:id="modalNotificationWarning" layoutX="-157.0" layoutY="249.0" prefHeight="200.0" prefWidth="334.0" styleClass="modal-notification-warning" stylesheets="@../../assets/css/userRegister.css">
+            <HBox fx:id="formFieldsRegisterUser" layoutY="104.0" prefHeight="421.0" prefWidth="700.0">
                <children>
-                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="360.0" stylesheets="@../../assets/css/userRegister.css">
+                  <VBox prefHeight="200.0" prefWidth="350.0">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="52.0" prefWidth="310.0" stylesheets="@../../assets/css/userRegister.css">
+                        <JFXTextField fx:id="fieldFirstName" focusColor="#1890ff" labelFloat="true" promptText="Nome" styleClass="user-register-field">
+                           <VBox.margin>
+                              <Insets bottom="40.0" right="5.0" top="10.0" />
+                           </VBox.margin>
+                        </JFXTextField>
+                        <JFXTextField fx:id="fieldLastName" focusColor="#1890ff" labelFloat="true" promptText="Sobrenome" styleClass="user-register-field">
+                           <VBox.margin>
+                              <Insets bottom="40.0" right="5.0" />
+                           </VBox.margin>
+                        </JFXTextField>
+                        <JFXTextField fx:id="fieldEmail" focusColor="#1890ff" labelFloat="true" promptText="E-mail" styleClass="user-register-field">
+                           <VBox.margin>
+                              <Insets bottom="40.0" right="5.0" />
+                           </VBox.margin>
+                        </JFXTextField>
+                        <JFXPasswordField fx:id="fieldPassword" focusColor="#1890ff" labelFloat="true" promptText="Senha" styleClass="user-register-field-address">
+                           <VBox.margin>
+                              <Insets bottom="40.0" right="5.0" />
+                           </VBox.margin>
+                        </JFXPasswordField>
+                        <JFXPasswordField fx:id="fieldConfirmPassword" focusColor="#1890ff" labelFloat="true" promptText="Confirme a sua senha" styleClass="user-register-field-address">
+                           <VBox.margin>
+                              <Insets bottom="40.0" right="5.0" />
+                           </VBox.margin>
+                        </JFXPasswordField>
+                        <JFXTextField fx:id="fieldCPF" focusColor="#1890ff" labelFloat="true" promptText="CPF" styleClass="user-register-field">
+                           <VBox.margin>
+                              <Insets right="5.0" />
+                           </VBox.margin>
+                        </JFXTextField>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="350.0">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                     <children>
+                        <JFXDatePicker fx:id="fieldDateBirth" defaultColor="#1890ff" overLay="true" promptText="DD/MM/YYYY" styleClass="user-register-field-date-birth">
+                           <VBox.margin>
+                              <Insets bottom="40.0" right="5.0" top="10.0" />
+                           </VBox.margin></JFXDatePicker>
+                        <HBox alignment="CENTER_LEFT" prefHeight="92.0" prefWidth="310.0">
                            <children>
-                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../assets/image/warning.png" />
-                                 </image>
+                              <Label text="Gênero">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
                                  <HBox.margin>
-                                    <Insets left="10.0" right="10.0" />
+                                    <Insets right="10.0" />
                                  </HBox.margin>
-                              </ImageView>
-                              <Label fx:id="textNotification" prefHeight="20.0" prefWidth="291.0" styleClass="label-text-warning" stylesheets="@../../assets/css/userRegister.css" />
+                              </Label>
+                              <JFXCheckBox checkedColor="#1890ff" styleClass="user-register-gender-img" text=" ">
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" styleClass="user-register-gender-img">
+                                       <image>
+                                          <Image url="@../../assets/image/female.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></JFXCheckBox>
+                              <JFXCheckBox checkedColor="#1890ff" styleClass="user-register-gender-img" text=" ">
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../assets/image/male.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></JFXCheckBox>
+                              <JFXCheckBox checkedColor="#1890ff" prefHeight="76.0" prefWidth="93.0" styleClass="user-register-gender-img" text=" ">
+                                 <graphic>
+                                    <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../assets/image/no-gender.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></JFXCheckBox>
                            </children>
+                           <VBox.margin>
+                              <Insets bottom="40.0" right="5.0" />
+                           </VBox.margin>
                         </HBox>
-                        <HBox alignment="BOTTOM_CENTER" prefHeight="33.0" prefWidth="310.0" stylesheets="@../../assets/css/userRegister.css">
-                           <children>
-                              <Button mnemonicParsing="false" onAction="#handleConfirmNotificationWarning" styleClass="btn-text-warning" stylesheets="@../../assets/css/userRegister.css" text="Entendi!" />
-                           </children>
-                        </HBox>
+                        <JFXComboBox fx:id="fieldMaritalStatus" focusColor="#1890ff" labelFloat="true" prefHeight="38.0" prefWidth="320.0" promptText="Estado Civil">
+                           <VBox.margin>
+                              <Insets bottom="40.0" right="5.0" />
+                           </VBox.margin>
+                        </JFXComboBox>
+                        <JFXTextField fx:id="fieldCell" focusColor="#1890ff" labelFloat="true" promptText="Celular com DDD" styleClass="user-register-field-address">
+                           <VBox.margin>
+                              <Insets bottom="40.0" right="5.0" />
+                           </VBox.margin>
+                        </JFXTextField>
+                        <JFXTextField fx:id="fieldTephone" focusColor="#1890ff" labelFloat="true" promptText="Telefone com DDD" styleClass="user-register-field-address">
+                           <VBox.margin>
+                              <Insets bottom="20.0" right="5.0" />
+                           </VBox.margin>
+                        </JFXTextField>
                      </children>
                   </VBox>
                </children>
-            </Pane>
+               <padding>
+                  <Insets left="30.0" right="30.0" />
+               </padding>
+            </HBox>
+         </children>
+      </Pane>
+      <Pane fx:id="modalWarning" layoutX="370.0" layoutY="180.0" prefHeight="200.0" prefWidth="350.0" styleClass="modal-warning-container">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="350.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="160.0" prefWidth="394.0">
+                     <children>
+                        <ImageView fitHeight="84.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../assets/image/warning.png" />
+                           </image>
+                        </ImageView>
+                        <Text fx:id="labelWarning" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info-modal-warning" text="Ops! Você precisa preencher os campos obrigatórios.">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Text>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" right="10.0" top="20.0" />
+                     </padding>
+                  </VBox>
+                  <HBox alignment="BOTTOM_CENTER" prefHeight="80.0" prefWidth="299.0">
+                     <children>
+                        <JFXButton onAction="#btnConfirm" prefHeight="40.0" prefWidth="358.0" styleClass="btn-confirm-warning-modal" text="Entendi!" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
          </children>
       </Pane>
    </children>

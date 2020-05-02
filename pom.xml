@@ -26,7 +26,12 @@
 			</plugin>
 		</plugins>
 	</build>
+	<!-- https://mvnrepository.com/artifact/com.jfoenix/jfoenix -->
 	<dependencies>
-
+		<dependency>
+		    <groupId>com.jfoenix</groupId>
+		    <artifactId>jfoenix</artifactId>
+		    <version>9.0.1</version>
+		</dependency>
 	</dependencies>
 </project>

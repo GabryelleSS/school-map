@@ -12,84 +12,65 @@
 }
 
 .user-register-field {
-  -fx-border-color: #1890ff;
-  -fx-border-radius: 5;
-  -fx-pref-height: 28px;
   -fx-pref-width: 200px;
-}
-
-.user-register-field--isRequired {
-  -fx-border-color: #ff4d4f;
-  -fx-border-radius: 5;
   -fx-pref-height: 28px;
-  -fx-pref-width: 200px;
+  -fx-font-size: 14px;
 }
 
 .user-register-field-date-birth {
-  -fx-border-color: #1890ff;
-  -fx-border-radius: 5;
+  -fx-pref-width: 370px;
   -fx-pref-height: 28px;
-  -fx-pref-width: 260px;
+  -fx-font-size: 14px;
 }
 
-.user-register-gender {
-  -fx-pref-height: 38px;
+.user-register-gender-img {
   -fx-pref-width: 38px;
+  -fx-pref-height: 38px;
+}
+
+.user-register-btn {
+  -fx-pref-width: 88px;
+  -fx-pref-height: 28px;
+  -fx-cursor: hand;
+  -fx-font-size: 14px;
+  -fx-border-radius: 5px;
 }
 
 .user-register-btn-next {
   -fx-background-color: #1890ff;
-  -fx-cursor: hand;
-  -fx-pref-height: 28px;
-  -fx-pref-width: 88px;
   -fx-text-fill: #fff;
 }
 
-.user-register-btn-next:hover {
-  -fx-background-color: #fff;
-  -fx-border-color: #1890ff;
-  -fx-text-fill: #1890ff;
+.btn-consult-cep {
+  -fx-background-color: #1890ff;
+  -fx-text-fill: #fff;
 }
 
 .user-register-btn-cancel {
   -fx-background-color: #ff4d4f;
-  -fx-cursor: hand;
-  -fx-pref-height: 28px;
-  -fx-pref-width: 88px;
   -fx-text-fill: #fff;
 }
 
-.user-register-btn-cancel:hover {
-  -fx-background-color: #fff;
-  -fx-border-color: #ff4d4f;
-  -fx-text-fill: #ff4d4f;
-}
-
-.modal-notification-warning {
-  -fx-background-color: #FF9700;
-  -fx-border-radius: 5px;
-  -fx-opacity: 0;
-  -fx-pref-height: 100px;
-  -fx-pref-width: 360px;
-}
-
-.label-text-warning {
+.user-register-field-address {
+  -fx-pref-width: 210px;
+  -fx-pref-height: 28px;
   -fx-font-size: 14px;
-  -fx-text-fill: #fff;
 }
 
-.btn-text-warning {
+.modal-warning-container {
   -fx-background-color: #fff;
+  -fx-background-radius: 15px 15px 0px 0px;
   -fx-border-color: #fff;
-  -fx-border-radius: 5px;
-  -fx-cursor: hand;
-  -fx-pref-height: 28px;
-  -fx-pref-width: 88px;
-  -fx-text-fill: #FF9700;
+  -fx-border-radius: 15px 15px 0px 0px;
 }
 
-.btn-text-warning:hover {
-  -fx-background-color: #FF9700;
-  -fx-border-color: #fff;
+.text-info-modal-warning {
+  -fx-font-size: 14px;
+  -fx-text-fill: #6c6761;
+}
+
+.btn-confirm-warning-modal {
+  -fx-background-color: #ff4d4f;
   -fx-text-fill: #fff;
+  -fx-cursor: hand;
 }
