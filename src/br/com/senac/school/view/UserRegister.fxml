@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXDialog?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import java.lang.String?>
@@ -16,11 +17,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="600.0" prefWidth="1200.0" styleClass="user-register" stylesheets="@../../assets/css/userRegister.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.senac.school.controller.UserRegisterController">
    <children>
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" styleClass="user-register-container" stylesheets="@../../assets/css/userRegister.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
+            <JFXDialog />
             <ImageView fitHeight="252.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../assets/image/user2.png" />
@@ -52,7 +55,7 @@
                         <Insets right="15.0" />
                      </HBox.margin>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" onAction="#handleNextFields" text="Pŕoximo">
+                  <JFXButton fx:id="btnNextField" buttonType="RAISED" onAction="#handleNextFields" text="Pŕoximo">
                      <styleClass>
                         <String fx:value="user-register-btn-next" />
                         <String fx:value="user-register-btn" />
@@ -73,7 +76,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <VBox fx:id="formFieldsRegisterUserAddress" layoutY="125.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="404.0" prefWidth="700.0">
+            <VBox fx:id="formFieldsRegisterUserAddress" layoutY="125.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="404.0" prefWidth="700.0">
                <padding>
                   <Insets left="30.0" right="30.0" />
                </padding>
@@ -199,38 +202,38 @@
                   </HBox>
                </children>
             </VBox>
-            <HBox fx:id="formFieldsRegisterUser" layoutY="145.0" prefHeight="380.0" prefWidth="700.0">
+            <HBox fx:id="formFieldsRegisterUser" layoutY="104.0" prefHeight="421.0" prefWidth="700.0">
                <children>
                   <VBox prefHeight="200.0" prefWidth="350.0">
                      <children>
-                        <JFXTextField focusColor="#1890ff" labelFloat="true" promptText="Nome" styleClass="user-register-field">
+                        <JFXTextField fx:id="fieldFirstName" focusColor="#1890ff" labelFloat="true" promptText="Nome" styleClass="user-register-field">
                            <VBox.margin>
-                              <Insets bottom="20.0" right="5.0" />
+                              <Insets bottom="40.0" right="5.0" top="10.0" />
                            </VBox.margin>
                         </JFXTextField>
-                        <JFXTextField focusColor="#1890ff" labelFloat="true" promptText="Sobrenome" styleClass="user-register-field">
+                        <JFXTextField fx:id="fieldLastName" focusColor="#1890ff" labelFloat="true" promptText="Sobrenome" styleClass="user-register-field">
                            <VBox.margin>
-                              <Insets bottom="20.0" right="5.0" />
+                              <Insets bottom="40.0" right="5.0" />
                            </VBox.margin>
                         </JFXTextField>
-                        <JFXTextField focusColor="#1890ff" labelFloat="true" promptText="E-mail" styleClass="user-register-field">
+                        <JFXTextField fx:id="fieldEmail" focusColor="#1890ff" labelFloat="true" promptText="E-mail" styleClass="user-register-field">
                            <VBox.margin>
-                              <Insets bottom="20.0" right="5.0" />
+                              <Insets bottom="40.0" right="5.0" />
                            </VBox.margin>
                         </JFXTextField>
-                        <JFXPasswordField focusColor="#1890ff" labelFloat="true" promptText="Senha" styleClass="user-register-field-address">
+                        <JFXPasswordField fx:id="fieldPassword" focusColor="#1890ff" labelFloat="true" promptText="Senha" styleClass="user-register-field-address">
                            <VBox.margin>
-                              <Insets bottom="20.0" right="5.0" />
+                              <Insets bottom="40.0" right="5.0" />
                            </VBox.margin>
                         </JFXPasswordField>
-                        <JFXPasswordField focusColor="#1890ff" labelFloat="true" promptText="Confirme a sua senha" styleClass="user-register-field-address">
+                        <JFXPasswordField fx:id="fieldConfirmPassword" focusColor="#1890ff" labelFloat="true" promptText="Confirme a sua senha" styleClass="user-register-field-address">
                            <VBox.margin>
-                              <Insets bottom="20.0" right="5.0" />
+                              <Insets bottom="40.0" right="5.0" />
                            </VBox.margin>
                         </JFXPasswordField>
-                        <JFXTextField focusColor="#1890ff" labelFloat="true" promptText="CPF" styleClass="user-register-field">
+                        <JFXTextField fx:id="fieldCPF" focusColor="#1890ff" labelFloat="true" promptText="CPF" styleClass="user-register-field">
                            <VBox.margin>
-                              <Insets bottom="20.0" right="5.0" />
+                              <Insets right="5.0" />
                            </VBox.margin>
                         </JFXTextField>
                      </children>
@@ -243,11 +246,11 @@
                         <Insets left="5.0" />
                      </HBox.margin>
                      <children>
-                        <JFXDatePicker defaultColor="#1890ff" overLay="true" promptText="DD/MM/YYYY" styleClass="user-register-field-date-birth">
+                        <JFXDatePicker fx:id="fieldDateBirth" defaultColor="#1890ff" overLay="true" promptText="DD/MM/YYYY" styleClass="user-register-field-date-birth">
                            <VBox.margin>
-                              <Insets bottom="20.0" right="5.0" />
+                              <Insets bottom="40.0" right="5.0" top="10.0" />
                            </VBox.margin></JFXDatePicker>
-                        <HBox alignment="CENTER_LEFT" prefHeight="72.0" prefWidth="310.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="92.0" prefWidth="310.0">
                            <children>
                               <Label text="Gênero">
                                  <font>
@@ -289,20 +292,20 @@
                                  </graphic></JFXCheckBox>
                            </children>
                            <VBox.margin>
-                              <Insets bottom="20.0" right="5.0" />
+                              <Insets bottom="40.0" right="5.0" />
                            </VBox.margin>
                         </HBox>
-                        <JFXComboBox focusColor="#1890ff" labelFloat="true" prefHeight="38.0" prefWidth="320.0" promptText="Estado Civil">
+                        <JFXComboBox fx:id="fieldMaritalStatus" focusColor="#1890ff" labelFloat="true" prefHeight="38.0" prefWidth="320.0" promptText="Estado Civil">
                            <VBox.margin>
-                              <Insets bottom="20.0" right="5.0" />
+                              <Insets bottom="40.0" right="5.0" />
                            </VBox.margin>
                         </JFXComboBox>
-                        <JFXTextField focusColor="#1890ff" labelFloat="true" promptText="Telefone com DDD" styleClass="user-register-field-address">
+                        <JFXTextField fx:id="fieldCell" focusColor="#1890ff" labelFloat="true" promptText="Celular com DDD" styleClass="user-register-field-address">
                            <VBox.margin>
-                              <Insets bottom="20.0" right="5.0" />
+                              <Insets bottom="40.0" right="5.0" />
                            </VBox.margin>
                         </JFXTextField>
-                        <JFXTextField focusColor="#1890ff" labelFloat="true" promptText="Celular com DDD" styleClass="user-register-field-address">
+                        <JFXTextField fx:id="fieldTephone" focusColor="#1890ff" labelFloat="true" promptText="Telefone com DDD" styleClass="user-register-field-address">
                            <VBox.margin>
                               <Insets bottom="20.0" right="5.0" />
                            </VBox.margin>
@@ -314,6 +317,36 @@
                   <Insets left="30.0" right="30.0" />
                </padding>
             </HBox>
+         </children>
+      </Pane>
+      <Pane fx:id="modalWarning" layoutX="370.0" layoutY="180.0" prefHeight="200.0" prefWidth="350.0" styleClass="modal-warning-container">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="350.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="160.0" prefWidth="394.0">
+                     <children>
+                        <ImageView fitHeight="84.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../assets/image/warning.png" />
+                           </image>
+                        </ImageView>
+                        <Text fx:id="labelWarning" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info-modal-warning" text="Ops! Você precisa preencher os campos obrigatórios.">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Text>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" right="10.0" top="20.0" />
+                     </padding>
+                  </VBox>
+                  <HBox alignment="BOTTOM_CENTER" prefHeight="80.0" prefWidth="299.0">
+                     <children>
+                        <JFXButton onAction="#btnConfirm" prefHeight="40.0" prefWidth="358.0" styleClass="btn-confirm-warning-modal" text="Entendi!" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
          </children>
       </Pane>
    </children>

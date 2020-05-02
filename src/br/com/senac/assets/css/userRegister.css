@@ -56,3 +56,21 @@
   -fx-pref-height: 28px;
   -fx-font-size: 14px;
 }
+
+.modal-warning-container {
+  -fx-background-color: #fff;
+  -fx-background-radius: 15px 15px 0px 0px;
+  -fx-border-color: #fff;
+  -fx-border-radius: 15px 15px 0px 0px;
+}
+
+.text-info-modal-warning {
+  -fx-font-size: 14px;
+  -fx-text-fill: #6c6761;
+}
+
+.btn-confirm-warning-modal {
+  -fx-background-color: #ff4d4f;
+  -fx-text-fill: #fff;
+  -fx-cursor: hand;
+}
