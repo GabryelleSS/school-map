@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="63.0" layoutY="54.0" text="DADOS DE ENDEREÇO" textFill="#545454">
+         <font>
+            <Font name="Ebrima Bold" size="24.0" />
+         </font>
+      </Label>
+      <Line endX="151.0" layoutX="163.0" layoutY="85.0" startX="-100.0" />
+      <HBox layoutX="125.0" layoutY="158.0" prefHeight="254.0" prefWidth="700.0" AnchorPane.bottomAnchor="188.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="350.0">
+               <children>
+                  <JFXTextField fx:id="fieldFirstName" focusColor="#1890ff" labelFloat="true" promptText="Rua" styleClass="user-register-field">
+                     <VBox.margin>
+                        <Insets bottom="40.0" right="5.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <JFXTextField fx:id="fieldLastName" focusColor="#1890ff" labelFloat="true" promptText="Número" styleClass="user-register-field">
+                     <VBox.margin>
+                        <Insets bottom="40.0" right="5.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <JFXTextField fx:id="fieldEmail" focusColor="#1890ff" labelFloat="true" promptText="Complemento" styleClass="user-register-field">
+                     <VBox.margin>
+                        <Insets bottom="40.0" right="5.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <JFXTextField fx:id="fieldCPF" focusColor="#1890ff" labelFloat="true" promptText="Estado" styleClass="user-register-field">
+                     <VBox.margin>
+                        <Insets right="5.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+               </children>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="350.0">
+               <children>
+                  <HBox prefHeight="35.0" prefWidth="320.0">
+                     <children>
+                        <JFXTextField labelFloat="true" prefHeight="25.0" prefWidth="216.0" promptText="CEP">
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                        <JFXButton buttonType="RAISED" prefHeight="32.0" prefWidth="83.0" ripplerFill="#b0d5fc" stylesheets="@../../assets/css/userRegister.css" text="Consultar">
+                           <styleClass>
+                              <String fx:value="btn-consult-cep" />
+                              <String fx:value="user-register-btn" />
+                           </styleClass>
+                           <HBox.margin>
+                              <Insets left="20.0" top="5.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+                  <JFXTextField labelFloat="true" promptText="Bairro">
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <JFXTextField labelFloat="true" promptText="Cidade">
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <JFXTextField labelFloat="true" promptText="UF">
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+               </children>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="BASELINE_RIGHT" layoutX="125.0" layoutY="503.0" prefHeight="97.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <JFXButton buttonType="RAISED" onAction="#handleBackRegisterUser" stylesheets="@../../assets/css/userRegister.css" text="Voltar">
+               <styleClass>
+                  <String fx:value="user-register-btn-cancel" />
+                  <String fx:value="user-register-btn" />
+               </styleClass>
+               <HBox.margin>
+                  <Insets right="15.0" />
+               </HBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnNextField" buttonType="RAISED" onAction="#handleNextFields" stylesheets="@../../assets/css/userRegister.css" text="Salvar">
+               <styleClass>
+                  <String fx:value="user-register-btn-next" />
+                  <String fx:value="user-register-btn" />
+               </styleClass>
+            </JFXButton>
+         </children>
+         <padding>
+            <Insets right="40.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="174.0" layoutY="412.0" prefHeight="68.0" prefWidth="353.0">
+         <children>
+            <Label text="Prefêrencia de contato:">
+               <HBox.margin>
+                  <Insets right="25.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <JFXCheckBox checkedColor="#1890ff" text="E-mail">
+               <HBox.margin>
+                  <Insets right="25.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXCheckBox>
+            <JFXCheckBox checkedColor="#1890ff" text="Telefone">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXCheckBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

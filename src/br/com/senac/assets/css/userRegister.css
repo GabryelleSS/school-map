@@ -1,0 +1,76 @@
+.user-register {
+  -fx-background-color: #4087fd;
+}
+
+.user-register-container {
+  -fx-background-color: #4087fd;
+}
+
+.user-register-container-form {
+  -fx-background-color: #fff;
+  -fx-min-width: 400;
+}
+
+.user-register-field {
+  -fx-pref-width: 200px;
+  -fx-pref-height: 28px;
+  -fx-font-size: 14px;
+}
+
+.user-register-field-date-birth {
+  -fx-pref-width: 370px;
+  -fx-pref-height: 28px;
+  -fx-font-size: 14px;
+}
+
+.user-register-gender-img {
+  -fx-pref-width: 38px;
+  -fx-pref-height: 38px;
+}
+
+.user-register-btn {
+  -fx-pref-width: 88px;
+  -fx-pref-height: 28px;
+  -fx-cursor: hand;
+  -fx-font-size: 14px;
+  -fx-border-radius: 5px;
+}
+
+.user-register-btn-next {
+  -fx-background-color: #1890ff;
+  -fx-text-fill: #fff;
+}
+
+.btn-consult-cep {
+  -fx-background-color: #1890ff;
+  -fx-text-fill: #fff;
+}
+
+.user-register-btn-cancel {
+  -fx-background-color: #ff4d4f;
+  -fx-text-fill: #fff;
+}
+
+.user-register-field-address {
+  -fx-pref-width: 210px;
+  -fx-pref-height: 28px;
+  -fx-font-size: 14px;
+}
+
+.modal-warning-container {
+  -fx-background-color: #fff;
+  -fx-background-radius: 15px 15px 0px 0px;
+  -fx-border-color: #fff;
+  -fx-border-radius: 15px 15px 0px 0px;
+}
+
+.text-info-modal-warning {
+  -fx-font-size: 14px;
+  -fx-text-fill: #6c6761;
+}
+
+.btn-confirm-warning-modal {
+  -fx-background-color: #ff4d4f;
+  -fx-text-fill: #fff;
+  -fx-cursor: hand;
+}

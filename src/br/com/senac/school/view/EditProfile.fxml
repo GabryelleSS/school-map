@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="63.0" layoutY="54.0" text="DADOS PESSOAIS" textFill="#545454">
+         <font>
+            <Font name="Ebrima Bold" size="24.0" />
+         </font>
+      </Label>
+      <Line endX="100.0" layoutX="164.0" layoutY="85.0" startX="-100.0" />
+      <HBox layoutX="250.0" layoutY="119.0" prefHeight="390.0" prefWidth="700.0" AnchorPane.bottomAnchor="91.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="350.0">
+               <children>
+                  <JFXTextField fx:id="fieldFirstName" focusColor="#1890ff" labelFloat="true" promptText="Nome" styleClass="user-register-field">
+                     <VBox.margin>
+                        <Insets bottom="40.0" right="5.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <JFXTextField fx:id="fieldLastName" focusColor="#1890ff" labelFloat="true" promptText="Sobrenome" styleClass="user-register-field">
+                     <VBox.margin>
+                        <Insets bottom="40.0" right="5.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <JFXTextField fx:id="fieldEmail" focusColor="#1890ff" labelFloat="true" promptText="E-mail" styleClass="user-register-field">
+                     <VBox.margin>
+                        <Insets bottom="40.0" right="5.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <JFXPasswordField fx:id="fieldPassword" focusColor="#1890ff" labelFloat="true" promptText="Senha" styleClass="user-register-field-address">
+                     <VBox.margin>
+                        <Insets bottom="40.0" right="5.0" />
+                     </VBox.margin>
+                  </JFXPasswordField>
+                  <JFXPasswordField fx:id="fieldConfirmPassword" focusColor="#1890ff" labelFloat="true" promptText="Confirme a sua senha" styleClass="user-register-field-address">
+                     <VBox.margin>
+                        <Insets bottom="40.0" right="5.0" />
+                     </VBox.margin>
+                  </JFXPasswordField>
+                  <JFXTextField fx:id="fieldCPF" focusColor="#1890ff" labelFloat="true" promptText="CPF" styleClass="user-register-field">
+                     <VBox.margin>
+                        <Insets right="5.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+               </children>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="350.0">
+               <children>
+                  <JFXDatePicker prefHeight="35.0" prefWidth="523.0" promptText="DD/MM/YYYY" />
+                  <HBox alignment="CENTER_LEFT" prefHeight="133.0" prefWidth="340.0">
+                     <children>
+                        <Label text="Gênero">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXCheckBox checkedColor="#1890ff" styleClass="user-register-gender-img" text=" ">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" styleClass="user-register-gender-img">
+                                 <image>
+                                    <Image url="@../../assets/image/female.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXCheckBox>
+                        <JFXCheckBox checkedColor="#1890ff" styleClass="user-register-gender-img" text=" ">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/image/male.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXCheckBox>
+                        <JFXCheckBox checkedColor="#1890ff" prefHeight="76.0" prefWidth="93.0" styleClass="user-register-gender-img" text=" ">
+                           <graphic>
+                              <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/image/no-gender.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXCheckBox>
+                     </children>
+                  </HBox>
+                  <JFXComboBox prefWidth="340.0" promptText="Estado Civil">
+                     <VBox.margin>
+                        <Insets top="37.0" />
+                     </VBox.margin>
+                  </JFXComboBox>
+                  <JFXTextField promptText="Celular com DDD">
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <JFXTextField promptText="Telefone com DDD">
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+               </children>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="BASELINE_RIGHT" layoutX="250.0" layoutY="524.0" prefHeight="76.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <JFXButton buttonType="RAISED" onAction="#handleBackRegisterUser" stylesheets="@../../assets/css/userRegister.css" text="Cancelar">
+               <styleClass>
+                  <String fx:value="user-register-btn-cancel" />
+                  <String fx:value="user-register-btn" />
+               </styleClass>
+               <HBox.margin>
+                  <Insets right="15.0" />
+               </HBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnNextField" buttonType="RAISED" onAction="#handleNextFields" stylesheets="@../../assets/css/userRegister.css" text="Pŕoximo">
+               <styleClass>
+                  <String fx:value="user-register-btn-next" />
+                  <String fx:value="user-register-btn" />
+               </styleClass>
+            </JFXButton>
+         </children>
+         <padding>
+            <Insets right="40.0" />
+         </padding>
+      </HBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="1200.0" styleClass="home-container" stylesheets="@../../assets/css/home.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="450.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane layoutX="152.0" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: white;">
+               <children>
+                  <Label layoutX="190.0" layoutY="76.0" text="OPS !" textFill="#545454">
+                     <font>
+                        <Font name="Ebrima Bold" size="96.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="93.0" layoutY="231.0" prefHeight="27.0" prefWidth="427.0" text="Desculpe, a sua solicitação não pode ser processada, ">
+                     <font>
+                        <Font name="Ebrima" size="18.0" />
+                     </font>
+                  </Label>
+                  <JFXButton buttonType="RAISED" layoutX="118.0" layoutY="370.0" styleClass="error-inicio-btn" stylesheets="@../../assets/css/error.css" text="Voltar para o inicio">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" layoutX="345.0" layoutY="370.0" styleClass="error-faleconosco-btn" stylesheets="@../../assets/css/error.css" text="Fale conosco">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <Label layoutX="171.0" layoutY="258.0" prefHeight="27.0" prefWidth="282.0" text="ou o recurso não foi encontrado.">
+                     <font>
+                        <Font name="Ebrima" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </Pane>
+      <VBox layoutX="158.0" layoutY="115.0" prefHeight="280.0" prefWidth="279.0">
+         <children>
+            <ImageView fitHeight="282.0" fitWidth="283.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../assets/image/user2.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+      <Label layoutX="240.0" layoutY="386.0" text="SCHOOL MAP" textFill="WHITE">
+         <font>
+            <Font name="Ebrima Bold" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

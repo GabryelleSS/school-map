@@ -1,0 +1,34 @@
+
+
+
+.error-inicio-btn{
+  -fx-background-color: #4087fd;
+  -fx-text-fill: #fff;
+  -fx-pref-width: 150px;
+  -fx-pref-height: 40px;
+ } 
+  
+  .error-inicio-btn:hover{
+  -fx-background-color: transparent;
+  -fx-text-fill:#4087fd;
+  -fx-border-color:#4087fd;
+  -fx-border-whidth:1px;
+  -fx-border-style:solid;
+  
+  }
+  
+  .error-faleconosco-btn{
+  -fx-background-color: #a19f9f;
+  -fx-text-fill: #fff;
+  -fx-pref-width: 150px;
+  -fx-pref-height: 40px;
+ } 
+  
+  .error-faleconosco-btn:hover{
+  -fx-background-color: transparent;
+  -fx-text-fill:#a19f9f;
+  -fx-border-color:#a19f9f;
+  -fx-border-whidth:1px;
+  -fx-border-style:solid;
+  
+  }
