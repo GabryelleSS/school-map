@@ -72,7 +72,7 @@ public class SplashController implements Initializable {
 
 	private void loadHome() {
 		try {
-			AnchorPane parentContent = FXMLLoader.load(getClass().getResource(("/br/com/senac/school/view/Dashboard.fxml")));
+			AnchorPane parentContent = FXMLLoader.load(getClass().getResource(("/br/com/senac/school/view/Login.fxml")));
 			root.getChildren().setAll(parentContent);
 		} catch (IOException e) {
 			e.printStackTrace();

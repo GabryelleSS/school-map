@@ -46,7 +46,7 @@
          <children>
             <HBox alignment="BASELINE_RIGHT" layoutY="551.0" prefHeight="35.0" prefWidth="700.0">
                <children>
-                  <JFXButton buttonType="RAISED" onAction="#handleBackRegisterUser" text="Voltar">
+                  <JFXButton fx:id="btnBack" buttonType="RAISED" onAction="#handleBackRegisterUser" text="Voltar">
                      <styleClass>
                         <String fx:value="user-register-btn-cancel" />
                         <String fx:value="user-register-btn" />
@@ -66,16 +66,6 @@
                   <Insets right="40.0" />
                </padding>
             </HBox>
-            <Label layoutX="41.0" layoutY="62.0" text="Cadastre-se para continuar" textFill="#a3a3a3">
-               <font>
-                  <Font name="Ebrima" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="40.0" layoutY="30.0" text="SCHOOL MAP" textFill="#545454">
-               <font>
-                  <Font name="Impact" size="24.0" />
-               </font>
-            </Label>
             <VBox fx:id="formFieldsRegisterUserAddress" layoutY="125.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="404.0" prefWidth="700.0">
                <padding>
                   <Insets left="30.0" right="30.0" />
@@ -206,7 +196,7 @@
                <children>
                   <VBox prefHeight="200.0" prefWidth="350.0">
                      <children>
-                        <JFXTextField fx:id="fieldFirstName" focusColor="#1890ff" labelFloat="true" promptText="Nome" styleClass="user-register-field">
+                        <JFXTextField fx:id="fieldFirstName" focusColor="#1890ff" labelFloat="true" prefHeight="30.0" prefWidth="290.0" promptText="Nome" styleClass="user-register-field">
                            <VBox.margin>
                               <Insets bottom="40.0" right="5.0" top="10.0" />
                            </VBox.margin>
@@ -315,6 +305,40 @@
                </children>
                <padding>
                   <Insets left="30.0" right="30.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="2.0" layoutY="-1.0" prefHeight="70.0" prefWidth="700.0">
+               <children>
+                  <VBox prefHeight="84.0" prefWidth="350.0">
+                     <children>
+                        <Label text="SCHOOL MAP" textFill="#545454">
+                           <font>
+                              <Font name="Impact" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label text="Cadastre-se para continuar" textFill="#a3a3a3">
+                           <font>
+                              <Font name="Ebrima" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="350.0">
+                     <children>
+                        <JFXButton fx:id="btnBackLogin" onAction="#backLogin" prefHeight="49.0" prefWidth="37.0" text=" ">
+                           <graphic>
+                              <ImageView fitHeight="38.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/image/arrow-back.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets left="30.0" right="30.0" top="30.0" />
                </padding>
             </HBox>
          </children>
