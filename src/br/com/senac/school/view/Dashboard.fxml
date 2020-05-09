@@ -389,6 +389,6 @@
             </HBox>
          </children>
       </VBox>
-      <JFXDrawer fx:id="drawer" layoutY="50.0" prefHeight="550.0" prefWidth="250.0" />
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="300.0" layoutY="50.0" prefHeight="550.0" prefWidth="211.0" />
    </children>
 </AnchorPane>
