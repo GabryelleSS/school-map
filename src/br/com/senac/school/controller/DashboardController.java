@@ -17,45 +17,46 @@ import sun.util.logging.PlatformLogger.Level;
 import javafx.scene.input.MouseEvent;
 
 public class DashboardController implements Initializable {
-	
-    @FXML
-    private AnchorPane archorPane;
 
-    @FXML
-    private JFXDrawer drawer;
+	@FXML
+	private AnchorPane archorPane;
 
-    @FXML
-    private JFXHamburger menuHamburguer;
+	@FXML
+	private JFXDrawer drawer;
+
+	@FXML
+	private JFXHamburger menuHamburguer;
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-//		try {
-//			FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/com/senac/school/view/Menu.fxml"));
-//			VBox box = loader.load();
-//			
-//			MenuController controller = loader.getController();
-//            controller.setCallback(this);
-//            drawer.setSidePane(box);
-//		} catch(IOException ex) {
-//			Logger.getLogger(DashboardController.class.getName()).log(null);
-//			System.out.print("erro");
-//		}
-//		
-//		
-//		HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(menuHamburguer);
-//		
-//		transition.setRate(-1);
-//		
-//        menuHamburguer.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
-//            transition.setRate(transition.getRate() * -1);
-//            transition.play();
-//
-//            if (drawer.isShowing()) {
-//                drawer.close();
-//            } else {
-//                drawer.open();
-//            }
-//        });
-		
+		menuHamburger();
+		paneMenu();
 	}
+
+	private void paneMenu() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/com/senac/school/view/Menu.fxml"));
+			VBox box = loader.load();
+			drawer.setSidePane(box);
+		} catch (Exception e) {
+		}
+	}
+
+	private void menuHamburger() {
+		HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(menuHamburguer);
+
+		transition.setRate(-1);
+
+		menuHamburguer.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
+			transition.setRate(transition.getRate() * -1);
+			transition.play();
+
+			if (drawer.isShown()) {
+				drawer.close();
+			} else {
+				drawer.open();
+			}
+		});
+	}
+
 }
