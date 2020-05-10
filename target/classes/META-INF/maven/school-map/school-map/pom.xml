@@ -26,8 +26,8 @@
 			</plugin>
 		</plugins>
 	</build>
-	<!-- https://mvnrepository.com/artifact/com.jfoenix/jfoenix -->
 	<dependencies>
+
 		<!-- https://mvnrepository.com/artifact/com.jfoenix/jfoenix -->
 		<dependency>
 			<groupId>com.jfoenix</groupId>
