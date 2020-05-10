@@ -36,12 +36,7 @@
   -fx-border-radius: 5px;
 }
 
-.user-register-btn-next {
-  -fx-background-color: #1890ff;
-  -fx-text-fill: #fff;
-}
-
-.btn-consult-cep {
+.user-register-btn-next, .btn-consult-cep {
   -fx-background-color: #1890ff;
   -fx-text-fill: #fff;
 }
