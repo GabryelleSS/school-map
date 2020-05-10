@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="240.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="50.0" prefWidth="200.0">
+         <children>
+            <JFXHamburger prefHeight="50.0" prefWidth="51.0" />
+         </children>
+      </HBox>
+      <VBox prefHeight="100.0" prefWidth="240.0">
+         <children>
+            <JFXButton prefHeight="60.0" prefWidth="240.0" text="Opção 1" />
+            <JFXButton prefHeight="60.0" prefWidth="240.0" text="Opção 2" />
+         </children>
+      </VBox>
+   </children>
+</VBox>

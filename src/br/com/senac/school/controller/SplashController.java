@@ -1,4 +1,4 @@
-	package br.com.senac.school.controller;
+package br.com.senac.school.controller;
 
 import java.io.IOException;
 import java.net.URL;

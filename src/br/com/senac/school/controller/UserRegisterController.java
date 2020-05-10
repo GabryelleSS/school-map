@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXPasswordField;
@@ -12,15 +13,20 @@ import com.jfoenix.validation.RequiredFieldValidator;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class UserRegisterController implements Initializable {
-	
+	@FXML
+	private Stage Login;
 	@FXML
     private JFXTextField fieldFirstName;
     @FXML
@@ -38,7 +44,7 @@ public class UserRegisterController implements Initializable {
     @FXML
     private JFXDatePicker fieldDateBirth;
     @FXML
-    private JFXComboBox fieldMaritalStatus;
+    private JFXComboBox<String> fieldMaritalStatus;
     @FXML
     private JFXTextField fieldTephone;
     @FXML
@@ -50,9 +56,13 @@ public class UserRegisterController implements Initializable {
     @FXML
     private Button btnNextField;
     @FXML
+    private Button btnBack;
+    @FXML
     private Pane modalWarning;
     @FXML
     private Text labelWarning;
+    @FXML
+    private JFXButton btnBackLogin;
     
 	String warningModal = "Ops! Você precisa preencher os campos obrigatórios.";
 	String warningModalPassawordIncorrect = "Ops! As senhas estão diferentes!";
@@ -61,8 +71,17 @@ public class UserRegisterController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
     	fieldRequired();
     	
+    	btnBack.setVisible(false);
     	modalWarning.setVisible(false);
     	formFieldsRegisterUserAddress.setVisible(false);
+    	
+    	fieldMaritalStatus.getItems().addAll(
+	        "Solteiro",
+	        "Casado",
+	        "Separado",
+	        "Divorciado",
+	        "Viúvo"
+	    );
 	}
     
     void fieldRequired() {
@@ -129,8 +148,6 @@ public class UserRegisterController implements Initializable {
 		fieldsRequireds.add(passwordConfirm);
 		fieldsRequireds.add(cell);
 		
-		System.out.println(firstNameEmpty);
-		
 		if (confirmationSamePasswords()) {
 			labelWarning.setText(warningModalPassawordIncorrect);
     		modalWarning.setVisible(true);
@@ -168,6 +185,7 @@ public class UserRegisterController implements Initializable {
     	} else {
         	formFieldsRegisterUser.setVisible(false);
         	formFieldsRegisterUserAddress.setVisible(true);
+        	btnBack.setVisible(true);
         	
         	btnNextField.setText("Cadastrar");
     	}
@@ -176,6 +194,7 @@ public class UserRegisterController implements Initializable {
     @FXML
     private void handleBackRegisterUser(ActionEvent event) {
     	formFieldsRegisterUser.setVisible(true);
+    	btnBack.setVisible(false);
     	formFieldsRegisterUserAddress.setVisible(false);
     	
     	String btnText = btnNextField.getText();
@@ -187,6 +206,27 @@ public class UserRegisterController implements Initializable {
     @FXML
     private void btnConfirm(ActionEvent event) { 
     	modalWarning.setVisible(false);
+    }
+    
+    @FXML
+    private void backLogin() throws Exception {
+		if(Login == null || !Login.isShowing()) {
+            Parent login = FXMLLoader.load(
+                getClass().getResource(
+                    "/br/com/senac/school/view/Login.fxml"
+                )
+            );
+            
+            Login = new Stage();
+            Scene scene = new Scene(login);
+
+            Login.setScene(scene);
+            Login.setTitle("School Map");
+            Login.show();
+        
+            Stage stage = (Stage) btnBackLogin.getScene().getWindow();
+            stage.close();
+        }
     }
     	
 }
