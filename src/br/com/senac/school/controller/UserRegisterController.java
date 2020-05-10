@@ -44,7 +44,7 @@ public class UserRegisterController implements Initializable {
     @FXML
     private JFXDatePicker fieldDateBirth;
     @FXML
-    private JFXComboBox fieldMaritalStatus;
+    private JFXComboBox<String> fieldMaritalStatus;
     @FXML
     private JFXTextField fieldTephone;
     @FXML
@@ -74,6 +74,14 @@ public class UserRegisterController implements Initializable {
     	btnBack.setVisible(false);
     	modalWarning.setVisible(false);
     	formFieldsRegisterUserAddress.setVisible(false);
+    	
+    	fieldMaritalStatus.getItems().addAll(
+	        "Solteiro",
+	        "Casado",
+	        "Separado",
+	        "Divorciado",
+	        "Viúvo"
+	    );
 	}
     
     void fieldRequired() {
@@ -139,8 +147,6 @@ public class UserRegisterController implements Initializable {
 		fieldsRequireds.add(password);
 		fieldsRequireds.add(passwordConfirm);
 		fieldsRequireds.add(cell);
-		
-		System.out.println(firstNameEmpty);
 		
 		if (confirmationSamePasswords()) {
 			labelWarning.setText(warningModalPassawordIncorrect);

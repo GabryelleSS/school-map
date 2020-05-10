@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,9 +18,19 @@ public class Login implements Initializable {
 	
 	@FXML
 	private Stage UserRegister;
-	
 	@FXML
+	private Stage Dashboard;
+
+    @FXML
+    private JFXButton login;
+
+    @FXML
     private JFXButton btnUserRegister;
+
+    @FXML
+    void btnLogin(ActionEvent event) throws IOException {
+    	System.out.println("eie");
+    }
 	
 	@FXML
     private void btnUserRegister() throws Exception {
@@ -41,7 +52,7 @@ public class Login implements Initializable {
             stage.close();
         }
     }
-
+	  
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
