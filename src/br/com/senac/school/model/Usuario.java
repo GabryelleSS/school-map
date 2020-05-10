@@ -44,6 +44,8 @@ public class Usuario {
 	private String email;
 	private String senha;
 
+	private boolean ativo;
+
 	public Usuario() {
 	}
 
@@ -58,6 +60,7 @@ public class Usuario {
 		this.endereco = endereco;
 		this.email = email;
 		this.senha = senha;
+		this.ativo = true;
 	}
 
 	public Long getId() {
@@ -138,6 +141,14 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
 
 }
