@@ -53,7 +53,7 @@
                      </font>
                   </Label>
                   <JFXButton fx:id="btnUserRegister" layoutX="370.0" layoutY="461.0" onAction="#btnUserRegister" styleClass="btn-user-register" text="Cadastre-se" />
-                  <Button layoutX="283.0" layoutY="341.0" mnemonicParsing="false" styleClass="btn-forgot-password" text="Esqueceu a sua senha?" />
+                  <Button layoutX="283.0" layoutY="341.0" mnemonicParsing="false" onAction="#handleForgotPassaword" styleClass="btn-forgot-password" text="Esqueceu a sua senha?" />
                </children>
             </AnchorPane>
          </children>

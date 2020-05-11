@@ -12,12 +12,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class Login implements Initializable {
 	
 	@FXML
-	private Stage UserRegister;
+    private AnchorPane root;
 	@FXML
 	private Stage Dashboard;
 
@@ -33,24 +34,27 @@ public class Login implements Initializable {
     }
 	
 	@FXML
-    private void btnUserRegister() throws Exception {
-		if(UserRegister == null || !UserRegister.isShowing()) {
-            Parent userRegister = FXMLLoader.load(
-                getClass().getResource(
-                    "/br/com/senac/school/view/UserRegister.fxml"
-                )
-            );
-            
-            UserRegister = new Stage();
-            Scene scene = new Scene(userRegister);
-
-            UserRegister.setScene(scene);
-            UserRegister.setTitle("School Map");
-            UserRegister.show();
-        
-            Stage stage = (Stage) btnUserRegister.getScene().getWindow();
-            stage.close();
-        }
+    private void btnUserRegister(ActionEvent event) {
+		
+		try {
+			AnchorPane parentContent = FXMLLoader.load(getClass().getResource(("/br/com/senac/school/view/UserRegister.fxml")));
+			root.getChildren().setAll(parentContent);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+    }
+	
+	@FXML
+    void handleForgotPassaword(ActionEvent event) {
+		
+		try {
+			AnchorPane parentContent = FXMLLoader.load(getClass().getResource(("/br/com/senac/school/view/UserRegister.fxml")));
+			root.getChildren().setAll(parentContent);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
     }
 	  
 	@Override
