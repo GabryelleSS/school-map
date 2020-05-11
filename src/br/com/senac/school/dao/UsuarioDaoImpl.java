@@ -120,4 +120,22 @@ public class UsuarioDaoImpl implements UsuarioDao {
 			closeConnection();
 		}
 	}
+
+	@Override
+	public void resetPassword(String email, String password) {
+		String sql = "UPDATE Usuario u " + "SET u.senha = :password " + "WHERE u.email = :email";
+		try {
+			openConnection();
+			manager.getTransaction().begin();
+			Query query = manager.createQuery(sql);
+			query.setParameter("password", password);
+			query.setParameter("email", email);
+			query.executeUpdate();
+			manager.getTransaction().commit();
+		} catch (Exception e) {
+			manager.getTransaction().rollback();
+		} finally {
+			closeConnection();
+		}
+	}
 }

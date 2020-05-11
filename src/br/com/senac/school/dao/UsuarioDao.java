@@ -21,4 +21,6 @@ public interface UsuarioDao {
 	void openConnection();
 	
 	void closeConnection();
+	
+	void resetPassword(String email, String password);
 }

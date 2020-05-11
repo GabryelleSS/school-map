@@ -5,7 +5,7 @@ import br.com.senac.school.email.EmailMessage;
 public class MessageService {
 
 	private MessageService() {
-	
+
 	}
 
 	public static EmailMessage registration(String receiver, int token) {
@@ -23,6 +23,14 @@ public class MessageService {
 
 		return new EmailMessage().generate(receiver, token, subject, body);
 
+	}
+
+	public static EmailMessage resetPassword(String receiver, int token) {
+		
+		String subject = "subjectResetPassword";
+		String body = "resetPassword";
+
+		return new EmailMessage().generate(receiver, token, subject, body);
 	}
 
 }
