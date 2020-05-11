@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="240.0" style="-fx-background-color: #181f48;" styleClass="menu-container" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.senac.school.controller.MenuController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="240.0" style="-fx-background-color: #ccc;" styleClass="menu-container" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.senac.school.controller.MenuController">
    <children>
       <VBox prefHeight="556.0" prefWidth="240.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="107.0" prefWidth="240.0" style="-fx-border-color: #181f48 #181f48 #fff #181f48;" styleClass="options-container">
+            <HBox alignment="CENTER" prefHeight="110.0" prefWidth="240.0" style="-fx-border-color: #ccc #ccc #000 #ccc;" styleClass="options-container">
                <children>
                   <JFXButton style="-fx-cursor: hand;" styleClass="btn-menu" text=" ">
                      <HBox.margin>
@@ -34,7 +34,7 @@
                               </VBox>
                               <VBox alignment="CENTER" prefHeight="100.0" prefWidth="189.0">
                                  <children>
-                                    <Label styleClass="menu-label" text="Editar Perfil" textFill="WHITE">
+                                    <Label styleClass="menu-label" text="Editar Perfil">
                                        <font>
                                           <Font size="16.0" />
                                        </font></Label>
@@ -46,9 +46,9 @@
                   </JFXButton>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: #181f48 #181f48 #fff #181f48;" styleClass="options-container">
+            <HBox alignment="CENTER" prefHeight="110.0" prefWidth="240.0" style="-fx-border-color: #ccc #ccc #000 #ccc;" styleClass="options-container">
                <children>
-                  <JFXButton prefHeight="96.0" prefWidth="260.0" style="-fx-cursor: hand;" styleClass="btn-menu" text=" ">
+                  <JFXButton prefHeight="96.0" prefWidth="260.0" style="-fx-cursor: hand; -: ;" text=" ">
                      <graphic>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="203.0">
                            <children>
@@ -63,7 +63,7 @@
                               </VBox>
                               <VBox alignment="CENTER" prefHeight="100.0" prefWidth="174.0">
                                  <children>
-                                    <Label styleClass="menu-label" text="Configurações" textFill="WHITE">
+                                    <Label styleClass="menu-label" text="Configurações">
                                        <font>
                                           <Font size="16.0" />
                                        </font></Label>
@@ -75,15 +75,15 @@
                   </JFXButton>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" />
-            <HBox prefHeight="141.0" prefWidth="240.0" />
-            <HBox prefHeight="101.0" prefWidth="240.0" style="-fx-border-color: #fff #181f48 #181f48 #181f48;">
+            <HBox prefHeight="110.0" prefWidth="240.0" />
+            <HBox prefHeight="110.0" prefWidth="240.0" style="-fx-border-color: #ccc #ccc #000 #ccc;" />
+            <HBox prefHeight="110.0" prefWidth="240.0" style="-fx-background-color: #ccc #ccc #000 #ccc;">
                <children>
-                  <JFXButton prefHeight="105.0" prefWidth="238.0" style="-fx-cursor: hand;" text=" ">
+                  <JFXButton prefHeight="110.0" prefWidth="240.0" style="-fx-cursor: hand;" text=" ">
                      <graphic>
-                        <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
+                        <HBox alignment="CENTER" prefHeight="110.0" prefWidth="240.0">
                            <children>
-                              <ImageView fitHeight="34.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="34.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../assets/image/logout.png" />
                                  </image>
@@ -91,7 +91,7 @@
                                     <Insets right="20.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <Label styleClass="menu-label" text="Sair" textFill="WHITE">
+                              <Label styleClass="menu-label" text="Sair">
                                  <HBox.margin>
                                     <Insets right="30.0" />
                                  </HBox.margin>
@@ -103,7 +103,7 @@
                         </HBox>
                      </graphic>
                      <HBox.margin>
-                        <Insets bottom="20.0" />
+                        <Insets />
                      </HBox.margin>
                   </JFXButton>
                </children>

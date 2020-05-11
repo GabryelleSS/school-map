@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
@@ -18,20 +17,9 @@
    <children>
       <HBox alignment="CENTER" prefHeight="50.0" prefWidth="1200.0" styleClass="dashboard-header" stylesheets="@../../assets/css/DashboardSchool.css">
          <children>
-            <HBox prefHeight="50.0" prefWidth="600.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="600.0">
                <children>
-                  <JFXHamburger fx:id="menuHamburguer" prefHeight="50.0" prefWidth="85.0" styleClass="jfx-hamburger">
-                     <children>
-                        <StackPane prefHeight="66.0" prefWidth="54.0">
-                           <children>
-                              <ImageView fitHeight="37.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../assets/image/menu-hamburguer.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </StackPane>
-                     </children></JFXHamburger>
+                  <JFXHamburger fx:id="menuHamburguer" prefHeight="50.0" prefWidth="85.0" styleClass="jfx-hamburger" />
                </children>
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="600.0">
