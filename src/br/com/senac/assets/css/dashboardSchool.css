@@ -1,22 +1,13 @@
 .dashboard-header {
-  -fx-background-color: #E5E5E5;
-}
-
-.dashboard-header {
   -fx-background-color: #4087FD;
 }
 
-.btn-menu {
-  -fx-background-color: #B9CFF4;
-  -fx-border-radius: 30px;
-  -fx-cursor: hand;
-  -fx-pref-height: 28px;
-  -fx-pref-width: 28px;
+.jfx-hamburger {
+  
 }
 
-.btn-menu-image {
-  -fx-pref-height: 28px;
-  -fx-pref-width: 28px;
+.dashboard-search-container {
+  -fx-background-color: #fff;
 }
 
 .card-school {
@@ -83,3 +74,4 @@
   -fx-font-size: 14px;
   -fx-text-fill: #000;
 }
+

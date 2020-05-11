@@ -12,24 +12,6 @@ import javafx.stage.Stage;
 
 public class MenuController implements Initializable {
 
-	private DashboardController callback;
-
-//	@Override
-//	public void start(Stage stage) throws Exception {
-//		Parent root = FXMLLoader.load(getClass().getResource("/br/com/senac/school/view/Dashboard.fxml"));
-//		
-//		Scene scene = new Scene(root);
-//		
-//		stage.setScene(scene);
-//		stage.show();
-//		
-//	}
-
-	public void setCallback(DashboardController callback) {
-		 this.callback = callback;
-		
-	}
-
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub

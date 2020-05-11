@@ -1,9 +1,7 @@
 package br.com.senac.school.controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Logger;
 
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
@@ -13,7 +11,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import sun.util.logging.PlatformLogger.Level;
 import javafx.scene.input.MouseEvent;
 
 public class DashboardController implements Initializable {

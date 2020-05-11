@@ -46,10 +46,10 @@
          <children>
             <HBox alignment="BASELINE_RIGHT" layoutY="551.0" prefHeight="35.0" prefWidth="700.0">
                <children>
-                  <JFXButton fx:id="btnBack" buttonType="RAISED" onAction="#handleBackRegisterUser" text="Voltar">
+                  <JFXButton fx:id="btnBack" buttonType="RAISED" onAction="#handleBackRegisterUser" ripplerFill="BLACK" text="Voltar">
                      <styleClass>
                         <String fx:value="user-register-btn-cancel" />
-                        <String fx:value="user-register-btn" />
+                        <String fx:value="btn" />
                      </styleClass>
                      <HBox.margin>
                         <Insets right="15.0" />
@@ -58,7 +58,7 @@
                   <JFXButton fx:id="btnNextField" buttonType="RAISED" onAction="#handleNextFields" text="Pŕoximo">
                      <styleClass>
                         <String fx:value="user-register-btn-next" />
-                        <String fx:value="user-register-btn" />
+                        <String fx:value="btn" />
                      </styleClass>
                   </JFXButton>
                </children>
@@ -98,7 +98,7 @@
                         <JFXButton buttonType="RAISED" prefHeight="32.0" prefWidth="83.0" ripplerFill="#b0d5fc" text="Consultar">
                            <styleClass>
                               <String fx:value="btn-consult-cep" />
-                              <String fx:value="user-register-btn" />
+                              <String fx:value="btn" />
                            </styleClass>
                         </JFXButton>
                      </children>
@@ -325,7 +325,7 @@
                   </VBox>
                   <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="350.0">
                      <children>
-                        <JFXButton fx:id="btnBackLogin" onAction="#backLogin" prefHeight="49.0" prefWidth="37.0" text=" ">
+                        <JFXButton fx:id="btnBackLogin" onAction="#backLogin" prefHeight="48.0" prefWidth="47.0" text=" ">
                            <graphic>
                               <ImageView fitHeight="38.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -333,6 +333,10 @@
                                  </image>
                               </ImageView>
                            </graphic>
+                           <styleClass>
+                              <String fx:value="btn-back-login" />
+                              <String fx:value="btn" />
+                           </styleClass>
                         </JFXButton>
                      </children>
                   </VBox>

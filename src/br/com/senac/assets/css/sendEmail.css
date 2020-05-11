@@ -48,3 +48,7 @@
   -fx-border-color: #fff;
   -fx-text-fill: #28b351;
 }
+
+.loading {
+  -fx-background-color: #fefefe;
+}

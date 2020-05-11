@@ -1,5 +1,6 @@
 package br.com.senac.school.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -15,18 +16,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 public class UserRegisterController implements Initializable {
 	@FXML
-	private Stage Login;
+    private AnchorPane root;
 	@FXML
     private JFXTextField fieldFirstName;
     @FXML
@@ -209,24 +208,15 @@ public class UserRegisterController implements Initializable {
     }
     
     @FXML
-    private void backLogin() throws Exception {
-		if(Login == null || !Login.isShowing()) {
-            Parent login = FXMLLoader.load(
-                getClass().getResource(
-                    "/br/com/senac/school/view/Login.fxml"
-                )
-            );
-            
-            Login = new Stage();
-            Scene scene = new Scene(login);
-
-            Login.setScene(scene);
-            Login.setTitle("School Map");
-            Login.show();
-        
-            Stage stage = (Stage) btnBackLogin.getScene().getWindow();
-            stage.close();
-        }
+    private void backLogin(ActionEvent event) {
+    	
+    	try {
+			AnchorPane parentContent = FXMLLoader.load(getClass().getResource(("/br/com/senac/school/view/Login.fxml")));
+			root.getChildren().setAll(parentContent);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    	
     }
     	
 }

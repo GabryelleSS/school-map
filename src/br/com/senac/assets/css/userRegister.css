@@ -28,7 +28,7 @@
   -fx-pref-height: 38px;
 }
 
-.user-register-btn {
+.btn {
   -fx-pref-width: 88px;
   -fx-pref-height: 28px;
   -fx-cursor: hand;
@@ -42,8 +42,14 @@
 }
 
 .user-register-btn-cancel {
-  -fx-background-color: #ff4d4f;
-  -fx-text-fill: #fff;
+  -fx-background-color: #fff;
+  -fx-border-color: #d9d9d9;
+  -fx-text-fill: rgba(0,0,0,.65);
+}
+
+.user-register-btn-cancel:hover {
+  -fx-border-color: #1890ff;
+  -fx-text-fill: #1890ff;
 }
 
 .user-register-field-address {
@@ -67,5 +73,9 @@
 .btn-confirm-warning-modal {
   -fx-background-color: #ff4d4f;
   -fx-text-fill: #fff;
+  -fx-cursor: hand;
+}
+
+.btn-back-login {
   -fx-cursor: hand;
 }

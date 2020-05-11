@@ -28,11 +28,6 @@ public class Login implements Initializable {
     @FXML
     private JFXButton btnUserRegister;
 
-    @FXML
-    void btnLogin(ActionEvent event) throws IOException {
-    	System.out.println("eie");
-    }
-	
 	@FXML
     private void btnUserRegister(ActionEvent event) {
 		
@@ -46,16 +41,27 @@ public class Login implements Initializable {
     }
 	
 	@FXML
-    void handleForgotPassaword(ActionEvent event) {
+	private void handleForgotPassaword(ActionEvent event) {
 		
 		try {
-			AnchorPane parentContent = FXMLLoader.load(getClass().getResource(("/br/com/senac/school/view/UserRegister.fxml")));
+			AnchorPane parentContent = FXMLLoader.load(getClass().getResource(("/br/com/senac/school/view/ForgotPassword.fxml")));
 			root.getChildren().setAll(parentContent);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
     }
+	
+	@FXML
+	private void btnLogin(ActionEvent event) {
+	  try {
+			AnchorPane parentContent = FXMLLoader.load(getClass().getResource(("/br/com/senac/school/view/Dashboard.fxml")));
+			root.getChildren().setAll(parentContent);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	  
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

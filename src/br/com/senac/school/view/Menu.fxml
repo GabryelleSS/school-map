@@ -1,22 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXHamburger?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="240.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="240.0" style="-fx-background-color: #181f48;" styleClass="menu-container" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.senac.school.controller.MenuController">
    <children>
-      <HBox prefHeight="50.0" prefWidth="200.0">
+      <VBox prefHeight="556.0" prefWidth="240.0">
          <children>
-            <JFXHamburger prefHeight="50.0" prefWidth="51.0" />
-         </children>
-      </HBox>
-      <VBox prefHeight="100.0" prefWidth="240.0">
-         <children>
-            <JFXButton prefHeight="60.0" prefWidth="240.0" text="Opção 1" />
-            <JFXButton prefHeight="60.0" prefWidth="240.0" text="Opção 2" />
+            <HBox alignment="CENTER" prefHeight="107.0" prefWidth="240.0" style="-fx-border-color: #181f48 #181f48 #fff #181f48;" styleClass="options-container">
+               <children>
+                  <JFXButton style="-fx-cursor: hand;" styleClass="btn-menu" text=" ">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <graphic>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../assets/image/user2.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="189.0">
+                                 <children>
+                                    <Label styleClass="menu-label" text="Editar Perfil" textFill="WHITE">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font></Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: #181f48 #181f48 #fff #181f48;" styleClass="options-container">
+               <children>
+                  <JFXButton prefHeight="96.0" prefWidth="260.0" style="-fx-cursor: hand;" styleClass="btn-menu" text=" ">
+                     <graphic>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="203.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../assets/image/enginer.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="174.0">
+                                 <children>
+                                    <Label styleClass="menu-label" text="Configurações" textFill="WHITE">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font></Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" />
+            <HBox prefHeight="141.0" prefWidth="240.0" />
+            <HBox prefHeight="101.0" prefWidth="240.0" style="-fx-border-color: #fff #181f48 #181f48 #181f48;">
+               <children>
+                  <JFXButton prefHeight="105.0" prefWidth="238.0" style="-fx-cursor: hand;" text=" ">
+                     <graphic>
+                        <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="34.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/image/logout.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets right="20.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Label styleClass="menu-label" text="Sair" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets right="30.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets bottom="20.0" />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
+            </HBox>
          </children>
       </VBox>
    </children>
+   <stylesheets>
+      <URL value="@../../assets/css/menu.css" />
+      <URL value="@../../assets/css/dashboardSchool.css" />
+   </stylesheets>
 </VBox>
