@@ -34,7 +34,7 @@
 			<artifactId>jfoenix</artifactId>
 			<version>9.0.1</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -48,7 +48,7 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>5.4.14.Final</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
 		<dependency>
 			<groupId>javax.mail</groupId>
@@ -62,6 +62,19 @@
 			<artifactId>commons-email</artifactId>
 			<version>1.5</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/at.favre.lib/bcrypt -->
+		<dependency>
+			<groupId>at.favre.lib</groupId>
+			<artifactId>bcrypt</artifactId>
+			<version>0.9.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.github.gilberto-torrezan/viacep -->
+		<dependency>
+			<groupId>com.github.gilberto-torrezan</groupId>
+			<artifactId>viacep</artifactId>
+			<version>1.2.0</version>
+		</dependency>
 	</dependencies>
-		
 </project>

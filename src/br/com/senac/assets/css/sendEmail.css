@@ -1,6 +1,7 @@
 .send-email-container {
+  -fx-background-color: #4087fd;
   -fx-pref-height: 600px;
-  -fx-pref-width: 800px;
+  -fx-pref-width: 1200px;
 }
 
 .send-email-vbox {
@@ -9,7 +10,7 @@
 }
 
 .send-email-container-image {
-  -fx-background-color: #2778bd;
+  -fx-background-color: #4087fd;
   -fx-border-color: white;
   -fx-border-radius: 10, 10;
   -fx-border-style: solid, segments(1, 1);
@@ -18,7 +19,7 @@
 
 .send-email-vbox-image-background {
   -fx-pref-height: 600px;
-  -fx-pref-width: 800px;
+  -fx-pref-width: 1200px;
 }
 
 .send-email-title {

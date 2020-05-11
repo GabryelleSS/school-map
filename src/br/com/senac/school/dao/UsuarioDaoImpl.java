@@ -15,9 +15,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
 	@Override
 	public Optional<Usuario> findByCpf(String cpf) {
-		String sql = "SELECT u FROM Usuario u "
-				+ "join fetch u.telefones "
-				+ "join fetch u.endereco "
+		String sql = "SELECT u FROM Usuario u " + "join fetch u.telefones " + "join fetch u.endereco "
 				+ "WHERE u.cpf = :cpf";
 		try {
 			openConnection();
@@ -79,9 +77,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
 	@Override
 	public void delete(String cpf) {
-		String sql = "UPDATE Usuario "
-				+ "SET ativo = false "
-				+ "WHERE cpf = :cpf";
+		String sql = "UPDATE Usuario " + "SET ativo = false " + "WHERE cpf = :cpf";
 		try {
 			openConnection();
 			manager.getTransaction().begin();
@@ -105,5 +101,23 @@ public class UsuarioDaoImpl implements UsuarioDao {
 			manager.close();
 		}
 
+	}
+
+	@Override
+	public List<String> passwordLogin(String email) {
+		String sql = "SELECT u.senha FROM Usuario u WHERE u.email = :email";
+		try {
+			openConnection();
+			TypedQuery<String> query = manager.createQuery(sql, String.class);
+			query.setParameter("email", email);
+			List<String> passwordUsuario = query.getResultList();
+
+			return passwordUsuario;
+
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		} finally {
+			closeConnection();
+		}
 	}
 }

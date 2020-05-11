@@ -17,6 +17,7 @@ public class EnderecoUsuario {
 	private String complemento;
 	private Integer numero;
 	private String cep;
+	private String cidade;
 	private String estado;
 	private String uf;
 
@@ -24,14 +25,16 @@ public class EnderecoUsuario {
 	}
 
 	public EnderecoUsuario(String endereco, String bairro, String complemento, Integer numero, String cep,
-			String estado, String uf) {
+			String cidade, String estado, String uf) {
 		this.endereco = endereco;
 		this.bairro = bairro;
 		this.complemento = complemento;
 		this.numero = numero;
 		this.cep = cep;
+		this.cidade = cidade;
 		this.estado = estado;
 		this.uf = uf;
+
 	}
 
 	public Long getId() {
@@ -96,6 +99,14 @@ public class EnderecoUsuario {
 
 	public void setUf(String uf) {
 		this.uf = uf;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
 	}
 
 }

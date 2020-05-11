@@ -8,6 +8,7 @@ import br.com.senac.school.model.Usuario;
 public interface UsuarioDao {
 
 	Optional<Usuario> findByCpf(String cpf);
+	List<String> passwordLogin(String email);
 
 	List<Usuario> findAll();
 

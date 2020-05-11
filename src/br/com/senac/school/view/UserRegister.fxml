@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="1200.0" styleClass="user-register" stylesheets="@../../assets/css/userRegister.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.senac.school.controller.UserRegisterController">
+<AnchorPane fx:id="userRegister" prefHeight="600.0" prefWidth="1200.0" styleClass="user-register" stylesheets="@../../assets/css/userRegister.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.senac.school.controller.UserRegisterController">
    <children>
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" styleClass="user-register-container" stylesheets="@../../assets/css/userRegister.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -73,7 +73,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="70.0" prefWidth="664.0">
                      <children>
-                        <JFXTextField focusColor="#1890ff" labelFloat="true" promptText="Rua" styleClass="user-register-field-address">
+                        <JFXTextField fx:id="fieldStreet" focusColor="#1890ff" labelFloat="true" promptText="Rua" styleClass="user-register-field-address">
                            <opaqueInsets>
                               <Insets right="20.0" />
                            </opaqueInsets>
@@ -84,7 +84,7 @@
                               <Font size="14.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField focusColor="#1890ff" labelFloat="true" prefHeight="25.0" prefWidth="114.0" promptText="CEP">
+                        <JFXTextField fx:id="fieldCep" focusColor="#1890ff" labelFloat="true" prefHeight="25.0" prefWidth="114.0" promptText="CEP">
                            <opaqueInsets>
                               <Insets right="20.0" />
                            </opaqueInsets>
@@ -95,7 +95,7 @@
                               <Font size="14.0" />
                            </font>
                         </JFXTextField>
-                        <JFXButton buttonType="RAISED" prefHeight="32.0" prefWidth="83.0" ripplerFill="#b0d5fc" text="Consultar">
+                        <JFXButton buttonType="RAISED" onAction="#btnConsultCEP" prefHeight="32.0" prefWidth="83.0" ripplerFill="#b0d5fc" text="Consultar">
                            <styleClass>
                               <String fx:value="btn-consult-cep" />
                               <String fx:value="user-register-btn" />
@@ -105,7 +105,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0">
                      <children>
-                        <JFXTextField focusColor="#1890ff" labelFloat="true" promptText="Número" styleClass="user-register-field-address">
+                        <JFXTextField fx:id="fieldNumber" focusColor="#1890ff" labelFloat="true" promptText="Número" styleClass="user-register-field-address">
                            <HBox.margin>
                               <Insets right="30.0" />
                            </HBox.margin>
@@ -113,7 +113,7 @@
                               <Font size="14.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField focusColor="#1890ff" labelFloat="true" promptText="Bairro" styleClass="user-register-field-address">
+                        <JFXTextField fx:id="filedDistrict" focusColor="#1890ff" labelFloat="true" promptText="Bairro" styleClass="user-register-field-address">
                            <HBox.margin>
                               <Insets left="15.0" />
                            </HBox.margin>
@@ -125,7 +125,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0">
                      <children>
-                        <JFXTextField focusColor="#1890ff" labelFloat="true" promptText="Complemento" styleClass="user-register-field-address">
+                        <JFXTextField fx:id="fieldComplement" focusColor="#1890ff" labelFloat="true" promptText="Complemento" styleClass="user-register-field-address">
                            <HBox.margin>
                               <Insets right="30.0" />
                            </HBox.margin>
@@ -133,7 +133,7 @@
                               <Font size="14.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField focusColor="#1890ff" labelFloat="true" promptText="Cidade" styleClass="user-register-field-address">
+                        <JFXTextField fx:id="fieldCity" focusColor="#1890ff" labelFloat="true" promptText="Cidade" styleClass="user-register-field-address">
                            <HBox.margin>
                               <Insets left="15.0" />
                            </HBox.margin>
@@ -145,7 +145,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0">
                      <children>
-                        <JFXTextField focusColor="#1890ff" labelFloat="true" promptText="Estado" styleClass="user-register-field-address">
+                        <JFXTextField fx:id="fieldState" focusColor="#1890ff" labelFloat="true" promptText="Estado" styleClass="user-register-field-address">
                            <HBox.margin>
                               <Insets right="30.0" />
                            </HBox.margin>
@@ -153,7 +153,7 @@
                               <Font size="14.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField focusColor="#1890ff" labelFloat="true" promptText="UF" styleClass="user-register-field-address">
+                        <JFXTextField fx:id="fieldUF" focusColor="#1890ff" labelFloat="true" promptText="UF" styleClass="user-register-field-address">
                            <HBox.margin>
                               <Insets left="15.0" />
                            </HBox.margin>
@@ -250,7 +250,7 @@
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </Label>
-                              <JFXCheckBox checkedColor="#1890ff" styleClass="user-register-gender-img" text=" ">
+                              <JFXCheckBox fx:id="fieldWoman" checkedColor="#1890ff" styleClass="user-register-gender-img" text=" ">
                                  <HBox.margin>
                                     <Insets right="5.0" />
                                  </HBox.margin>
@@ -261,7 +261,7 @@
                                        </image>
                                     </ImageView>
                                  </graphic></JFXCheckBox>
-                              <JFXCheckBox checkedColor="#1890ff" styleClass="user-register-gender-img" text=" ">
+                              <JFXCheckBox fx:id="fieldMan" checkedColor="#1890ff" styleClass="user-register-gender-img" text=" ">
                                  <HBox.margin>
                                     <Insets right="5.0" />
                                  </HBox.margin>
@@ -272,7 +272,7 @@
                                        </image>
                                     </ImageView>
                                  </graphic></JFXCheckBox>
-                              <JFXCheckBox checkedColor="#1890ff" prefHeight="76.0" prefWidth="93.0" styleClass="user-register-gender-img" text=" ">
+                              <JFXCheckBox fx:id="fieldNoGender" checkedColor="#1890ff" prefHeight="76.0" prefWidth="93.0" styleClass="user-register-gender-img" text=" ">
                                  <graphic>
                                     <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                                        <image>

@@ -8,7 +8,7 @@ import org.apache.commons.mail.SimpleEmail;
 import br.com.senac.school.util.LoadProperties;
 
 public class GmailService implements EmailSender {
-	
+
 	private final String PROPERTIE_EMAIL = "email.properties";
 	private final String PROPERTIE_GMAIL = "gmail.properties";
 
@@ -52,7 +52,8 @@ public class GmailService implements EmailSender {
 			simpleEmail.setSubject(message.getSubject());
 			simpleEmail.setMsg(message.getBody());
 			simpleEmail.addTo(message.getReceiver());
-			simpleEmail.send();
+			simpleEmail.buildMimeMessage();
+			simpleEmail.sendMimeMessage();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

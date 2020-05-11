@@ -2,7 +2,5 @@ package br.com.senac.school.model;
 
 public enum EstadoCivil {
 
-	SOLTEIRO, 
-	CASADO,
-
+	SOLTEIRO, CASADO, DIVORCIADO, VIUVO, SEPARADO
 }
