@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="root" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.senac.school.controller.HomeController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="main-panel-container" stylesheets="@../../assets/css/mainPanel.css">
+         <children>
+            <Label layoutX="108.0" layoutY="211.0" text="Bem-vindo ao School Map">
+               <font>
+                  <Font name="Ebrima Bold" size="36.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="400.0" fitWidth="450.0" layoutX="643.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../assets/image/quitting_time_dm8t.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="108.0" layoutY="273.0" text="It is a long established fact that a reader will be distracted by the a page">
+               <font>
+                  <Font name="Ebrima" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="108.0" layoutY="294.0" text="using Lorem Ipsum is that it has a more-or-less normal distribution">
+               <font>
+                  <Font name="Ebrima" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="108.0" layoutY="315.0" text="of letters, as opposed to using 'Content here, content here'">
+               <font>
+                  <Font name="Ebrima" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="108.0" layoutY="40.0" text="School Map" textFill="#4087fd">
+               <font>
+                  <Font name="Ebrima Bold" size="20.0" />
+               </font>
+            </Label>
+            <JFXButton buttonType="RAISED" layoutX="956.0" layoutY="32.0" onAction="#btnRegisterTop" styleClass="register-btn-top" text="Cadastre-se">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <Label layoutX="891.0" layoutY="43.0" onMouseClicked="#btnLogin" text="Login">
+               <font>
+                  <Font name="Ebrima Bold" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <JFXButton buttonType="RAISED" layoutX="108.0" layoutY="391.0" onAction="#btnRegister" styleClass="register-btn" text="Cadastre-se">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

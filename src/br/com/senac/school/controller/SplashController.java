@@ -9,9 +9,10 @@ import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 
 public class SplashController implements Initializable {
 
@@ -22,7 +23,7 @@ public class SplashController implements Initializable {
 	private Label loading;
 
 	@FXML
-	private AnchorPane root;
+	private StackPane root;
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
@@ -72,7 +73,7 @@ public class SplashController implements Initializable {
 
 	private void loadHome() {
 		try {
-			AnchorPane parentContent = FXMLLoader.load(getClass().getResource(("/br/com/senac/school/view/Login.fxml")));
+			Parent parentContent = FXMLLoader.load(getClass().getResource(("/br/com/senac/school/view/Home.fxml")));
 			root.getChildren().setAll(parentContent);
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -1,17 +1,7 @@
 package br.com.senac.school.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "endereco_usu")
 public class EnderecoUsuario {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private int id;
 	private String endereco;
 	private String bairro;
 	private String complemento;
@@ -37,11 +27,11 @@ public class EnderecoUsuario {
 
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

@@ -47,16 +47,21 @@ public class GmailService implements EmailSender {
 
 	@Override
 	public void send(EmailMessage message) {
-		try {
-			simpleEmail.setFrom(email, from);
-			simpleEmail.setSubject(message.getSubject());
-			simpleEmail.setMsg(message.getBody());
-			simpleEmail.addTo(message.getReceiver());
-			simpleEmail.buildMimeMessage();
-			simpleEmail.sendMimeMessage();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		Runnable emailSendTask = () -> {
+			try {
+				simpleEmail.setFrom(email, from);
+				simpleEmail.setSubject(message.getSubject());
+				simpleEmail.setMsg(message.getBody());
+				simpleEmail.addTo(message.getReceiver());
+				simpleEmail.buildMimeMessage();
+				simpleEmail.sendMimeMessage();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		};
+		Thread mailSender = new Thread(emailSendTask, "EMAIL-SENDER");
+		mailSender.start();
 	}
 
 }

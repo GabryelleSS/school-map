@@ -1,14 +1,8 @@
 package br.com.senac.school.builder;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import br.com.senac.school.model.EnderecoUsuario;
-import br.com.senac.school.model.EstadoCivil;
-import br.com.senac.school.model.Genero;
-import br.com.senac.school.model.TelefoneUsuario;
 import br.com.senac.school.model.Usuario;
 import br.com.senac.school.util.Encrypt;
 
@@ -16,10 +10,11 @@ public class UsuarioBuilder {
 
 	private String nome;
 	private String cpf;
-	private Genero sexo;
+	private String sexo;
 	private LocalDate dataNascimento;
-	private EstadoCivil estadoCivil;
-	private List<TelefoneUsuario> telefones;
+	private String estadoCivil;
+	private String telefone;
+	private String celular;
 	private EnderecoUsuario endereco;
 	private String email;
 	private String senha;
@@ -35,7 +30,7 @@ public class UsuarioBuilder {
 	}
 
 	public UsuarioBuilder comSexo(String sexo) {
-		this.sexo = Genero.valueOf(sexo);
+		this.sexo = sexo;
 		return this;
 	}
 
@@ -45,12 +40,16 @@ public class UsuarioBuilder {
 	}
 
 	public UsuarioBuilder comEstadoCivil(String estadoCivil) {
-		this.estadoCivil = EstadoCivil.valueOf(estadoCivil);
+		this.estadoCivil = estadoCivil;
 		return this;
 	}
 
-	public UsuarioBuilder comTelefones(List<String> telefones) {
-		this.telefones = telefones.stream().map(x -> new TelefoneUsuario(x)).collect(Collectors.toList());
+	public UsuarioBuilder comCelular(String celular) {
+		this.celular = celular;
+		return this;
+	}
+	public UsuarioBuilder comTelefone(String telefone) {
+		this.telefone = telefone;
 		return this;
 	}
 
@@ -71,6 +70,6 @@ public class UsuarioBuilder {
 	}
 
 	public Usuario gera() {
-		return new Usuario(nome, cpf, sexo, dataNascimento, estadoCivil, telefones, endereco, email, senha);
+		return new Usuario(nome, cpf, sexo, dataNascimento, estadoCivil, telefone, celular, endereco, email, senha);
 	}
 }

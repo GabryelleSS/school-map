@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -18,10 +16,7 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.RequiredFieldValidator;
 
-import br.com.senac.school.builder.EnderecoBuilder;
-import br.com.senac.school.builder.UsuarioBuilder;
 import br.com.senac.school.factory.UsuarioFactory;
-import br.com.senac.school.model.EnderecoUsuario;
 import br.com.senac.school.model.Genero;
 import br.com.senac.school.model.Usuario;
 import br.com.senac.school.service.ViaCEPService;
@@ -36,7 +31,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 public class UserRegisterController implements Initializable {
 	@FXML

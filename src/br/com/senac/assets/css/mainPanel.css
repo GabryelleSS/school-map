@@ -1,0 +1,42 @@
+.main-panel-container{
+	-fx-background-color: white;
+	
+}
+
+.register-btn{
+  -fx-background-color: #4087fd;
+  -fx-text-fill: #fff;
+  -fx-pref-width: 150px;
+  -fx-pref-height: 45px;
+  -fx-background-radius:50px;
+   -fx-border-radius:50px;
+} 
+  
+.register-btn:hover{
+  -fx-background-color: transparent;
+  -fx-text-fill:#4087fd;
+  -fx-border-color:#4087fd;
+  -fx-border-whidth:1px;
+  -fx-border-style:solid;
+  -fx-background-radius:50px;
+   -fx-border-radius:50px;
+}
+
+.register-btn-top{
+  -fx-background-color: #4087fd;
+  -fx-text-fill: #fff;
+  -fx-pref-width: 100px;
+  -fx-pref-height: 40px;
+  -fx-background-radius:50px;
+   -fx-border-radius:50px;
+} 
+  
+.register-btn-top:hover{
+  -fx-background-color: transparent;
+  -fx-text-fill:#4087fd;
+  -fx-border-color:#4087fd;
+  -fx-border-whidth:1px;
+  -fx-border-style:solid;
+  -fx-background-radius:50px;
+  -fx-border-radius:50px;
+}

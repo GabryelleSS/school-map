@@ -1,7 +1,5 @@
 package br.com.senac.school.controller;
 
-import java.util.List;
-
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
@@ -11,20 +9,24 @@ import br.com.senac.school.email.EmailSender;
 import br.com.senac.school.email.GmailService;
 import br.com.senac.school.email.Token;
 import br.com.senac.school.service.MessageService;
+import br.com.senac.school.util.Alert;
 import br.com.senac.school.util.Encrypt;
+import br.com.senac.school.util.LoadViews;
 import br.com.senac.school.util.VIEWS_NAMES;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 
 public class ForgotPasswordController {
 
 	@FXML
-	private AnchorPane root;
+	private StackPane root1;
+	
+	@FXML
+	private StackPane root2;
+	
+	@FXML
+	private StackPane root3;
 
 	@FXML
 	private JFXTextField fieldEmail;
@@ -49,14 +51,12 @@ public class ForgotPasswordController {
 
 		if (password.equals(confirm)) {
 			resetPasswod(email, password);
+
 			email = null;
-			loadView(VIEWS_NAMES.LOGIN);
-			
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Senha alterada");
-			alert.setHeaderText("Senha alterada");
-			alert.setContentText("Sua senha foi alterada com sucesso");
-			alert.show();
+			loadView(VIEWS_NAMES.LOGIN,root3);
+
+			Alert.show("Senha alterada", "Sua senha foi alterada com sucesso", root3);
+
 		}
 	}
 
@@ -64,18 +64,16 @@ public class ForgotPasswordController {
 	void btnSend(ActionEvent event) {
 		email = fieldEmail.getText();
 
-		boolean verifyEmail = verifyEmail(email);
-
-		if (!email.isEmpty() && verifyEmail) {
+		if (!email.isEmpty() && verifyEmail(email)) {
 			sendEmailReset(email);
-			loadView(VIEWS_NAMES.FORGOT_PASSWORD_TOKEN);
+			loadView(VIEWS_NAMES.FORGOT_PASSWORD_TOKEN, root1);
+
 		} else {
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("OPS");
-			alert.setHeaderText("E-mail não cadastrado");
-			alert.setContentText("Parece que você ainda não possui um cadastro conosco faça já, é simples e rapido.");
-			alert.show();
+
+			Alert.show("E-mail não cadastrado",
+					"Parece que você ainda não possui um cadastro conosco faça já, é simples e rapido.", root1);
 		}
+
 	}
 
 	@FXML
@@ -84,39 +82,36 @@ public class ForgotPasswordController {
 		String tokenEmail = String.valueOf(token);
 
 		if (tokenEmail.equals(tokenUser)) {
-			loadView(VIEWS_NAMES.FORGOT_PASSWORD_RESET_TOKEN);
+			loadView(VIEWS_NAMES.FORGOT_PASSWORD_RESET_TOKEN,root2);
 		} else {
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Token inválido");
-			alert.setHeaderText("Token inválido");
-			alert.setContentText("O token está inválido, por favor insira o token enviado para o seu e-mail.");
-			alert.show();
+			Alert.show("Token inválido", "O token está inválido, por favor insira o token enviado para o seu e-mail.",
+					root2);
+
 		}
 	}
 
 	@FXML
-	public void btnBackLogin(ActionEvent event) {
-		loadView(VIEWS_NAMES.LOGIN);
+	public void btnBackLoginRoot1(ActionEvent event) {
+		loadView(VIEWS_NAMES.LOGIN, root1);
+	}
+	@FXML
+	public void btnBackLoginRoot2(ActionEvent event) {
+		loadView(VIEWS_NAMES.FORGOT_PASSWORD, root2);
+	}
+	@FXML
+	public void btnBackLoginRoot3(ActionEvent event) {
+		loadView(VIEWS_NAMES.FORGOT_PASSWORD, root3);
 	}
 
-	public void loadView(VIEWS_NAMES view) {
-		try {
-			Parent pane = FXMLLoader.load(getClass().getResource(view.getName()));
-
-			root.getChildren().clear();
-			root.getChildren().add(pane);
-
-		} catch (Exception e) {
-
-		}
+	public void loadView(VIEWS_NAMES view, StackPane pane) {
+		new LoadViews().load(pane, view);
 	}
 
 	public boolean verifyEmail(String email) {
 		if (dao == null) {
 			dao = new UsuarioDaoImpl();
 		}
-		List<String> list = dao.passwordLogin(email);
-		return !list.isEmpty();
+		return dao.verify(email);
 	}
 
 	private void resetPasswod(String email, String password) {

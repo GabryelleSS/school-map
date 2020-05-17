@@ -1,52 +1,21 @@
 package br.com.senac.school.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-
-@Entity
 public class Escola {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String tipo;
 	private String nome;
 	private Boolean situacao;
-
-	@ManyToOne
-	private Distrito distrito;
-
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "Escola_Telefone", joinColumns = { @JoinColumn(name = "escola_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "telefone_id") })
-	private List<TelefoneEscola> telefone = new ArrayList<>();
-
-	@OneToOne
-	private EnderecoEscola endereco;
-
-	public Escola() {
-	}
-
-	public Escola(String tipo, String nome, boolean situacao, List<TelefoneEscola> telefones, EnderecoEscola endereco,
-			Distrito distrito) {
-		this.tipo = tipo;
-		this.nome = nome;
-		this.situacao = situacao;
-		this.telefone = telefones;
-		this.endereco = endereco;
-		this.distrito = distrito;
-	}
+	private String telefone1;
+	private String telefone2;
+	private String cod_distrito;
+	private String distrito;
+	private String endereco;
+	private String bairro;
+	private String cep;
+	private Integer numero;
+	private String latitude;
+	private String longitude;
 
 	public Long getId() {
 		return id;
@@ -80,28 +49,84 @@ public class Escola {
 		this.situacao = situacao;
 	}
 
-	public Distrito getDistrito() {
+	public String getTelefone1() {
+		return telefone1;
+	}
+
+	public void setTelefone1(String telefone1) {
+		this.telefone1 = telefone1;
+	}
+
+	public String getTelefone2() {
+		return telefone2;
+	}
+
+	public void setTelefone2(String telefone2) {
+		this.telefone2 = telefone2;
+	}
+
+	public String getCod_distrito() {
+		return cod_distrito;
+	}
+
+	public void setCod_distrito(String cod_distrito) {
+		this.cod_distrito = cod_distrito;
+	}
+
+	public String getDistrito() {
 		return distrito;
 	}
 
-	public void setDistrito(Distrito distrito) {
+	public void setDistrito(String distrito) {
 		this.distrito = distrito;
 	}
 
-	public List<TelefoneEscola> getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(List<TelefoneEscola> telefone) {
-		this.telefone = telefone;
-	}
-
-	public EnderecoEscola getEndereco() {
+	public String getEndereco() {
 		return endereco;
 	}
 
-	public void setEndereco(EnderecoEscola endereco) {
+	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public Integer getNumero() {
+		return numero;
+	}
+
+	public void setNumero(Integer numero) {
+		this.numero = numero;
+	}
+
+	public String getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+
+	public String getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
 	}
 
 }

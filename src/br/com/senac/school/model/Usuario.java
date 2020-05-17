@@ -1,44 +1,25 @@
 package br.com.senac.school.model;
 
 import java.time.LocalDate;
-import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
-
-@Entity
 public class Usuario {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+
+	private int id;
 
 	private String nome;
 
 	private String cpf;
 
-	@Enumerated(EnumType.STRING)
-	private Genero sexo;
+	private String sexo;
 
 	private LocalDate dataNascimento;
 
-	@Enumerated(EnumType.STRING)
-	private EstadoCivil estadoCivil;
+	private String estadoCivil;
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "Usuario_Telefone", joinColumns = { @JoinColumn(name = "usuario_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "telefone_id") })
-	private List<TelefoneUsuario> telefones;
+	private String telefone;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	private String celular;
+
 	private EnderecoUsuario endereco;
 
 	private String email;
@@ -49,25 +30,26 @@ public class Usuario {
 	public Usuario() {
 	}
 
-	public Usuario(String nome, String cpf, Genero sexo, LocalDate dataNascimento, EstadoCivil estadoCivil,
-			List<TelefoneUsuario> telefones, EnderecoUsuario endereco, String email, String senha) {
+	public Usuario(String nome, String cpf, String sexo, LocalDate dataNascimento, String estadoCivil,
+			String telefone, String celular, EnderecoUsuario endereco, String email, String senha) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.sexo = sexo;
 		this.dataNascimento = dataNascimento;
 		this.estadoCivil = estadoCivil;
-		this.telefones = telefones;
+		this.telefone = telefone;
+		this.celular = celular;
 		this.endereco = endereco;
 		this.email = email;
 		this.senha = senha;
 		this.ativo = true;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -87,11 +69,11 @@ public class Usuario {
 		this.cpf = cpf;
 	}
 
-	public Genero getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(Genero sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 
@@ -103,20 +85,28 @@ public class Usuario {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public EstadoCivil getEstadoCivil() {
+	public String getEstadoCivil() {
 		return estadoCivil;
 	}
 
-	public void setEstadoCivil(EstadoCivil estadoCivil) {
+	public void setEstadoCivil(String estadoCivil) {
 		this.estadoCivil = estadoCivil;
 	}
 
-	public List<TelefoneUsuario> getTelefones() {
-		return telefones;
+	public String getTelefone() {
+		return telefone;
 	}
 
-	public void setTelefones(List<TelefoneUsuario> telefones) {
-		this.telefones = telefones;
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public String getCelular() {
+		return celular;
+	}
+
+	public void setCelular(String celular) {
+		this.celular = celular;
 	}
 
 	public EnderecoUsuario getEndereco() {

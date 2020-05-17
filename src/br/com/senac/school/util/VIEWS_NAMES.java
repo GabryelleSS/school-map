@@ -6,6 +6,7 @@ public enum VIEWS_NAMES {
 	FORGOT_PASSWORD_RESET_TOKEN("/br/com/senac/school/view/ForgotPasswordResetToken.fxml"),
 	FORGOT_PASSWORD_TOKEN("/br/com/senac/school/view/ForgotPasswordToken.fxml"),
 	FORGOT_PASSWORD("/br/com/senac/school/view/ForgotPassword.fxml"),
+	USER_REGISTER("/br/com/senac/school/view/UserRegister.fxml"),
 	
 	EDIT_PROFILE("/br/com/senac/school/view/EditProfile.fxml"),
 	EDIT_PROFILE_ENDERECO("/br/com/senac/school/view/EditProfileEndereco.fxml"),

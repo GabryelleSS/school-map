@@ -119,14 +119,14 @@ public class EditProfileController implements Initializable {
 	private void fields() {
 		fieldCPF.setText(usuario.getCpf());
 		fieldEmail.setText(usuario.getEmail());
-		fieldCell.setText(usuario.getTelefones().get(0).getNumero());
+		fieldCell.setText(usuario.getCelular());
 		fieldDateBirth.setValue(usuario.getDataNascimento());
 
 		String[] nome = usuario.getNome().split(" ");
 
 		fieldFirstName.setText(nome[0]);
 		fieldLastName.setText(nome[1]);
-		fieldTephone.setText(usuario.getTelefones().get(1).getNumero());
+		fieldTephone.setText(usuario.getTelefone());
 	}
 
 }
