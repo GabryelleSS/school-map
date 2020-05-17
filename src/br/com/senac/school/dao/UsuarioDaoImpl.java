@@ -138,4 +138,23 @@ public class UsuarioDaoImpl implements UsuarioDao {
 			closeConnection();
 		}
 	}
+	
+	@Override
+	public List<Usuario> findByEmail(String email) {
+		String sql = "SELECT u FROM Usuario u " + "join fetch u.telefones " + "join fetch u.endereco "
+				+ "WHERE u.email = :email";
+		try {
+			openConnection();
+			TypedQuery<Usuario> query = manager.createQuery(sql, Usuario.class);
+			query.setParameter("email", email);
+			List<Usuario> list = query.getResultList();
+
+			return list;
+
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		} finally {
+			closeConnection();
+		}
+	}
 }

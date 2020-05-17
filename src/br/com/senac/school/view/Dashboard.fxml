@@ -3,7 +3,9 @@
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -11,39 +13,47 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="archorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" styleClass="dashboard" stylesheets="@../../assets/css/dashboardSchool.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.senac.school.controller.DashboardController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" styleClass="dashboard" stylesheets="@../../assets/css/dashboardSchool.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.senac.school.controller.DashboardController">
    <children>
-      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="1200.0" styleClass="dashboard-header" stylesheets="@../../assets/css/DashboardSchool.css">
+      <HBox alignment="CENTER" prefHeight="60.0" prefWidth="1200.0" styleClass="dashboard-header" stylesheets="@../../assets/css/DashboardSchool.css">
          <children>
             <HBox prefHeight="50.0" prefWidth="600.0">
                <children>
                   <JFXHamburger fx:id="menuHamburguer" prefHeight="50.0" prefWidth="54.0" />
-                  <Button mnemonicParsing="false" prefHeight="1.0" prefWidth="1.0" styleClass="btn-menu">
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="btn-menu">
-                           <image>
-                              <Image url="@../../assets/image/config.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <HBox.margin>
-                        <Insets left="10.0" top="5.0" />
-                     </HBox.margin>
-                  </Button>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="49.0" layoutY="4.0" onMouseClicked="#labelHome" text="School Map" textFill="WHITE">
+                           <font>
+                              <Font name="Ebrima" size="36.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Label>
+                     </children>
+                  </AnchorPane>
                </children>
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="600.0">
                <children>
-                  <Pane prefHeight="45.0" prefWidth="48.0">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="366.0">
                      <children>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../assets/image/user.png" />
-                           </image>
-                        </ImageView>
+                        <TextField prefWidth="317.0" promptText="Pesquisar..." styleClass="submenu-search" />
+                        <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="41.0" styleClass="submenu-search-btn">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="submenu-search-btn">
+                                 <image>
+                                    <Image url="@../../assets/image/icons8-search-50.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
+                  </HBox>
+                  <Pane prefHeight="45.0" prefWidth="48.0">
                      <HBox.margin>
                         <Insets right="5.0" top="5.0" />
                      </HBox.margin>
@@ -52,44 +62,11 @@
             </HBox>
          </children>
       </HBox>
-      <HBox alignment="TOP_RIGHT" layoutY="50.0" prefHeight="51.0" prefWidth="1200.0" styleClass="dashboard-search-container" stylesheets="@../../assets/css/dashboardSchool.css">
-         <children>
-            <HBox alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="366.0">
-               <children>
-                  <TextField prefWidth="317.0" promptText="Pesquisar..." styleClass="submenu-search" />
-                  <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="41.0" styleClass="submenu-search-btn">
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="submenu-search-btn">
-                           <image>
-                              <Image url="@../../assets/image/search.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </HBox>
-            <HBox alignment="TOP_RIGHT" prefHeight="51.0" prefWidth="80.0">
-               <children>
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="15.0" styleClass="submenu-btn">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                     </HBox.margin>
-                     <graphic>
-                        <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../assets/image/refresh.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </HBox>
-         </children></HBox>
-      <VBox layoutY="102.0" prefHeight="499.0" prefWidth="1200.0" styleClass="card-school">
+      <VBox fx:id="content" layoutY="60.0" prefHeight="541.0" prefWidth="1200.0" styleClass="card-school">
          <children>
             <HBox alignment="CENTER" prefHeight="220.0" prefWidth="1200.0">
                <VBox.margin>
-                  <Insets bottom="20.0" />
+                  <Insets bottom="20.0" left="10.0" right="10.0" top="25.0" />
                </VBox.margin>
                <children>
                   <HBox alignment="CENTER" prefHeight="253.0" prefWidth="1200.0">
@@ -376,11 +353,14 @@
                            </HBox.margin>
                         </Pane>
                      </children>
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
                   </HBox>
                </children>
             </HBox>
          </children>
       </VBox>
-      <JFXDrawer fx:id="drawer" defaultDrawerSize="300.0" layoutY="50.0" prefHeight="550.0" prefWidth="211.0" />
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="300.0" layoutY="59.0" prefHeight="541.0" prefWidth="211.0" AnchorPane.topAnchor="60.0" />
    </children>
 </AnchorPane>

@@ -1,39 +1,38 @@
 package br.com.senac.school.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import br.com.senac.school.session.Session;
+import br.com.senac.school.util.VIEWS_NAMES;
+import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+public class MenuController {
 
-public class MenuController implements Initializable {
+	private MenuCallback callback;
 
-	private DashboardController callback;
-
-//	@Override
-//	public void start(Stage stage) throws Exception {
-//		Parent root = FXMLLoader.load(getClass().getResource("/br/com/senac/school/view/Dashboard.fxml"));
-//		
-//		Scene scene = new Scene(root);
-//		
-//		stage.setScene(scene);
-//		stage.show();
-//		
-//	}
-
-	public void setCallback(DashboardController callback) {
-		 this.callback = callback;
-		
+	public void setCallback(MenuCallback callback) {
+		this.callback = callback;
 	}
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-		
+	@FXML
+	void configurations(MouseEvent event) {
+
 	}
-	
+
+	@FXML
+	void editProfile(MouseEvent event) {
+		callback.updateViewContent(VIEWS_NAMES.EDIT_PROFILE);
+	}
+
+	@FXML
+	void home(MouseEvent event) {
+		callback.updateView(VIEWS_NAMES.DASHBOARD);
+
+	}
+
+	@FXML
+	void logout(MouseEvent event) {
+		Session.removeUsuario();
+		callback.updateView(VIEWS_NAMES.LOGIN);
+	}
+
 }

@@ -13,11 +13,14 @@ import br.com.senac.school.email.GmailService;
 import br.com.senac.school.email.Token;
 import br.com.senac.school.model.Usuario;
 import br.com.senac.school.service.MessageService;
+import br.com.senac.school.session.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 
 public class SendEmailController implements Initializable {
@@ -54,12 +57,16 @@ public class SendEmailController implements Initializable {
 		String token = fieldToken.getText();
 
 		if (token.equals(String.valueOf(this.token))) {
+			Session.setUsuario(usuario);
 			persistUsuario(usuario);
 			loadDashboard();
 
 		} else {
-
-			// TODO colocar alerta de token invalido
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Token inválido");
+			alert.setHeaderText("Token inválido");
+			alert.setContentText("O token está inválido, por favor insira o token enviado para o seu e-mail para concluir o seu cadastro.");
+			alert.show();
 		}
 	}
 

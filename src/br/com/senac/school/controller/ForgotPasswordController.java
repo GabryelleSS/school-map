@@ -17,6 +17,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 
 public class ForgotPasswordController {
@@ -49,6 +51,12 @@ public class ForgotPasswordController {
 			resetPasswod(email, password);
 			email = null;
 			loadView(VIEWS_NAMES.LOGIN);
+			
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Senha alterada");
+			alert.setHeaderText("Senha alterada");
+			alert.setContentText("Sua senha foi alterada com sucesso");
+			alert.show();
 		}
 	}
 
@@ -62,7 +70,11 @@ public class ForgotPasswordController {
 			sendEmailReset(email);
 			loadView(VIEWS_NAMES.FORGOT_PASSWORD_TOKEN);
 		} else {
-			// TODO fazer alerta sobre email não cadastrado
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("OPS");
+			alert.setHeaderText("E-mail não cadastrado");
+			alert.setContentText("Parece que você ainda não possui um cadastro conosco faça já, é simples e rapido.");
+			alert.show();
 		}
 	}
 
@@ -74,7 +86,11 @@ public class ForgotPasswordController {
 		if (tokenEmail.equals(tokenUser)) {
 			loadView(VIEWS_NAMES.FORGOT_PASSWORD_RESET_TOKEN);
 		} else {
-			// TODO fazer alerta sobre token iválido
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Token inválido");
+			alert.setHeaderText("Token inválido");
+			alert.setContentText("O token está inválido, por favor insira o token enviado para o seu e-mail.");
+			alert.show();
 		}
 	}
 

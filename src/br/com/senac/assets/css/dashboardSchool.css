@@ -20,7 +20,7 @@
 }
 
 .card-school {
-  -fx-background-color: #ccc;
+  -fx-background-color: white;
 }
 
 .submenu {
@@ -60,9 +60,9 @@
 }
 
 .card-school-container {
-  -fx-background-color: #fff;
+  -fx-background-color: f5f5f5;
   -fx-background-radius: 30px;
-  -fx-border-color: #fff;
+  -fx-border-color: f5f5f5;
   -fx-border-radius: 30px;
 }
 
