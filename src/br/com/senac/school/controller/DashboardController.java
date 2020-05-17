@@ -56,7 +56,7 @@ public class DashboardController implements Initializable, MenuCallback {
 			transition.setRate(transition.getRate() * -1);
 			transition.play();
 
-			if (drawer.isShown()) {
+			if (drawer.isOpened()) {
 				drawer.close();
 			} else {
 				drawer.open();

@@ -17,9 +17,10 @@ import br.com.senac.school.util.LoadViews;
 import br.com.senac.school.util.VIEWS_NAMES;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 
-public class Login {
+public class LoginController {
 	@FXML
 	private StackPane root;
 
@@ -61,12 +62,12 @@ public class Login {
 	}
 
 	@FXML
-	private void btnUserRegister() throws Exception {
+	private void btnUserRegister(MouseEvent event) throws Exception {
 		new LoadViews().load(root, VIEWS_NAMES.USER_REGISTER);
 	}
 
 	@FXML
-	public void btnForgotPassword(ActionEvent event) throws IOException {
+	public void btnForgotPassword(MouseEvent event) throws IOException {
 		new LoadViews().load(root, VIEWS_NAMES.FORGOT_PASSWORD);
 	}
 

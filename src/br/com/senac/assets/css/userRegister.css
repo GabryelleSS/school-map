@@ -29,21 +29,45 @@
 }
 
 .user-register-btn {
-  -fx-pref-width: 88px;
-  -fx-pref-height: 28px;
+  -fx-pref-width: 90px;
+  -fx-pref-height: 40px;
   -fx-cursor: hand;
   -fx-font-size: 14px;
-  -fx-border-radius: 5px;
+  -fx-background-radius:50px;
+   -fx-border-radius:50px;
 }
 
-.user-register-btn-next, .btn-consult-cep {
-  -fx-background-color: #1890ff;
+.user-register-btn-next {
+  -fx-background-color: #4087fd;
   -fx-text-fill: #fff;
+}
+
+.user-register-btn-next:hover {
+	
+	-fx-background-color: transparent;
+  -fx-text-fill:#4087fd;
+  -fx-border-color:#4087fd;
+  -fx-border-whidth:1px;
+  -fx-border-style:solid;
+  -fx-background-radius:50px;
+   -fx-border-radius:50px;
+	
 }
 
 .user-register-btn-cancel {
-  -fx-background-color: #ff4d4f;
+  -fx-background-color: #9e9e9e;
   -fx-text-fill: #fff;
+}
+
+.user-register-btn-cancel:hover {
+ -fx-background-color: transparent;
+  -fx-text-fill:#9e9e9e;
+  -fx-border-color:#9e9e9e;
+  -fx-border-whidth:1px;
+  -fx-border-style:solid;
+  -fx-background-radius:50px;
+   -fx-border-radius:50px;
+	
 }
 
 .user-register-field-address {

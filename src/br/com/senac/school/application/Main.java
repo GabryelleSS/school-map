@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -18,6 +19,7 @@ public class Main extends Application {
 			Scene mainScene = new Scene(pane);
 			primaryStage.setScene(mainScene);
 			primaryStage.setTitle("School Map");
+			primaryStage.getIcons().add(new Image("/br/com/senac/assets/image/user2.png"));
 			primaryStage.show();
 		} catch (IOException e) {
 			e.printStackTrace();

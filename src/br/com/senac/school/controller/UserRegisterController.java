@@ -1,9 +1,10 @@
 package br.com.senac.school.controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -15,60 +16,38 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.RequiredFieldValidator;
+import com.jfoenix.validation.base.ValidatorBase;
 
 import br.com.senac.school.factory.UsuarioFactory;
 import br.com.senac.school.model.Genero;
 import br.com.senac.school.model.Usuario;
 import br.com.senac.school.service.ViaCEPService;
+import br.com.senac.school.util.Alert;
+import br.com.senac.school.util.LoadViews;
+import br.com.senac.school.util.VIEWS_NAMES;
+import br.com.senac.school.util.Validator;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 
 public class UserRegisterController implements Initializable {
 	@FXML
-	private JFXTextField fieldFirstName;
+	private StackPane root;
+
 	@FXML
-	private JFXTextField fieldLastName;
+	private JFXButton btnBack;
+
 	@FXML
-	private JFXTextField fieldEmail;
-	@FXML
-	private JFXPasswordField txt;
-	@FXML
-	private JFXPasswordField fieldPassword;
-	@FXML
-	private JFXPasswordField fieldConfirmPassword;
-	@FXML
-	private JFXTextField fieldCPF;
-	@FXML
-	private JFXDatePicker fieldDateBirth;
-	@FXML
-	private JFXComboBox<String> fieldMaritalStatus;
-	@FXML
-	private JFXTextField fieldTephone;
-	@FXML
-	private JFXTextField fieldCell;
-	@FXML
-	private HBox formFieldsRegisterUser;
+	private JFXButton btnNextField;
+
 	@FXML
 	private VBox formFieldsRegisterUserAddress;
-	@FXML
-	private Button btnNextField;
-	@FXML
-	private Button btnBack;
-	@FXML
-	private Pane modalWarning;
-	@FXML
-	private Text labelWarning;
-	@FXML
-	private JFXButton btnBackLogin;
+
 	@FXML
 	private JFXTextField fieldStreet;
 
@@ -94,6 +73,30 @@ public class UserRegisterController implements Initializable {
 	private JFXTextField fieldUF;
 
 	@FXML
+	private HBox formFieldsRegisterUser;
+
+	@FXML
+	private JFXTextField fieldFirstName;
+
+	@FXML
+	private JFXTextField fieldLastName;
+
+	@FXML
+	private JFXTextField fieldEmail;
+
+	@FXML
+	private JFXPasswordField fieldPassword;
+
+	@FXML
+	private JFXPasswordField fieldConfirmPassword;
+
+	@FXML
+	private JFXTextField fieldCPF;
+
+	@FXML
+	private JFXDatePicker fieldDateBirth;
+
+	@FXML
 	private JFXCheckBox fieldWoman;
 
 	@FXML
@@ -103,7 +106,20 @@ public class UserRegisterController implements Initializable {
 	private JFXCheckBox fieldNoGender;
 
 	@FXML
-	private AnchorPane userRegister;
+	private JFXComboBox<String> fieldMaritalStatus;
+
+	@FXML
+	private JFXTextField fieldCell;
+
+	@FXML
+	private JFXTextField fieldTephone;
+
+	@FXML
+	private JFXButton btnBackLogin;
+
+	private ValidatorBase validator;
+
+	private boolean nextFields;
 
 	String warningModal = "Ops! Você precisa preencher os campos obrigatórios.";
 	String warningModalPassawordIncorrect = "Ops! As senhas estão diferentes!";
@@ -111,59 +127,20 @@ public class UserRegisterController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		fieldRequired();
-
 		btnBack.setVisible(false);
-		modalWarning.setVisible(false);
 		formFieldsRegisterUserAddress.setVisible(false);
 
 		fieldMaritalStatus.getItems().addAll("Solteiro", "Casado", "Separado", "Divorciado", "Viuvo");
+
 	}
 
 	void fieldRequired() {
-		RequiredFieldValidator validator = new RequiredFieldValidator();
+		validator = new RequiredFieldValidator();
 		validator.setMessage("Campo obrigatório!");
 
-		fieldFirstName.getValidators().add(validator);
-		fieldFirstName.focusedProperty().addListener((o, oldVal, newVal) -> {
-			if (!newVal) {
-				fieldFirstName.validate();
-			}
-		});
-
-		fieldLastName.getValidators().add(validator);
-		fieldLastName.focusedProperty().addListener((o, oldVal, newVal) -> {
-			if (!newVal) {
-				fieldLastName.validate();
-			}
-		});
-
-		fieldEmail.getValidators().add(validator);
-		fieldEmail.focusedProperty().addListener((o, oldVal, newVal) -> {
-			if (!newVal) {
-				fieldEmail.validate();
-			}
-		});
-
-		fieldPassword.getValidators().add(validator);
-		fieldPassword.focusedProperty().addListener((o, oldVal, newVal) -> {
-			if (!newVal) {
-				fieldPassword.validate();
-			}
-		});
-
-		fieldConfirmPassword.getValidators().add(validator);
-		fieldConfirmPassword.focusedProperty().addListener((o, oldVal, newVal) -> {
-			if (!newVal) {
-				fieldConfirmPassword.validate();
-			}
-		});
-
-		fieldCell.getValidators().add(validator);
-		fieldCell.focusedProperty().addListener((o, oldVal, newVal) -> {
-			if (!newVal) {
-				fieldCell.validate();
-			}
-		});
+		Validator.validate(validator, fieldCell, fieldCep, fieldCity, fieldComplement, fieldConfirmPassword, fieldCPF,
+				fieldDateBirth, fieldEmail, fieldFirstName, fieldLastName, fieldMaritalStatus, fieldNumber,
+				fieldPassword, fieldState, fieldStreet, fieldTephone, fieldUF, filedDistrict);
 	}
 
 	private boolean checkRequiredFields() {
@@ -173,26 +150,34 @@ public class UserRegisterController implements Initializable {
 		boolean password = fieldPassword.getText().trim().isEmpty();
 		boolean passwordConfirm = fieldConfirmPassword.getText().trim().isEmpty();
 		boolean cell = fieldCell.getText().trim().isEmpty();
+		boolean telephone = fieldTephone.getText().trim().isEmpty();
+		boolean cpf = fieldCPF.getText().trim().isEmpty();
+		boolean birthDate = fieldDateBirth.getValue() == null;
+		boolean maritalStatus = fieldMaritalStatus.getSelectionModel().getSelectedItem() == null;
 
-		ArrayList<Boolean> fieldsRequireds = new ArrayList();
+		boolean cep = fieldCep.getText().trim().isEmpty();
+		boolean city = fieldCity.getText().trim().isEmpty();
+		boolean complement = fieldComplement.getText().trim().isEmpty();
+		boolean number = fieldNumber.getText().trim().isEmpty();
+		boolean district = filedDistrict.getText().trim().isEmpty();
+		boolean state = fieldState.getText().trim().isEmpty();
+		boolean street = fieldStreet.getText().trim().isEmpty();
 
-		fieldsRequireds.add(firstNameEmpty);
-		fieldsRequireds.add(lastNameEmpty);
-		fieldsRequireds.add(email);
-		fieldsRequireds.add(password);
-		fieldsRequireds.add(passwordConfirm);
-		fieldsRequireds.add(cell);
+		List<Boolean> fieldsRequireds = new ArrayList<>();
+
+		fieldsRequireds.addAll(Arrays.asList(firstNameEmpty, lastNameEmpty, email, password, passwordConfirm, cell, cpf,
+				birthDate, maritalStatus, telephone));
+
+		if (nextFields)
+			fieldsRequireds.addAll(Arrays.asList(cep, city, complement, number, district, state, street));
 
 		if (confirmationSamePasswords()) {
-			labelWarning.setText(warningModalPassawordIncorrect);
-			modalWarning.setVisible(true);
+			Alert.show("Senha incorreta", warningModalPassawordIncorrect, root);
 
 			return true;
 		} else {
 			for (Boolean fieldRequired : fieldsRequireds) {
 				if (fieldRequired == true) {
-					labelWarning.setText(warningModal);
-					modalWarning.setVisible(true);
 					return true;
 				}
 			}
@@ -214,19 +199,27 @@ public class UserRegisterController implements Initializable {
 	@FXML
 	private void handleNextFields(ActionEvent event) throws InterruptedException {
 		if (btnNextField.getText().equals("Cadastrar")) {
-			loadViewEmail();
-		}
 
-		if (checkRequiredFields()) {
-			System.out.println("Senha incorreta");
+			if (checkRequiredFields()) {
+				Alert.show("Campos obrigatórios", warningModal, root);
+
+			} else {
+				loadViewEmail();
+			}
 		} else {
-			formFieldsRegisterUser.setVisible(false);
-			formFieldsRegisterUserAddress.setVisible(true);
-			btnBack.setVisible(true);
 
-			btnNextField.setText("Cadastrar");
+			if (checkRequiredFields()) {
+				Alert.show("Campos obrigatórios", warningModal, root);
+
+			} else {
+				formFieldsRegisterUser.setVisible(false);
+				formFieldsRegisterUserAddress.setVisible(true);
+				btnBack.setVisible(true);
+
+				btnNextField.setText("Cadastrar");
+				nextFields = true;
+			}
 		}
-
 	}
 
 	@FXML
@@ -238,46 +231,40 @@ public class UserRegisterController implements Initializable {
 		String btnText = btnNextField.getText();
 		if (btnText == "Cadastrar") {
 			btnNextField.setText("Próximo");
+			nextFields = false;
 		}
-	}
-
-	@FXML
-	private void btnConfirm(ActionEvent event) {
-		modalWarning.setVisible(false);
 	}
 
 	@FXML
 	private void backLogin() throws Exception {
-			Parent login = FXMLLoader.load(getClass().getResource("/br/com/senac/school/view/Login.fxml"));
-
-			userRegister.getChildren().clear();
-			userRegister.getChildren().add(login);
-		}
+		new LoadViews().load(root, VIEWS_NAMES.LOGIN);
+	}
 
 	private void loadViewEmail() {
-		try {
-			SendEmailController.usuario = generateUsuario();
-			Parent pane = FXMLLoader.load(getClass().getResource("/br/com/senac/school/view/SendEmail.fxml"));
-			userRegister.getChildren().clear();
-			userRegister.getChildren().add(pane);
+		SendEmailController.usuario = generateUsuario();
+		new LoadViews().load(root, VIEWS_NAMES.LOGIN);
 
-		} catch (IOException e) {
-		}
 	}
 
 	@FXML
-	public void btnConsultCEP(ActionEvent event) {
-		
-		Optional<ViaCEPEndereco> consulta = ViaCEPService.consulta(fieldCep.getText());
-		
-		if(consulta.isPresent()) {
-			ViaCEPEndereco endereco = consulta.get();
-			 this.fieldStreet.setText(endereco.getLogradouro());
-			 this.fieldComplement.setText(endereco.getComplemento());
-			 this.filedDistrict.setText(endereco.getBairro());
-			 this.fieldUF.setText(endereco.getUf());
-			 this.fieldState.setText(endereco.getLocalidade());
+	void btnConsultarCep(KeyEvent event) {
+		String cep = fieldCep.getText();
+
+		if (cep.length() == 8) {
+			Optional<ViaCEPEndereco> consulta = ViaCEPService.consulta(fieldCep.getText());
+
+			if (consulta.isPresent()) {
+				ViaCEPEndereco endereco = consulta.get();
+				this.fieldStreet.setText(endereco.getLogradouro());
+				this.fieldComplement.setText(endereco.getComplemento());
+				this.filedDistrict.setText(endereco.getBairro());
+				this.fieldUF.setText(endereco.getUf());
+				this.fieldState.setText(endereco.getLocalidade());
+			} else {
+				Alert.show("CEP inválido", "Por favor insira um cep válido", root);
+			}
 		}
+
 	}
 
 	public Usuario generateUsuario() {
@@ -311,8 +298,7 @@ public class UserRegisterController implements Initializable {
 		String estado = fieldState.getText();
 		String uf = fieldUF.getText();
 
-		return UsuarioFactory
-				.generate(nome.concat(" ").concat(sobrenome), cpf, dataNascimento, telefone, email, senha,
+		return UsuarioFactory.generate(nome.concat(" ").concat(sobrenome), cpf, dataNascimento, telefone, email, senha,
 				celular, estadoCivil, genero, rua, cep, numero, bairro, complemento, cidade, estado, uf);
 	}
 }
