@@ -70,6 +70,14 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Label>
+                        <ImageView fitHeight="26.0" fitWidth="41.0" layoutX="78.0" layoutY="50.0" onMouseClicked="#btnBackHome" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../assets/image/icons8-back-26.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                </children>

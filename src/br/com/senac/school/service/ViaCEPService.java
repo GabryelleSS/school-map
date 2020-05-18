@@ -12,6 +12,7 @@ public class ViaCEPService {
 		try {
 			endereco = Optional.ofNullable(new ViaCEPClient().getEndereco(cep));
 		} catch (Exception e) {
+			return endereco;
 		}
 		return endereco;
 	}

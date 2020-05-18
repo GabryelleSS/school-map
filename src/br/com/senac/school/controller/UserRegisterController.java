@@ -24,13 +24,12 @@ import br.com.senac.school.model.Usuario;
 import br.com.senac.school.service.ViaCEPService;
 import br.com.senac.school.util.Alert;
 import br.com.senac.school.util.LoadViews;
+import br.com.senac.school.util.MaskFX;
 import br.com.senac.school.util.VIEWS_NAMES;
 import br.com.senac.school.util.Validator;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -121,15 +120,18 @@ public class UserRegisterController implements Initializable {
 
 	private boolean nextFields;
 
+	private boolean backHome;
+
 	String warningModal = "Ops! Você precisa preencher os campos obrigatórios.";
 	String warningModalPassawordIncorrect = "Ops! As senhas estão diferentes!";
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		fieldRequired();
-		btnBack.setVisible(false);
+		maskFields();
 		formFieldsRegisterUserAddress.setVisible(false);
-
+		consultCep();
+		backHome = true;
 		fieldMaritalStatus.getItems().addAll("Solteiro", "Casado", "Separado", "Divorciado", "Viuvo");
 
 	}
@@ -138,7 +140,7 @@ public class UserRegisterController implements Initializable {
 		validator = new RequiredFieldValidator();
 		validator.setMessage("Campo obrigatório!");
 
-		Validator.validate(validator, fieldCell, fieldCep, fieldCity, fieldComplement, fieldConfirmPassword, fieldCPF,
+		Validator.validate(validator, fieldCell, fieldCep, fieldCity, fieldConfirmPassword, fieldCPF,
 				fieldDateBirth, fieldEmail, fieldFirstName, fieldLastName, fieldMaritalStatus, fieldNumber,
 				fieldPassword, fieldState, fieldStreet, fieldTephone, fieldUF, filedDistrict);
 	}
@@ -157,7 +159,6 @@ public class UserRegisterController implements Initializable {
 
 		boolean cep = fieldCep.getText().trim().isEmpty();
 		boolean city = fieldCity.getText().trim().isEmpty();
-		boolean complement = fieldComplement.getText().trim().isEmpty();
 		boolean number = fieldNumber.getText().trim().isEmpty();
 		boolean district = filedDistrict.getText().trim().isEmpty();
 		boolean state = fieldState.getText().trim().isEmpty();
@@ -169,7 +170,7 @@ public class UserRegisterController implements Initializable {
 				birthDate, maritalStatus, telephone));
 
 		if (nextFields)
-			fieldsRequireds.addAll(Arrays.asList(cep, city, complement, number, district, state, street));
+			fieldsRequireds.addAll(Arrays.asList(cep, city, number, district, state, street));
 
 		if (confirmationSamePasswords()) {
 			Alert.show("Senha incorreta", warningModalPassawordIncorrect, root);
@@ -218,6 +219,7 @@ public class UserRegisterController implements Initializable {
 
 				btnNextField.setText("Cadastrar");
 				nextFields = true;
+				backHome  = false;
 			}
 		}
 	}
@@ -225,46 +227,45 @@ public class UserRegisterController implements Initializable {
 	@FXML
 	private void handleBackRegisterUser(ActionEvent event) {
 		formFieldsRegisterUser.setVisible(true);
-		btnBack.setVisible(false);
 		formFieldsRegisterUserAddress.setVisible(false);
-
 		String btnText = btnNextField.getText();
-		if (btnText == "Cadastrar") {
+
+		if (backHome) {
+			new LoadViews().load(root, VIEWS_NAMES.HOME);
+			
+		} else if (btnText == "Cadastrar") {
 			btnNextField.setText("Próximo");
 			nextFields = false;
+			backHome = true;
 		}
-	}
-
-	@FXML
-	private void backLogin() throws Exception {
-		new LoadViews().load(root, VIEWS_NAMES.LOGIN);
 	}
 
 	private void loadViewEmail() {
 		SendEmailController.usuario = generateUsuario();
-		new LoadViews().load(root, VIEWS_NAMES.LOGIN);
+		new LoadViews().load(root, VIEWS_NAMES.SEND_EMAIL);
 
 	}
 
-	@FXML
-	void btnConsultarCep(KeyEvent event) {
-		String cep = fieldCep.getText();
+	public void consultCep() {
+		fieldCep.textProperty().addListener((observable, oldValue, newValue) -> {
 
-		if (cep.length() == 8) {
-			Optional<ViaCEPEndereco> consulta = ViaCEPService.consulta(fieldCep.getText());
+			if (newValue.length() == 9) {
 
-			if (consulta.isPresent()) {
-				ViaCEPEndereco endereco = consulta.get();
-				this.fieldStreet.setText(endereco.getLogradouro());
-				this.fieldComplement.setText(endereco.getComplemento());
-				this.filedDistrict.setText(endereco.getBairro());
-				this.fieldUF.setText(endereco.getUf());
-				this.fieldState.setText(endereco.getLocalidade());
-			} else {
-				Alert.show("CEP inválido", "Por favor insira um cep válido", root);
+				Optional<ViaCEPEndereco> consulta = ViaCEPService.consulta(newValue);
+
+				if (consulta.isPresent()) {
+					ViaCEPEndereco endereco = consulta.get();
+					this.fieldStreet.setText(endereco.getLogradouro());
+					this.fieldComplement.setText(endereco.getComplemento());
+					this.filedDistrict.setText(endereco.getBairro());
+					this.fieldUF.setText(endereco.getUf());
+					this.fieldState.setText(endereco.getLocalidade());
+				} else {
+					Alert.show("CEP inválido", "Por favor insira um cep válido", root);
+				}
 			}
-		}
 
+		});
 	}
 
 	public Usuario generateUsuario() {
@@ -288,17 +289,33 @@ public class UserRegisterController implements Initializable {
 			genero = Genero.SEM_GENERO.toString();
 
 		}
+		
+		String complement = "";
+		if(!fieldComplement.getText().trim().isEmpty()) {
+			complement = fieldComplement.getText();
+		}
 
 		String rua = fieldStreet.getText();
 		String cep = fieldCep.getText();
 		String numero = fieldNumber.getText();
 		String bairro = filedDistrict.getText();
-		String complemento = fieldComplement.getText();
+		String complemento = complement;
 		String cidade = fieldCity.getText();
 		String estado = fieldState.getText();
 		String uf = fieldUF.getText();
 
 		return UsuarioFactory.generate(nome.concat(" ").concat(sobrenome), cpf, dataNascimento, telefone, email, senha,
 				celular, estadoCivil, genero, rua, cep, numero, bairro, complemento, cidade, estado, uf);
+	}
+
+	private void maskFields() {
+		MaskFX.cepField(fieldCep);
+		MaskFX.cpfField(fieldCPF);
+		MaskFX.dateField(fieldDateBirth);
+		MaskFX.foneField(fieldCell);
+		MaskFX.foneField(fieldTephone);
+		MaskFX.numericField(fieldNumber);
+		MaskFX.maxField(fieldUF, 2);
+
 	}
 }

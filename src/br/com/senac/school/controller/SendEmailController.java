@@ -1,6 +1,5 @@
 package br.com.senac.school.controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -14,14 +13,14 @@ import br.com.senac.school.email.Token;
 import br.com.senac.school.model.Usuario;
 import br.com.senac.school.service.MessageService;
 import br.com.senac.school.session.Session;
+import br.com.senac.school.util.Alert;
+import br.com.senac.school.util.LoadViews;
+import br.com.senac.school.util.VIEWS_NAMES;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 
 public class SendEmailController implements Initializable {
 
@@ -29,7 +28,7 @@ public class SendEmailController implements Initializable {
 	private JFXTextField fieldToken;
 
 	@FXML
-	private AnchorPane root;
+	private StackPane root;
 
 	private EmailSender service;
 	public static Usuario usuario;
@@ -49,7 +48,7 @@ public class SendEmailController implements Initializable {
 	private void sendEmailResendToken() {
 		service = new GmailService();
 		token = Token.generate();
-		service.send(MessageService.resendToken(usuario.getEmail(), token));
+		service.send(MessageService.registration(usuario.getEmail(), token));
 	}
 
 	@FXML
@@ -62,27 +61,26 @@ public class SendEmailController implements Initializable {
 			loadDashboard();
 
 		} else {
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Token inválido");
-			alert.setHeaderText("Token inválido");
-			alert.setContentText("O token está inválido, por favor insira o token enviado para o seu e-mail para concluir o seu cadastro.");
-			alert.show();
+			Alert.show("Token inválido",
+					"O token está inválido, por favor insira o token enviado para o seu e-mail para concluir o seu cadastro.",
+					root);
+
 		}
 	}
 
 	@FXML
-	void btnResendToken(ActionEvent event) {
+	void btnBackRegistration(MouseEvent event) {
+		new LoadViews().load(root, VIEWS_NAMES.USER_REGISTER);
+	}
+
+	@FXML
+	void btnResendToken(MouseEvent event) {
+		Alert.show("Token enviado","Enviamos novamente o token, por favor verifique o seu e-mail.", root);
 		sendEmailResendToken();
 	}
 
 	private void loadDashboard() {
-
-		try {
-			Parent pane = FXMLLoader.load(getClass().getResource("/br/com/senac/school/view/Dashboard.fxml"));
-			root.getChildren().clear();
-			root.getChildren().add(pane);
-		} catch (IOException e) {
-		}
+		new LoadViews().load(root, VIEWS_NAMES.DASHBOARD);
 	}
 
 	private void persistUsuario(Usuario usuario) {

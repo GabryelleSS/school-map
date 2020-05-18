@@ -1,7 +1,13 @@
 package br.com.senac.school.controller;
 
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
+
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.base.IFXValidatableControl;
+import com.jfoenix.validation.RequiredFieldValidator;
 
 import br.com.senac.school.dao.UsuarioDao;
 import br.com.senac.school.dao.UsuarioDaoImpl;
@@ -13,18 +19,21 @@ import br.com.senac.school.util.Alert;
 import br.com.senac.school.util.Encrypt;
 import br.com.senac.school.util.LoadViews;
 import br.com.senac.school.util.VIEWS_NAMES;
+import br.com.senac.school.util.Validator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 
-public class ForgotPasswordController {
+public class ForgotPasswordController implements Initializable {
 
 	@FXML
 	private StackPane root1;
-	
+
 	@FXML
 	private StackPane root2;
-	
+
 	@FXML
 	private StackPane root3;
 
@@ -44,63 +53,102 @@ public class ForgotPasswordController {
 	private static String email;
 	private UsuarioDao dao;
 
+	private RequiredFieldValidator validator;
+
+	private static int validateFields = 1;
+
 	@FXML
 	void btnConfirmResetToken(ActionEvent event) {
-		String password = fieldPassword.getText();
-		String confirm = fieldConfirmPassword.getText();
 
-		if (password.equals(confirm)) {
-			resetPasswod(email, password);
+		boolean pass = fieldPassword.getText().trim().isEmpty();
+		boolean conf = fieldConfirmPassword.getText().trim().isEmpty();
 
-			email = null;
-			loadView(VIEWS_NAMES.LOGIN,root3);
+		if (pass || conf) {
+			alertFieldRequired(root3);
 
-			Alert.show("Senha alterada", "Sua senha foi alterada com sucesso", root3);
+		} else if(!fieldPassword.getText().equals(fieldConfirmPassword.getText())) {
+			
+			Alert.show("Senha incorreta", "Ops! As senhas estão diferentes!", root3);
+			
+		
+		}else {
+			String password = fieldPassword.getText();
+			String confirm = fieldConfirmPassword.getText();
 
+			if (password.equals(confirm)) {
+
+				resetPasswod(email, password);
+
+				email = null;
+				validateFields = 1;
+				loadView(VIEWS_NAMES.LOGIN, root3);
+
+				Alert.show("Senha alterada", "Sua senha foi alterada com sucesso", root3);
+
+			}
 		}
 	}
 
 	@FXML
 	void btnSend(ActionEvent event) {
-		email = fieldEmail.getText();
 
-		if (!email.isEmpty() && verifyEmail(email)) {
-			sendEmailReset(email);
-			loadView(VIEWS_NAMES.FORGOT_PASSWORD_TOKEN, root1);
-
+		if (checkRequiredFields(List.of(fieldEmail))) {
+			alertFieldRequired(root1);
 		} else {
 
-			Alert.show("E-mail não cadastrado",
-					"Parece que você ainda não possui um cadastro conosco faça já, é simples e rapido.", root1);
-		}
+			email = fieldEmail.getText();
 
+			if (verifyEmail(email)) {
+				validateFields++;
+				sendEmailReset(email);
+				loadView(VIEWS_NAMES.FORGOT_PASSWORD_TOKEN, root1);
+
+			} else {
+				Alert.show("E-mail não cadastrado",
+						"Parece que você ainda não possui um cadastro conosco faça já, é simples e rapido.", root1);
+			}
+		}
+	}
+
+	private void alertFieldRequired(StackPane pane) {
+		Alert.show("Campos obrigatórios", "Ops! Você precisa preencher os campos obrigatórios.", pane);
 	}
 
 	@FXML
 	void btnConfirmToken(ActionEvent event) {
-		String tokenUser = fieldToken.getText();
-		String tokenEmail = String.valueOf(token);
 
-		if (tokenEmail.equals(tokenUser)) {
-			loadView(VIEWS_NAMES.FORGOT_PASSWORD_RESET_TOKEN,root2);
+		if (checkRequiredFields(List.of(fieldToken))) {
+			alertFieldRequired(root2);
 		} else {
-			Alert.show("Token inválido", "O token está inválido, por favor insira o token enviado para o seu e-mail.",
-					root2);
+			String tokenUser = fieldToken.getText();
+			String tokenEmail = String.valueOf(token);
 
+			if (tokenEmail.equals(tokenUser)) {
+				validateFields++;
+				loadView(VIEWS_NAMES.FORGOT_PASSWORD_RESET_TOKEN, root2);
+			} else {
+				Alert.show("Token inválido",
+						"O token está inválido, por favor insira o token enviado para o seu e-mail.", root2);
+
+			}
 		}
 	}
 
 	@FXML
-	public void btnBackLoginRoot1(ActionEvent event) {
+	public void btnBackLoginRoot1(MouseEvent event) {
 		loadView(VIEWS_NAMES.LOGIN, root1);
 	}
+
 	@FXML
-	public void btnBackLoginRoot2(ActionEvent event) {
+	public void btnBackLoginRoot2(MouseEvent event) {
+		validateFields--;
 		loadView(VIEWS_NAMES.FORGOT_PASSWORD, root2);
 	}
+
 	@FXML
-	public void btnBackLoginRoot3(ActionEvent event) {
-		loadView(VIEWS_NAMES.FORGOT_PASSWORD, root3);
+	public void btnBackLoginRoot3(MouseEvent event) {
+		validateFields--;
+		loadView(VIEWS_NAMES.FORGOT_PASSWORD_TOKEN, root3);
 	}
 
 	public void loadView(VIEWS_NAMES view, StackPane pane) {
@@ -126,5 +174,45 @@ public class ForgotPasswordController {
 		token = Token.generate();
 		EmailSender service = new GmailService();
 		service.send(MessageService.resetPassword(email, token));
+	}
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+
+		switch (validateFields) {
+		case 1:
+			fieldRequired(List.of(fieldEmail));
+			break;
+
+		case 2:
+			fieldRequired(List.of(fieldToken));
+			break;
+
+		case 3:
+			fieldRequired(List.of(fieldConfirmPassword, fieldPassword));
+			break;
+		}
+
+	}
+
+	private void fieldRequired(List<IFXValidatableControl> list) {
+		validator = new RequiredFieldValidator();
+		validator.setMessage("Campo obrigatório!");
+
+		Validator.validate(validator, list);
+	}
+
+	private boolean checkRequiredFields(List<JFXTextField> list) {
+		boolean validate;
+
+		for (JFXTextField var : list) {
+
+			validate = var.getText().trim().isEmpty();
+
+			if (validate) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

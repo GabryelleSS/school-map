@@ -20,7 +20,7 @@
             </Label>
             <ImageView fitHeight="400.0" fitWidth="450.0" layoutX="643.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../assets/image/quitting_time_dm8t.png" />
+                  <Image url="@../../assets/image/home.png" />
                </image>
             </ImageView>
             <Label layoutX="108.0" layoutY="273.0" text="It is a long established fact that a reader will be distracted by the a page">

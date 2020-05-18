@@ -56,7 +56,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="70.0" prefWidth="664.0">
                            <children>
-                              <JFXTextField fx:id="fieldStreet" focusColor="#1890ff" labelFloat="true" promptText="Rua" styleClass="user-register-field-address">
+                              <JFXTextField fx:id="fieldStreet" focusColor="#1890ff" labelFloat="true" promptText="Rua*" styleClass="user-register-field-address">
                                  <opaqueInsets>
                                     <Insets right="20.0" />
                                  </opaqueInsets>
@@ -67,7 +67,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </JFXTextField>
-                              <JFXTextField fx:id="fieldCep" focusColor="#1890ff" labelFloat="true" onKeyPressed="#btnConsultarCep" prefHeight="25.0" prefWidth="210.0" promptText="CEP">
+                              <JFXTextField fx:id="fieldCep" focusColor="#1890ff" labelFloat="true" prefHeight="25.0" prefWidth="210.0" promptText="CEP*">
                                  <opaqueInsets>
                                     <Insets right="20.0" />
                                  </opaqueInsets>
@@ -82,7 +82,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0">
                            <children>
-                              <JFXTextField fx:id="fieldNumber" focusColor="#1890ff" labelFloat="true" promptText="Número" styleClass="user-register-field-address">
+                              <JFXTextField fx:id="fieldNumber" focusColor="#1890ff" labelFloat="true" promptText="Número*" styleClass="user-register-field-address">
                                  <HBox.margin>
                                     <Insets right="30.0" />
                                  </HBox.margin>
@@ -90,7 +90,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </JFXTextField>
-                              <JFXTextField fx:id="filedDistrict" focusColor="#1890ff" labelFloat="true" promptText="Bairro" styleClass="user-register-field-address">
+                              <JFXTextField fx:id="filedDistrict" focusColor="#1890ff" labelFloat="true" promptText="Bairro*" styleClass="user-register-field-address">
                                  <HBox.margin>
                                     <Insets left="15.0" />
                                  </HBox.margin>
@@ -110,7 +110,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </JFXTextField>
-                              <JFXTextField fx:id="fieldCity" focusColor="#1890ff" labelFloat="true" promptText="Cidade" styleClass="user-register-field-address">
+                              <JFXTextField fx:id="fieldCity" focusColor="#1890ff" labelFloat="true" promptText="Cidade*" styleClass="user-register-field-address">
                                  <HBox.margin>
                                     <Insets left="15.0" />
                                  </HBox.margin>
@@ -122,7 +122,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0">
                            <children>
-                              <JFXTextField fx:id="fieldState" focusColor="#1890ff" labelFloat="true" promptText="Estado" styleClass="user-register-field-address">
+                              <JFXTextField fx:id="fieldState" focusColor="#1890ff" labelFloat="true" promptText="Estado*" styleClass="user-register-field-address">
                                  <HBox.margin>
                                     <Insets right="30.0" />
                                  </HBox.margin>
@@ -130,7 +130,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </JFXTextField>
-                              <JFXTextField fx:id="fieldUF" focusColor="#1890ff" labelFloat="true" promptText="UF" styleClass="user-register-field-address">
+                              <JFXTextField fx:id="fieldUF" focusColor="#1890ff" labelFloat="true" promptText="UF*" styleClass="user-register-field-address">
                                  <HBox.margin>
                                     <Insets left="15.0" />
                                  </HBox.margin>
@@ -174,32 +174,32 @@
                      <children>
                         <VBox prefHeight="200.0" prefWidth="350.0">
                            <children>
-                              <JFXTextField fx:id="fieldFirstName" focusColor="#1890ff" labelFloat="true" prefHeight="30.0" prefWidth="290.0" promptText="Nome" styleClass="user-register-field">
+                              <JFXTextField fx:id="fieldFirstName" focusColor="#1890ff" labelFloat="true" prefHeight="30.0" prefWidth="290.0" promptText="Nome*" styleClass="user-register-field">
                                  <VBox.margin>
                                     <Insets bottom="40.0" right="5.0" top="10.0" />
                                  </VBox.margin>
                               </JFXTextField>
-                              <JFXTextField fx:id="fieldLastName" focusColor="#1890ff" labelFloat="true" promptText="Sobrenome" styleClass="user-register-field">
+                              <JFXTextField fx:id="fieldLastName" focusColor="#1890ff" labelFloat="true" promptText="Sobrenome*" styleClass="user-register-field">
                                  <VBox.margin>
                                     <Insets bottom="40.0" right="5.0" />
                                  </VBox.margin>
                               </JFXTextField>
-                              <JFXTextField fx:id="fieldEmail" focusColor="#1890ff" labelFloat="true" promptText="E-mail" styleClass="user-register-field">
+                              <JFXTextField fx:id="fieldEmail" focusColor="#1890ff" labelFloat="true" promptText="E-mail*" styleClass="user-register-field">
                                  <VBox.margin>
                                     <Insets bottom="40.0" right="5.0" />
                                  </VBox.margin>
                               </JFXTextField>
-                              <JFXPasswordField fx:id="fieldPassword" focusColor="#1890ff" labelFloat="true" promptText="Senha" styleClass="user-register-field-address">
+                              <JFXPasswordField fx:id="fieldPassword" focusColor="#1890ff" labelFloat="true" promptText="Senha*" styleClass="user-register-field-address">
                                  <VBox.margin>
                                     <Insets bottom="40.0" right="5.0" />
                                  </VBox.margin>
                               </JFXPasswordField>
-                              <JFXPasswordField fx:id="fieldConfirmPassword" focusColor="#1890ff" labelFloat="true" promptText="Confirme a sua senha" styleClass="user-register-field-address">
+                              <JFXPasswordField fx:id="fieldConfirmPassword" focusColor="#1890ff" labelFloat="true" promptText="Confirme a sua senha*" styleClass="user-register-field-address">
                                  <VBox.margin>
                                     <Insets bottom="40.0" right="5.0" />
                                  </VBox.margin>
                               </JFXPasswordField>
-                              <JFXTextField fx:id="fieldCPF" focusColor="#1890ff" labelFloat="true" promptText="CPF" styleClass="user-register-field">
+                              <JFXTextField fx:id="fieldCPF" focusColor="#1890ff" labelFloat="true" promptText="CPF*" styleClass="user-register-field">
                                  <VBox.margin>
                                     <Insets right="5.0" />
                                  </VBox.margin>
@@ -214,7 +214,7 @@
                               <Insets left="5.0" />
                            </HBox.margin>
                            <children>
-                              <JFXDatePicker fx:id="fieldDateBirth" defaultColor="#1890ff" promptText="DD/MM/YYYY" styleClass="user-register-field-date-birth">
+                              <JFXDatePicker fx:id="fieldDateBirth" defaultColor="#1890ff" promptText="Ex: 06/09/1990 *" styleClass="user-register-field-date-birth">
                                  <VBox.margin>
                                     <Insets bottom="30.0" top="10.0" />
                                  </VBox.margin></JFXDatePicker>
@@ -266,17 +266,17 @@
                                     <Insets bottom="50.0" right="5.0" />
                                  </VBox.margin>
                               </HBox>
-                              <JFXComboBox fx:id="fieldMaritalStatus" focusColor="#1890ff" labelFloat="true" prefHeight="38.0" prefWidth="320.0" promptText="Estado Civil">
+                              <JFXComboBox fx:id="fieldMaritalStatus" focusColor="#1890ff" labelFloat="true" prefHeight="38.0" prefWidth="320.0" promptText="Estado Civil*">
                                  <VBox.margin>
                                     <Insets bottom="40.0" right="5.0" />
                                  </VBox.margin>
                               </JFXComboBox>
-                              <JFXTextField fx:id="fieldCell" focusColor="#1890ff" labelFloat="true" promptText="Celular com DDD" styleClass="user-register-field-address">
+                              <JFXTextField fx:id="fieldCell" focusColor="#1890ff" labelFloat="true" promptText="Celular com DDD*" styleClass="user-register-field-address">
                                  <VBox.margin>
                                     <Insets bottom="40.0" right="5.0" />
                                  </VBox.margin>
                               </JFXTextField>
-                              <JFXTextField fx:id="fieldTephone" focusColor="#1890ff" labelFloat="true" promptText="Telefone com DDD" styleClass="user-register-field-address">
+                              <JFXTextField fx:id="fieldTephone" focusColor="#1890ff" labelFloat="true" promptText="Telefone com DDD*" styleClass="user-register-field-address">
                                  <VBox.margin>
                                     <Insets bottom="20.0" right="5.0" />
                                  </VBox.margin>
@@ -304,19 +304,7 @@
                               </Label>
                            </children>
                         </VBox>
-                        <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="350.0">
-                           <children>
-                              <JFXButton fx:id="btnBackLogin" onAction="#backLogin" prefHeight="49.0" prefWidth="37.0" text=" ">
-                                 <graphic>
-                                    <ImageView fitHeight="38.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../assets/image/arrow-back.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </JFXButton>
-                           </children>
-                        </VBox>
+                        <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="350.0" />
                      </children>
                      <padding>
                         <Insets left="30.0" right="30.0" top="30.0" />
@@ -334,6 +322,11 @@
                         <String fx:value="user-register-btn" />
                      </styleClass>
                   </JFXButton>
+                  <Label layoutX="29.0" layoutY="529.0" text="Campos obrigatórios (*)">
+                     <font>
+                        <Font name="Ebrima" size="14.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </children>

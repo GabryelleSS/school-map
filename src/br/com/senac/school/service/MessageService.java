@@ -16,17 +16,8 @@ public class MessageService {
 		return new EmailMessage().generate(receiver, token, subject, body);
 	}
 
-	public static EmailMessage resendToken(String receiver, int token) {
-
-		String subject = "subjectResendToken";
-		String body = "resendToken";
-
-		return new EmailMessage().generate(receiver, token, subject, body);
-
-	}
-
 	public static EmailMessage resetPassword(String receiver, int token) {
-		
+
 		String subject = "subjectResetPassword";
 		String body = "resetPassword";
 

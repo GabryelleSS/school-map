@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import br.com.senac.school.util.LoadViews;
+import br.com.senac.school.util.VIEWS_NAMES;
 import javafx.beans.value.ChangeListener;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -72,12 +74,7 @@ public class SplashController implements Initializable {
 	}
 
 	private void loadHome() {
-		try {
-			Parent parentContent = FXMLLoader.load(getClass().getResource(("/br/com/senac/school/view/Home.fxml")));
-			root.getChildren().setAll(parentContent);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		new LoadViews().load(root, VIEWS_NAMES.HOME);
 	}
 
 }
