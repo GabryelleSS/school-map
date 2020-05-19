@@ -9,9 +9,14 @@ public enum VIEWS_NAMES {
 	USER_REGISTER("/br/com/senac/school/view/UserRegister.fxml"),
 	SEND_EMAIL("/br/com/senac/school/view/SendEmail.fxml"),
 	HOME("/br/com/senac/school/view/Home.fxml"),
+	MENU_HAMBURGUER("/br/com/senac/school/view/Menu.fxml"),
+	SPLASH("/br/com/senac/school/view/Splash.fxml"),
+	ITEM_SELECTED("/br/com/senac/school/view/itemDashboardSelected.fxml"),
 	
 	EDIT_PROFILE("/br/com/senac/school/view/EditProfile.fxml"),
 	EDIT_PROFILE_ENDERECO("/br/com/senac/school/view/EditProfileEndereco.fxml"),
+	ITEM_DASHBOARD1("/br/com/senac/school/view/ItemDashboard1.fxml"),
+	ITEM_DASHBOARD2("/br/com/senac/school/view/ItemDashboard2.fxml"),
 	DASHBOARD("/br/com/senac/school/view/Dashboard.fxml");
 	private String name;
 

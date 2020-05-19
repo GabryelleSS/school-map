@@ -2,6 +2,7 @@ package br.com.senac.school.application;
 
 import java.io.IOException;
 
+import br.com.senac.school.util.VIEWS_NAMES;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,11 +15,12 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/com/senac/school/view/Splash.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(VIEWS_NAMES.SPLASH.getName()));
 			Parent pane = loader.load();
 			Scene mainScene = new Scene(pane);
 			primaryStage.setScene(mainScene);
 			primaryStage.setTitle("School Map");
+			primaryStage.setResizable(false);
 			primaryStage.getIcons().add(new Image("/br/com/senac/assets/image/user2.png"));
 			primaryStage.show();
 		} catch (IOException e) {

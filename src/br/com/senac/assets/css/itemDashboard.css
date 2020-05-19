@@ -1,0 +1,38 @@
+.item-container{
+	-fx-background-color: white;
+}
+
+.item-card{
+	-fx-background-color:white;
+	-fx-background-radius:20px;
+	-fx-border-radius:20px;
+	-fx-pref-width:400;
+	-fx-pref-height:300;
+}
+
+.item-card-selected{
+	-fx-background-color:white;
+	-fx-background-radius:20px;
+	-fx-border-radius:20px;
+	-fx-pref-width:600;
+	-fx-pref-height:350;
+}
+
+.item-card-selected-header{
+	-fx-background-color: #4087FD;
+	 -fx-background-radius: 10px 10 0 0;
+	-fx-pref-width:400;
+	-fx-pref-height:80;
+	
+}
+.item-card-header{
+	-fx-background-color: #4087FD;
+	 -fx-background-radius: 10px 10 0 0;
+	-fx-pref-width:400;
+	-fx-pref-height:77;
+	
+}
+
+.item-label{
+	-fx-text-fill: #797979;
+}

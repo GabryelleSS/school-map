@@ -1,97 +1,165 @@
 package br.com.senac.school.controller;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 
+import br.com.senac.school.dao.EscolaDao;
+import br.com.senac.school.dao.EscolaDaoImpl;
+import br.com.senac.school.model.Escola;
+import br.com.senac.school.session.Session;
+import br.com.senac.school.util.DashboardPaneContent;
+import br.com.senac.school.util.LoadViews;
 import br.com.senac.school.util.VIEWS_NAMES;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
-public class DashboardController implements Initializable, MenuCallback {
+public class DashboardController implements Initializable {
 
 	@FXML
-	private AnchorPane root;
-	@FXML
-	private VBox content;
+	private JFXHamburger menuHamburguer;
 
 	@FXML
 	private JFXDrawer drawer;
 
 	@FXML
-	private JFXHamburger menuHamburguer;
+	private VBox items;
+
+	@FXML
+	private StackPane content;
+
+	@FXML
+	private StackPane root;
+
+	private ObservableList<Escola> listOfSchools;
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		menuHamburger();
-		paneMenu();
+		loadSchools();
+		DashboardPaneContent.pane = content;
+		DashboardPaneContent.root = root;
 	}
 
-	private void paneMenu() {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/com/senac/school/view/Menu.fxml"));
-			VBox box = loader.load();
-			MenuController controller = loader.getController();
-			controller.setCallback(this);
-			drawer.setSidePane(box);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	private void loadSchools() {
+		ExecutorService executorService = Executors.newCachedThreadPool();
+		executorService.submit(searchData);
 
-	private void menuHamburger() {
-		HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(menuHamburguer);
+		searchData.setOnSucceeded((event) -> {
 
-		transition.setRate(-1);
+			listOfSchools = FXCollections.observableArrayList(searchData.getValue());
+			int size = listOfSchools.size();
 
-		menuHamburguer.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
-			transition.setRate(transition.getRate() * -1);
-			transition.play();
+			try {
+				boolean itsPair = false;
 
-			if (drawer.isOpened()) {
-				drawer.close();
-			} else {
-				drawer.open();
+				if (size % 2 == 0) {
+					itsPair = true;
+				}
+
+				for (int i = 0; i < size; i += 2) {
+
+					if (!itsPair) {
+
+						if (i == size - 1) {
+							FXMLLoader loader = new FXMLLoader(
+									getClass().getResource(VIEWS_NAMES.ITEM_DASHBOARD1.getName()));
+
+							ItemDashboardController controller = new ItemDashboardController();
+							loader.setController(controller);
+							items.getChildren().add(loader.load());
+							controller.setTaskView1(listOfSchools.get(i));
+						} else {
+							FXMLLoader loader = loadPane1();
+
+							ItemDashboardController controller = new ItemDashboardController();
+							loader.setController(controller);
+							items.getChildren().add(loader.load());
+
+							if (i == 0) {
+								controller.setTaskView2(listOfSchools.get(i), listOfSchools.get(i + 1));
+
+							} else {
+
+								controller.setTaskView2(listOfSchools.get(i), listOfSchools.get(i + 1));
+							}
+						}
+
+					} else {
+						FXMLLoader loader = loadPane1();
+
+						ItemDashboardController controller = new ItemDashboardController();
+						loader.setController(controller);
+						items.getChildren().add(loader.load());
+						if (i == 0) {
+							controller.setTaskView2(listOfSchools.get(i), listOfSchools.get(i + 1));
+
+						} else {
+
+							controller.setTaskView2(listOfSchools.get(i), listOfSchools.get(i + 1));
+						}
+					}
+				}
+
+			} catch (Exception e) {
+				throw new RuntimeException(e);
 			}
 		});
+
 	}
 
-	@Override
-	public void updateViewContent(VIEWS_NAMES view) {
-		try {
-			Parent pane = FXMLLoader.load(getClass().getResource(view.getName()));
-
-			content.getChildren().clear();
-			content.getChildren().add(pane);
-
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+	private FXMLLoader loadPane1() {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(VIEWS_NAMES.ITEM_DASHBOARD2.getName()));
+		return loader;
 	}
 
-	@Override
-	public void updateView(VIEWS_NAMES view) {
-		try {
-			Parent pane = FXMLLoader.load(getClass().getResource(view.getName()));
+	private final Task<List<Escola>> searchData = new Task<List<Escola>>() {
 
-			root.getChildren().clear();
-			root.getChildren().add(pane);
+		@Override
+		protected List<Escola> call() throws Exception {
 
-		} catch (Exception e) {
-			System.out.println(e);
+			EscolaDao dao = new EscolaDaoImpl();
+			List<Escola> list = dao.findByBairro("grajau");
+			return list;
 		}
+
+	};
+
+	@FXML
+	void configurations(MouseEvent event) {
+
 	}
 
 	@FXML
-	void labelHome(MouseEvent event) {
-		updateView(VIEWS_NAMES.DASHBOARD);
+	void editProfile(MouseEvent event) {
+		new LoadViews().load(content, VIEWS_NAMES.EDIT_PROFILE);
+
 	}
+
+	@FXML
+	void home(MouseEvent event) {
+		new LoadViews().load(root, VIEWS_NAMES.DASHBOARD);
+
+	}
+
+	@FXML
+	void logout(MouseEvent event) {
+		Session.removeUsuario();
+		new LoadViews().load(root, VIEWS_NAMES.LOGIN);
+	}
+
 }

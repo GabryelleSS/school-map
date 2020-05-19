@@ -2,7 +2,7 @@ package br.com.senac.school.model;
 
 public class Escola {
 
-	private Long id;
+	private int id;
 	private String tipo;
 	private String nome;
 	private Boolean situacao;
@@ -17,116 +17,68 @@ public class Escola {
 	private String latitude;
 	private String longitude;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
+	public Escola(int id,String tipo, String nome, Boolean situacao, String telefone1, String telefone2, String cod_distrito,
+			String distrito, String endereco, String bairro, String cep, Integer numero) {
 		this.id = id;
+		this.tipo = tipo;
+		this.nome = nome;
+		this.situacao = situacao;
+		this.telefone1 = telefone1;
+		this.telefone2 = telefone2;
+		this.cod_distrito = cod_distrito;
+		this.distrito = distrito;
+		this.endereco = endereco;
+		this.bairro = bairro;
+		this.cep = cep;
+		this.numero = numero;
+	}
+	
+	public int getId() {
+		return id;
 	}
 
 	public String getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-
 	public String getNome() {
 		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
 	}
 
 	public Boolean getSituacao() {
 		return situacao;
 	}
 
-	public void setSituacao(Boolean situacao) {
-		this.situacao = situacao;
-	}
-
 	public String getTelefone1() {
 		return telefone1;
-	}
-
-	public void setTelefone1(String telefone1) {
-		this.telefone1 = telefone1;
 	}
 
 	public String getTelefone2() {
 		return telefone2;
 	}
 
-	public void setTelefone2(String telefone2) {
-		this.telefone2 = telefone2;
-	}
-
 	public String getCod_distrito() {
 		return cod_distrito;
-	}
-
-	public void setCod_distrito(String cod_distrito) {
-		this.cod_distrito = cod_distrito;
 	}
 
 	public String getDistrito() {
 		return distrito;
 	}
 
-	public void setDistrito(String distrito) {
-		this.distrito = distrito;
-	}
-
 	public String getEndereco() {
 		return endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
 	}
 
 	public String getBairro() {
 		return bairro;
 	}
 
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
-	}
-
 	public String getCep() {
 		return cep;
 	}
 
-	public void setCep(String cep) {
-		this.cep = cep;
-	}
-
 	public Integer getNumero() {
 		return numero;
-	}
-
-	public void setNumero(Integer numero) {
-		this.numero = numero;
-	}
-
-	public String getLatitude() {
-		return latitude;
-	}
-
-	public void setLatitude(String latitude) {
-		this.latitude = latitude;
-	}
-
-	public String getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(String longitude) {
-		this.longitude = longitude;
 	}
 
 }
