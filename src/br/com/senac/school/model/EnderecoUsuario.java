@@ -10,12 +10,14 @@ public class EnderecoUsuario {
 	private String cidade;
 	private String estado;
 	private String uf;
+	private double latitude;
+	private double longitude;
 
 	public EnderecoUsuario() {
 	}
 
 	public EnderecoUsuario(String endereco, String bairro, String complemento, Integer numero, String cep,
-			String cidade, String estado, String uf) {
+			String cidade, String estado, String uf, double latitude, double longitude) {
 		this.endereco = endereco;
 		this.bairro = bairro;
 		this.complemento = complemento;
@@ -24,6 +26,8 @@ public class EnderecoUsuario {
 		this.cidade = cidade;
 		this.estado = estado;
 		this.uf = uf;
+		this.latitude = latitude;
+		this.longitude = longitude;
 
 	}
 
@@ -97,6 +101,22 @@ public class EnderecoUsuario {
 
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
+	}
+
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
 	}
 
 }

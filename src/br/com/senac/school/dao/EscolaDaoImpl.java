@@ -58,23 +58,6 @@ public class EscolaDaoImpl implements EscolaDao {
 	}
 
 	@Override
-	public void openConnection() {
-		conn = ConnectionFactory.getConnection();
-
-	}
-
-	@Override
-	public void closeConnection() {
-		if (conn != null) {
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
-	@Override
 	public Escola findById(int id) {
 
 		Escola escola = null;
@@ -115,5 +98,70 @@ public class EscolaDaoImpl implements EscolaDao {
 		}
 		return escola;
 
+	}
+
+	@Override
+	public List<Escola> findByLatElong(double latitude, double longitude) {
+		List<Escola> list = new ArrayList<>();
+		
+		final int LIMITE = 30;
+
+		String sql = "CALL EscolasPorLatELong(?,?,?)";
+
+		try {
+			openConnection();
+			try (PreparedStatement ps = conn.prepareStatement(sql)) {
+				ps.setDouble(1, latitude);
+				ps.setDouble(2, longitude);
+				ps.setDouble(3, LIMITE);
+				ps.execute();
+
+				try (ResultSet rs = ps.getResultSet()) {
+					while (rs.next()) {
+						String tipo = rs.getString("tipo");
+						String nome = rs.getString("nome");
+						String telefone1 = rs.getString("telefone1");
+						String telefone2 = rs.getString("telefone2");
+						String cod_distrito = rs.getString("cod_distrito");
+						String distrito = rs.getString("distrito");
+						String endereco = rs.getString("endereco");
+						String bairro_esc = rs.getString("bairro");
+						boolean situacao = rs.getBoolean("ativa");
+						String cep = rs.getString("cep");
+						int numero = rs.getInt("numero");
+						int id = rs.getInt("id");
+
+						Escola escola = new Escola(id, tipo, nome, situacao, telefone1, telefone2, cod_distrito,
+								distrito, endereco, bairro_esc, cep, numero);
+
+						list.add(escola);
+					}
+				}
+			}
+
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		} finally {
+			closeConnection();
+		}
+		return list;
+
+	}
+
+	@Override
+	public void openConnection() {
+		conn = ConnectionFactory.getConnection();
+
+	}
+
+	@Override
+	public void closeConnection() {
+		if (conn != null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }

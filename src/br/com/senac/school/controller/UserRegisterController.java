@@ -27,6 +27,8 @@ import br.com.senac.school.util.LoadViews;
 import br.com.senac.school.util.MaskFX;
 import br.com.senac.school.util.VIEWS_NAMES;
 import br.com.senac.school.util.Validator;
+import consultaCep.Api;
+import consultaCep.Endereco;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -113,6 +115,9 @@ public class UserRegisterController implements Initializable {
 	@FXML
 	private JFXTextField fieldTephone;
 
+	private double latitude;
+	private double longitude;
+
 	@FXML
 	private JFXButton btnBackLogin;
 
@@ -140,9 +145,9 @@ public class UserRegisterController implements Initializable {
 		validator = new RequiredFieldValidator();
 		validator.setMessage("Campo obrigatório!");
 
-		Validator.validate(validator, fieldCell, fieldCep, fieldCity, fieldConfirmPassword, fieldCPF,
-				fieldDateBirth, fieldEmail, fieldFirstName, fieldLastName, fieldMaritalStatus, fieldNumber,
-				fieldPassword, fieldState, fieldStreet, fieldTephone, fieldUF, filedDistrict);
+		Validator.validate(validator, fieldCell, fieldCep, fieldCity, fieldConfirmPassword, fieldCPF, fieldDateBirth,
+				fieldEmail, fieldFirstName, fieldLastName, fieldMaritalStatus, fieldNumber, fieldPassword, fieldState,
+				fieldStreet, fieldTephone, fieldUF, filedDistrict);
 	}
 
 	private boolean checkRequiredFields() {
@@ -219,7 +224,7 @@ public class UserRegisterController implements Initializable {
 
 				btnNextField.setText("Cadastrar");
 				nextFields = true;
-				backHome  = false;
+				backHome = false;
 			}
 		}
 	}
@@ -232,7 +237,7 @@ public class UserRegisterController implements Initializable {
 
 		if (backHome) {
 			new LoadViews().load(root, VIEWS_NAMES.HOME);
-			
+
 		} else if (btnText == "Cadastrar") {
 			btnNextField.setText("Próximo");
 			nextFields = false;
@@ -253,10 +258,16 @@ public class UserRegisterController implements Initializable {
 
 				Optional<ViaCEPEndereco> consulta = ViaCEPService.consulta(newValue);
 
+				 String[] cep = newValue.split("-");
+
+				 Endereco latELong = Api.buscaPorCep(cep[0].concat(cep[1]));
+				 
+				  latitude = latELong.getLatitude();
+				  longitude = latELong.getLongitude();
+				 
 				if (consulta.isPresent()) {
 					ViaCEPEndereco endereco = consulta.get();
 					this.fieldStreet.setText(endereco.getLogradouro());
-					this.fieldComplement.setText(endereco.getComplemento());
 					this.filedDistrict.setText(endereco.getBairro());
 					this.fieldUF.setText(endereco.getUf());
 					this.fieldState.setText(endereco.getLocalidade());
@@ -289,9 +300,9 @@ public class UserRegisterController implements Initializable {
 			genero = Genero.SEM_GENERO.toString();
 
 		}
-		
+
 		String complement = "";
-		if(!fieldComplement.getText().trim().isEmpty()) {
+		if (!fieldComplement.getText().trim().isEmpty()) {
 			complement = fieldComplement.getText();
 		}
 
@@ -305,7 +316,7 @@ public class UserRegisterController implements Initializable {
 		String uf = fieldUF.getText();
 
 		return UsuarioFactory.generate(nome.concat(" ").concat(sobrenome), cpf, dataNascimento, telefone, email, senha,
-				celular, estadoCivil, genero, rua, cep, numero, bairro, complemento, cidade, estado, uf);
+				celular, estadoCivil, genero, rua, cep, numero, bairro, complemento, cidade, estado, uf,latitude,longitude);
 	}
 
 	private void maskFields() {

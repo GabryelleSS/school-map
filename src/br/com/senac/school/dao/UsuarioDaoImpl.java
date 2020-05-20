@@ -55,8 +55,8 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
 		EnderecoUsuario endereco = usuario.getEndereco();
 
-		String sql = "INSERT INTO endereco_usu (bairro,cep,cidade,complemento,endereco,estado,numero,uf)"
-				+ "VALUES (?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO endereco_usu (bairro,cep,cidade,complemento,endereco,estado,numero,uf,latitude,longitude)"
+				+ "VALUES (?,?,?,?,?,?,?,?,?,?)";
 
 		try {
 			openConnection();
@@ -70,6 +70,8 @@ public class UsuarioDaoImpl implements UsuarioDao {
 				ps.setString(6, endereco.getEstado());
 				ps.setString(7, endereco.getNumero().toString());
 				ps.setString(8, endereco.getUf());
+				ps.setDouble(9, endereco.getLatitude());
+				ps.setDouble(10, endereco.getLongitude());
 
 				ps.executeUpdate();
 
@@ -241,9 +243,11 @@ public class UsuarioDaoImpl implements UsuarioDao {
 						String uf = rs.getString("uf");
 						String numero = rs.getString("numero");
 						int id_endereco = rs.getInt("id");
+						double latitude = rs.getDouble("latitude");
+						double longitude = rs.getDouble("longitude");
 
 						EnderecoUsuario endereco = new EnderecoUsuario(endereco_usu, bairro, complemento,
-								Integer.valueOf(numero), cep, cidade, estado, uf);
+								Integer.valueOf(numero), cep, cidade, estado, uf,latitude,longitude);
 
 						endereco.setId(id_endereco);
 

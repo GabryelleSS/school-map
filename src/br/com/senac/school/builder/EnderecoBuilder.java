@@ -12,6 +12,18 @@ public class EnderecoBuilder {
 	private String cidade;
 	private String estado;
 	private String uf;
+	private double latitude;
+	private double longitude;
+
+	public EnderecoBuilder comLatitude(double latitude) {
+		this.latitude = latitude;
+		return this;
+	}
+
+	public EnderecoBuilder comLongitude(double longitude) {
+		this.longitude = longitude;
+		return this;
+	}
 
 	public EnderecoBuilder comEndereco(String endereco) {
 		this.endereco = endereco;
@@ -54,7 +66,7 @@ public class EnderecoBuilder {
 	}
 
 	public EnderecoUsuario gera() {
-		return new EnderecoUsuario(endereco, bairro, complemento, numero, cep, cidade, estado, uf);
+		return new EnderecoUsuario(endereco, bairro, complemento, numero, cep, cidade, estado, uf,latitude,longitude);
 	}
 
 }

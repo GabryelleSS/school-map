@@ -18,6 +18,8 @@ public class UsuarioBuilder {
 	private EnderecoUsuario endereco;
 	private String email;
 	private String senha;
+	
+	
 
 	public UsuarioBuilder comNome(String nome) {
 		this.nome = nome;

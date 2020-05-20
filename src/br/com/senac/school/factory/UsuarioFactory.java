@@ -11,7 +11,7 @@ public class UsuarioFactory {
 
 	public static Usuario generate(String nome, String cpf, LocalDate dataNascimento, String telefone, String email,
 			String senha, String celular, String estadoCivil, String genero, String rua, String cep, String numero,
-			String bairro, String complemento, String cidade, String estado, String uf) {
+			String bairro, String complemento, String cidade, String estado, String uf, double latitude,double longitude) {
 
 		EnderecoBuilder enderecoBuilder = new EnderecoBuilder();
 
@@ -25,6 +25,8 @@ public class UsuarioFactory {
 				.comNumero(numero)
 				.comUf(uf)
 				.comCidade(cidade)
+				.comLatitude(latitude)
+				.comLongitude(longitude)
 				.gera();
 
 		UsuarioBuilder usuarioBuilder = new UsuarioBuilder();

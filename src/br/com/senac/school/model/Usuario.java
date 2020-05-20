@@ -30,8 +30,8 @@ public class Usuario {
 	public Usuario() {
 	}
 
-	public Usuario(String nome, String cpf, String sexo, LocalDate dataNascimento, String estadoCivil,
-			String telefone, String celular, EnderecoUsuario endereco, String email, String senha) {
+	public Usuario(String nome, String cpf, String sexo, LocalDate dataNascimento, String estadoCivil, String telefone,
+			String celular, EnderecoUsuario endereco, String email, String senha) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.sexo = sexo;
@@ -140,5 +140,7 @@ public class Usuario {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
+
+	 
 
 }
