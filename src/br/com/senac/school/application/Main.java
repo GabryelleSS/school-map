@@ -1,13 +1,7 @@
 package br.com.senac.school.application;
 
 import java.io.IOException;
-import java.util.List;
 
-import br.com.senac.school.dao.EscolaDao;
-import br.com.senac.school.dao.EscolaDaoImpl;
-import br.com.senac.school.model.EnderecoUsuario;
-import br.com.senac.school.model.Escola;
-import br.com.senac.school.session.Session;
 import br.com.senac.school.util.VIEWS_NAMES;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

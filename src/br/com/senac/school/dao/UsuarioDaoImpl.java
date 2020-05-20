@@ -93,7 +93,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
 	@Override
 	public void update(Usuario usuario) {
-		String sql = "UPDATE usuario SET (celular,cpf,dataNascimento,email,estadoCivil,nome,senha,sexo,telefone) WHERE id = ?";
+		String sql = "UPDATE usuario SET celular = ?,cpf = ?,dataNascimento = ?,email = ?,estadoCivil = ?,nome = ?,senha = ?,sexo = ?,telefone = ? WHERE id = ?";
 
 		try {
 			openConnection();
@@ -127,7 +127,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
 		EnderecoUsuario endereco = usuario.getEndereco();
 
-		String sql = "UPDATE endereco_usu SET (bairro= ?,cep= ?,cidade= ?,complemento= ?,endereco= ?,estado= ?,numero= ?,uf= ?) where id = ?";
+		String sql = "UPDATE endereco_usu SET bairro = ?,cep = ?,cidade = ?,complemento = ?,endereco = ?,estado = ?,numero = ?,uf = ?,latitude = ?,longitude = ? where id_endereco = ?";
 
 		try {
 			openConnection();
@@ -142,7 +142,10 @@ public class UsuarioDaoImpl implements UsuarioDao {
 				ps.setString(6, endereco.getEstado());
 				ps.setString(7, endereco.getNumero().toString());
 				ps.setString(8, endereco.getUf());
-				ps.setInt(9, endereco.getId());
+				ps.setDouble(9, endereco.getLatitude());
+				ps.setDouble(10, endereco.getLongitude());
+				
+				ps.setInt(11, endereco.getId());
 
 				ps.execute();
 			}
@@ -212,7 +215,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
 		List<Usuario> list = new ArrayList<Usuario>();
 
-		String sql = "SELECT * FROM usuario u INNER JOIN endereco_usu e ON u.endereco_id = e.id WHERE u.email = ?";
+		String sql = "SELECT * FROM usuario u INNER JOIN endereco_usu e ON u.endereco_id = e.id_endereco WHERE u.email = ?";
 
 		try {
 			openConnection();
@@ -242,7 +245,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 						String estado = rs.getString("estado");
 						String uf = rs.getString("uf");
 						String numero = rs.getString("numero");
-						int id_endereco = rs.getInt("id");
+						int id_endereco = rs.getInt("id_endereco");
 						double latitude = rs.getDouble("latitude");
 						double longitude = rs.getDouble("longitude");
 

@@ -72,9 +72,8 @@ public class DashboardController implements Initializable {
 
 			if (searchWithoutReturn) {
 				
-				Alert.show("Nenhuma escola entrada", "Infelizmente não encontramos escolas próximas ao seu endereço,\n"
-						+ "porem listamos algumas escolas que possam ser do seu interesse,\n"
-						+ "você pode realizar buscas pelo nome no campo logo acima.  ", root);
+				Alert.show("Nenhuma escola encontrada", "Infelizmente não encontramos escolas próximas ao seu endereço,\n"
+						+ "porem você pode realizar buscas pelo nome da escola no campo logo acima.", root);
 
 			} else {
 				

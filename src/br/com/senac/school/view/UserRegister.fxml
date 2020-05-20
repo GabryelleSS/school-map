@@ -214,7 +214,7 @@
                               <Insets left="5.0" />
                            </HBox.margin>
                            <children>
-                              <JFXDatePicker fx:id="fieldDateBirth" defaultColor="#1890ff" promptText="Ex: 06/09/1990 *" styleClass="user-register-field-date-birth">
+                              <JFXDatePicker fx:id="fieldDateBirth" defaultColor="#4087fd" promptText="ex: 06/09/1990 *" styleClass="user-register-field-date-birth">
                                  <VBox.margin>
                                     <Insets bottom="30.0" top="10.0" />
                                  </VBox.margin></JFXDatePicker>

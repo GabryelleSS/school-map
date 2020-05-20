@@ -70,6 +70,8 @@ public class LoginController implements Initializable {
 				if (verify) {
 					Session.setUsuario(list.get(0));
 					loadDashboard();
+				}else {
+					Alert.show("Senha inválida", "Ops! A senha está incorreta!", root);
 				}
 			} else {
 				Alert.show("E-mail não cadastrado",
