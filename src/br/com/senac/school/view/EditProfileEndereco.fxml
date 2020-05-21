@@ -13,7 +13,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane fx:id="root" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.senac.school.controller.EditProfileEnderecoController">
    <children>
       <AnchorPane prefHeight="507.0" prefWidth="972.0" style="-fx-background-color: white;">
@@ -90,7 +89,7 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="214.0" layoutY="338.0" prefHeight="68.0" prefWidth="350.0">
                <children>
-                  <Label text="Prefêrencia de contato:">
+                  <Label text="Prefêrencia de contato*">
                      <HBox.margin>
                         <Insets right="25.0" />
                      </HBox.margin>
@@ -98,7 +97,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <JFXCheckBox checkedColor="#1890ff" text="E-mail">
+                  <JFXCheckBox fx:id="fieldContactEmail" checkedColor="#1890ff" text="E-mail">
                      <HBox.margin>
                         <Insets right="25.0" />
                      </HBox.margin>
@@ -106,7 +105,7 @@
                         <Font size="14.0" />
                      </font>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#1890ff" text="Telefone">
+                  <JFXCheckBox fx:id="fieldContactTelefone" checkedColor="#1890ff" text="Telefone">
                      <font>
                         <Font size="14.0" />
                      </font>

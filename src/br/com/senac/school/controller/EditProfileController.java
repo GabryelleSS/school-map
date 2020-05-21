@@ -127,8 +127,8 @@ public class EditProfileController implements Initializable {
 
 		List<Boolean> fieldsRequireds = new ArrayList<>();
 
-		fieldsRequireds.addAll(Arrays.asList(firstNameEmpty, lastNameEmpty, email, cell, cpf,
-				birthDate, maritalStatus, telephone));
+		fieldsRequireds.addAll(
+				Arrays.asList(firstNameEmpty, lastNameEmpty, email, cell, cpf, birthDate, maritalStatus, telephone));
 
 		if (confirmationSamePasswords()) {
 			Alert.show("Senha incorreta", "Ops! As senhas estão diferentes!", DashboardPaneContent.root);
@@ -164,8 +164,8 @@ public class EditProfileController implements Initializable {
 		validator = new RequiredFieldValidator();
 		validator.setMessage("Campo obrigatório!");
 		fieldMaritalStatus.getItems().addAll("Solteiro", "Casado", "Separado", "Divorciado", "Viuvo");
-		Validator.validate(validator, fieldCell, fieldCPF, fieldDateBirth, fieldEmail,
-				fieldFirstName, fieldLastName, fieldMaritalStatus, fieldTephone);
+		Validator.validate(validator, fieldCell, fieldCPF, fieldDateBirth, fieldEmail, fieldFirstName, fieldLastName,
+				fieldMaritalStatus, fieldTephone);
 	}
 
 	private void maskFields() {
@@ -184,7 +184,9 @@ public class EditProfileController implements Initializable {
 		String[] nome = usuario.getNome().split(" ");
 
 		fieldFirstName.setText(nome[0]);
-		fieldLastName.setText(nome[1]);
+		if(nome.length>1) {
+			fieldLastName.setText(nome[1]);
+		}
 		fieldTephone.setText(usuario.getTelefone());
 
 		String status = usuario.getEstadoCivil().charAt(0) + usuario.getEstadoCivil().substring(1).toLowerCase();
@@ -217,7 +219,7 @@ public class EditProfileController implements Initializable {
 		String senha = fieldPassword.getText();
 		String celular = fieldCell.getText();
 		String estadoCivil = fieldMaritalStatus.getSelectionModel().getSelectedItem();
-
+		
 		String genero;
 
 		if (fieldMan.isSelected()) {
@@ -239,8 +241,8 @@ public class EditProfileController implements Initializable {
 		usuario.setCelular(celular);
 		usuario.setEstadoCivil(estadoCivil);
 		usuario.setSexo(genero);
-		
-		System.out.println(genero);
+
 	}
+
 
 }

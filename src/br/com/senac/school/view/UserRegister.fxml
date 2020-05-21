@@ -142,7 +142,7 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="68.0" prefWidth="556.0">
                            <children>
-                              <Label text="Prefêrencia de contato:">
+                              <Label text="Prefêrencia de contato*">
                                  <HBox.margin>
                                     <Insets right="25.0" />
                                  </HBox.margin>
@@ -150,7 +150,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <JFXCheckBox checkedColor="#1890ff" text="E-mail">
+                              <JFXCheckBox fx:id="fieldContactEmail" checkedColor="#1890ff" text="E-mail">
                                  <HBox.margin>
                                     <Insets right="25.0" />
                                  </HBox.margin>
@@ -158,7 +158,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </JFXCheckBox>
-                              <JFXCheckBox checkedColor="#1890ff" text="Telefone">
+                              <JFXCheckBox fx:id="fieldContactTelefone" checkedColor="#1890ff" text="Telefone">
                                  <font>
                                     <Font size="14.0" />
                                  </font>

@@ -30,6 +30,7 @@ import br.com.senac.school.util.Validator;
 import consultaCep.Api;
 import consultaCep.Endereco;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.HBox;
@@ -115,6 +116,12 @@ public class UserRegisterController implements Initializable {
 	@FXML
 	private JFXTextField fieldTephone;
 
+	@FXML
+	private JFXCheckBox fieldContactEmail;
+
+	@FXML
+	private JFXCheckBox fieldContactTelefone;
+
 	private double latitude;
 	private double longitude;
 
@@ -139,6 +146,25 @@ public class UserRegisterController implements Initializable {
 		backHome = true;
 		fieldMaritalStatus.getItems().addAll("Solteiro", "Casado", "Separado", "Divorciado", "Viuvo");
 
+		verifyCheckBoxPreferences();
+	}
+
+	private void verifyCheckBoxPreferences() {
+		fieldContactEmail.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				fieldContactEmail.setSelected(true);
+				fieldContactTelefone.setSelected(false);
+			}
+		});
+
+		fieldContactTelefone.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				fieldContactEmail.setSelected(false);
+				fieldContactTelefone.setSelected(true);
+			}
+		});
 	}
 
 	void fieldRequired() {
@@ -168,11 +194,18 @@ public class UserRegisterController implements Initializable {
 		boolean district = filedDistrict.getText().trim().isEmpty();
 		boolean state = fieldState.getText().trim().isEmpty();
 		boolean street = fieldStreet.getText().trim().isEmpty();
+		boolean contactEmail = fieldContactEmail.isSelected();
+		boolean contactTelephone = fieldContactTelefone.isSelected();
+		boolean preferences = false;
+
+		if (!contactEmail && !contactTelephone) {
+			preferences = true;
+		}
 
 		List<Boolean> fieldsRequireds = new ArrayList<>();
 
 		fieldsRequireds.addAll(Arrays.asList(firstNameEmpty, lastNameEmpty, email, password, passwordConfirm, cell, cpf,
-				birthDate, maritalStatus, telephone));
+				birthDate, maritalStatus, telephone, preferences));
 
 		if (nextFields)
 			fieldsRequireds.addAll(Arrays.asList(cep, city, number, district, state, street));
@@ -258,13 +291,13 @@ public class UserRegisterController implements Initializable {
 
 				Optional<ViaCEPEndereco> consulta = ViaCEPService.consulta(newValue);
 
-				 String[] cep = newValue.split("-");
+				String[] cep = newValue.split("-");
 
-				 Endereco latELong = Api.buscaPorCep(cep[0].concat(cep[1]));
-				 
-				  latitude = latELong.getLatitude();
-				  longitude = latELong.getLongitude();
-				 
+				Endereco latELong = Api.buscaPorCep(cep[0].concat(cep[1]));
+
+				latitude = latELong.getLatitude();
+				longitude = latELong.getLongitude();
+
 				if (consulta.isPresent()) {
 					ViaCEPEndereco endereco = consulta.get();
 					this.fieldStreet.setText(endereco.getLogradouro());
@@ -289,6 +322,14 @@ public class UserRegisterController implements Initializable {
 		String senha = fieldPassword.getText();
 		String celular = fieldCell.getText();
 		String estadoCivil = fieldMaritalStatus.getSelectionModel().getSelectedItem();
+
+		String preferenciaContato;
+
+		if (fieldContactEmail.isSelected()) {
+			preferenciaContato = "EMAIL";
+		} else {
+			preferenciaContato = "TELEFONE";
+		}
 
 		String genero;
 
@@ -316,7 +357,8 @@ public class UserRegisterController implements Initializable {
 		String uf = fieldUF.getText();
 
 		return UsuarioFactory.generate(nome.concat(" ").concat(sobrenome), cpf, dataNascimento, telefone, email, senha,
-				celular, estadoCivil, genero, rua, cep, numero, bairro, complemento, cidade, estado, uf,latitude,longitude);
+				celular, estadoCivil, genero, rua, cep, numero, bairro, complemento, cidade, estado, uf, latitude,
+				longitude, preferenciaContato);
 	}
 
 	private void maskFields() {

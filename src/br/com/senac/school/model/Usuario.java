@@ -26,12 +26,13 @@ public class Usuario {
 	private String senha;
 
 	private boolean ativo;
+	private String preferenciaContato;
 
 	public Usuario() {
 	}
 
 	public Usuario(String nome, String cpf, String sexo, LocalDate dataNascimento, String estadoCivil, String telefone,
-			String celular, EnderecoUsuario endereco, String email, String senha) {
+			String celular, EnderecoUsuario endereco, String email, String senha, String preferenciaContato) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.sexo = sexo;
@@ -42,7 +43,16 @@ public class Usuario {
 		this.endereco = endereco;
 		this.email = email;
 		this.senha = senha;
+		this.preferenciaContato = preferenciaContato;
 		this.ativo = true;
+	}
+
+	public String getPreferenciaContato() {
+		return preferenciaContato;
+	}
+
+	public void setPreferenciaContato(String preferenciaContato) {
+		this.preferenciaContato = preferenciaContato;
 	}
 
 	public int getId() {
@@ -140,7 +150,5 @@ public class Usuario {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
-
-	 
 
 }

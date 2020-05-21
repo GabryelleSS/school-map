@@ -8,6 +8,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.github.gilbertotorrezan.viacep.shared.ViaCEPEndereco;
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.RequiredFieldValidator;
 
@@ -24,6 +25,7 @@ import br.com.senac.school.util.Validator;
 import consultaCep.Api;
 import consultaCep.Endereco;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.StackPane;
@@ -55,6 +57,12 @@ public class EditProfileEnderecoController implements Initializable {
 	private JFXTextField fieldCep;
 
 	@FXML
+	private JFXCheckBox fieldContactEmail;
+
+	@FXML
+	private JFXCheckBox fieldContactTelefone;
+
+	@FXML
 	private StackPane root;
 
 	public static Usuario usuario;
@@ -78,6 +86,7 @@ public class EditProfileEnderecoController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		verifyCheckBoxPreferences();
 		fields();
 		maskFields();
 		consultCep();
@@ -100,10 +109,18 @@ public class EditProfileEnderecoController implements Initializable {
 		boolean numero = fieldNumero.getText().trim().isEmpty();
 		boolean rua = fieldRua.getText().trim().isEmpty();
 		boolean uf = fieldUf.getText().trim().isEmpty();
+		boolean contactEmail = fieldContactEmail.isSelected();
+		boolean contactTelephone = fieldContactTelefone.isSelected();
+
+		boolean preferences = false;
+
+		if (!contactEmail && !contactTelephone) {
+			preferences = true;
+		}
 
 		List<Boolean> fieldsRequireds = new ArrayList<>();
 
-		fieldsRequireds.addAll(Arrays.asList(cep, bairro, cidade, estado, numero, rua, uf));
+		fieldsRequireds.addAll(Arrays.asList(cep, bairro, cidade, estado, numero, rua, uf, preferences));
 
 		for (Boolean fieldRequired : fieldsRequireds) {
 			if (fieldRequired == true) {
@@ -124,6 +141,13 @@ public class EditProfileEnderecoController implements Initializable {
 		fieldNumero.setText(String.valueOf(endereco.getNumero()));
 		fieldRua.setText(endereco.getEndereco());
 		fieldUf.setText(endereco.getUf());
+
+		String preferenciaContato = usuario.getPreferenciaContato();
+		if (preferenciaContato.equals("EMAIL")) {
+			fieldContactEmail.setSelected(true);
+		} else {
+			fieldContactTelefone.setSelected(true);
+		}
 	}
 
 	public void consultCep() {
@@ -183,6 +207,14 @@ public class EditProfileEnderecoController implements Initializable {
 			complemento = "";
 		}
 
+		String preferenciaContato;
+
+		if (fieldContactEmail.isSelected()) {
+			preferenciaContato = "EMAIL";
+		} else {
+			preferenciaContato = "TELEFONE";
+		}
+
 		EnderecoUsuario endereco = usuario.getEndereco();
 		endereco.setEndereco(rua);
 		endereco.setBairro(bairro);
@@ -193,11 +225,31 @@ public class EditProfileEnderecoController implements Initializable {
 		endereco.setUf(uf);
 		endereco.setComplemento(complemento);
 
+		usuario.setPreferenciaContato(preferenciaContato);
+
 		if (latitude != 0 && longitude != 0) {
 			endereco.setLatitude(latitude);
 			endereco.setLongitude(longitude);
 		}
 
+	}
+
+	private void verifyCheckBoxPreferences() {
+		fieldContactEmail.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				fieldContactEmail.setSelected(true);
+				fieldContactTelefone.setSelected(false);
+			}
+		});
+
+		fieldContactTelefone.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				fieldContactEmail.setSelected(false);
+				fieldContactTelefone.setSelected(true);
+			}
+		});
 	}
 
 }

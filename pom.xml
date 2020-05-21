@@ -22,6 +22,31 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
+					<configuration>
+						<mainClass>br.com.senac.school.application.Main</mainClass>
+						<options>
+							<option>--add-opens</option>
+							<option>javafx.controls/com.sun.javafx.scene.control.behavior=com.jfoenix</option>
+							<option>--add-opens</option>
+							<option>javafx.controls/com.sun.javafx.scene.control=com.jfoenix</option>
+							<option>--add-opens</option>
+							<option>javafx.graphics/com.sun.javafx.scene=com.jfoenix</option>
+							<option>--add-opens</option>
+							<option>javafx.graphics/com.sun.javafx.scene.text=com.jfoenix</option>
+							<option>--add-opens</option>
+							<option>javafx.graphics/com.sun.javafx.scene.traversal=com.jfoenix</option>
+							<option>--add-opens</option>
+							<option>javafx.graphics/com.sun.javafx.stage=com.jfoenix</option>
+						</options>
+					</configuration>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 		</plugins>

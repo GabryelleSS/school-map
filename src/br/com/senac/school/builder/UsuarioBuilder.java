@@ -18,8 +18,12 @@ public class UsuarioBuilder {
 	private EnderecoUsuario endereco;
 	private String email;
 	private String senha;
-	
-	
+	private String preferenciaContato;
+
+	public UsuarioBuilder comPreferenciaContato(String preferenciaContato) {
+		this.preferenciaContato = preferenciaContato;
+		return this;
+	}
 
 	public UsuarioBuilder comNome(String nome) {
 		this.nome = nome;
@@ -50,6 +54,7 @@ public class UsuarioBuilder {
 		this.celular = celular;
 		return this;
 	}
+
 	public UsuarioBuilder comTelefone(String telefone) {
 		this.telefone = telefone;
 		return this;
@@ -72,6 +77,6 @@ public class UsuarioBuilder {
 	}
 
 	public Usuario gera() {
-		return new Usuario(nome, cpf, sexo, dataNascimento, estadoCivil, telefone, celular, endereco, email, senha);
+		return new Usuario(nome, cpf, sexo, dataNascimento, estadoCivil, telefone, celular, endereco, email, senha,preferenciaContato);
 	}
 }

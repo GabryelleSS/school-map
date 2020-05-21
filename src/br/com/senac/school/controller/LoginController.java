@@ -58,7 +58,7 @@ public class LoginController implements Initializable {
 			Alert.show("Campos obrigatórios", "Ops! Você precisa preencher os campos obrigatórios.", root);
 
 		} else {
-
+			
 			String email = fieldEmail.getText();
 			String password = fieldPassword.getText();
 
@@ -70,7 +70,7 @@ public class LoginController implements Initializable {
 				if (verify) {
 					Session.setUsuario(list.get(0));
 					loadDashboard();
-				}else {
+				} else {
 					Alert.show("Senha inválida", "Ops! A senha está incorreta!", root);
 				}
 			} else {

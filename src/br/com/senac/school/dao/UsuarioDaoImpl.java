@@ -22,8 +22,8 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
 		int endereco_id = saveEndereco(usuario);
 
-		String sql = "INSERT INTO usuario (ativo,celular,cpf,dataNascimento,email,estadoCivil,nome,senha,sexo,telefone,endereco_id)"
-				+ "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO usuario (ativo,celular,cpf,dataNascimento,email,estadoCivil,nome,senha,sexo,telefone,endereco_id,preferencia_contato)"
+				+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
 		try {
 			openConnection();
@@ -40,6 +40,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 				ps.setString(9, usuario.getSexo());
 				ps.setString(10, usuario.getTelefone());
 				ps.setInt(11, endereco_id);
+				ps.setString(12, usuario.getPreferenciaContato());
 
 				ps.executeUpdate();
 			}
@@ -93,7 +94,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
 	@Override
 	public void update(Usuario usuario) {
-		String sql = "UPDATE usuario SET celular = ?,cpf = ?,dataNascimento = ?,email = ?,estadoCivil = ?,nome = ?,senha = ?,sexo = ?,telefone = ? WHERE id = ?";
+		String sql = "UPDATE usuario SET celular = ?,cpf = ?,dataNascimento = ?,email = ?,estadoCivil = ?,nome = ?,senha = ?,sexo = ?,telefone = ?, preferencia_contato =? WHERE id = ?";
 
 		try {
 			openConnection();
@@ -109,7 +110,8 @@ public class UsuarioDaoImpl implements UsuarioDao {
 				ps.setString(7, usuario.getSenha());
 				ps.setString(8, usuario.getSexo());
 				ps.setString(9, usuario.getTelefone());
-				ps.setInt(10, usuario.getId());
+				ps.setString(10, usuario.getPreferenciaContato());
+				ps.setInt(11, usuario.getId());
 
 				updateEndereco(usuario);
 
@@ -233,6 +235,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 						String estadoCivil = rs.getString("estadoCivil");
 						String telefone = rs.getString("telefone");
 						String celular = rs.getString("celular");
+						String preferenciaContato = rs.getString("preferencia_contato");
 						Date date = rs.getDate("dataNascimento");
 						int id = rs.getInt("id");
 						LocalDate dataNascimento = date.toLocalDate();
@@ -255,7 +258,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 						endereco.setId(id_endereco);
 
 						Usuario usuario = new Usuario(nome, cpf, sexo, dataNascimento, estadoCivil, telefone, celular,
-								endereco, email_usu, senha);
+								endereco, email_usu, senha,preferenciaContato);
 
 						usuario.setId(id);
 
