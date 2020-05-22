@@ -112,7 +112,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Pane>
-                        <Pane prefHeight="84.0" prefWidth="240.0" styleClass="menu-options" stylesheets="@../../assets/css/menu.css">
+                        <Pane onMouseClicked="#logs" prefHeight="84.0" prefWidth="240.0" styleClass="menu-options" stylesheets="@../../assets/css/menu.css">
                            <children>
                               <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="25.0" layoutY="19.0">
                                  <image>

@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.github.gilbertotorrezan.viacep.shared.ViaCEPEndereco;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
@@ -31,6 +34,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.StackPane;
 
 public class EditProfileEnderecoController implements Initializable {
+	private static Logger logger = LogManager.getLogger(EditProfileEnderecoController.class);
 
 	@FXML
 	private JFXTextField fieldRua;
@@ -186,6 +190,7 @@ public class EditProfileEnderecoController implements Initializable {
 					DashboardPaneContent.root);
 
 		} else {
+			logger.info("Realizando alterações no perfil");
 			generateUsuario();
 			new UsuarioDaoImpl().update(usuario);
 			Alert.show("Alterações efetuadas!", "Suas alterações foram efetuadas com sucesso!",

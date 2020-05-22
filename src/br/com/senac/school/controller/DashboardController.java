@@ -183,6 +183,11 @@ public class DashboardController implements Initializable {
 		new LoadViews().load(root, VIEWS_NAMES.DASHBOARD);
 
 	}
+	@FXML
+	void logs(MouseEvent event) {
+		new LoadViews().load(content, VIEWS_NAMES.LOGS);
+		
+	}
 
 	@FXML
 	void logout(MouseEvent event) {

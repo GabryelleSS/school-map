@@ -7,6 +7,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
@@ -34,6 +37,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 
 public class EditProfileController implements Initializable {
+	
+	private static Logger logger = LogManager.getLogger(EditProfileController.class);
 
 	@FXML
 	private HBox formFieldsRegisterUser;
@@ -108,6 +113,7 @@ public class EditProfileController implements Initializable {
 					DashboardPaneContent.root);
 
 		} else {
+			logger.info("Realizando alterações no perfil");
 			generateUsuario();
 			new UsuarioDaoImpl().update(usuario);
 			Alert.show("Alterações efetuadas!", "Suas alterações foram efetuadas com sucesso!",

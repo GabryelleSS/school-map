@@ -17,7 +17,8 @@ public enum VIEWS_NAMES {
 	EDIT_PROFILE_ENDERECO("/br/com/senac/school/view/EditProfileEndereco.fxml"),
 	ITEM_DASHBOARD1("/br/com/senac/school/view/ItemDashboard1.fxml"),
 	ITEM_DASHBOARD2("/br/com/senac/school/view/ItemDashboard2.fxml"),
-	DASHBOARD("/br/com/senac/school/view/Dashboard.fxml");
+	DASHBOARD("/br/com/senac/school/view/Dashboard.fxml"), 
+	LOGS("/br/com/senac/school/view/Logs.fxml");
 	private String name;
 
 	VIEWS_NAMES(String string) {

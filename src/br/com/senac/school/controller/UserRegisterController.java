@@ -205,10 +205,10 @@ public class UserRegisterController implements Initializable {
 		List<Boolean> fieldsRequireds = new ArrayList<>();
 
 		fieldsRequireds.addAll(Arrays.asList(firstNameEmpty, lastNameEmpty, email, password, passwordConfirm, cell, cpf,
-				birthDate, maritalStatus, telephone, preferences));
+				birthDate, maritalStatus, telephone));
 
 		if (nextFields)
-			fieldsRequireds.addAll(Arrays.asList(cep, city, number, district, state, street));
+			fieldsRequireds.addAll(Arrays.asList(cep, city, number, district, state, street,preferences));
 
 		if (confirmationSamePasswords()) {
 			Alert.show("Senha incorreta", warningModalPassawordIncorrect, root);
