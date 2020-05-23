@@ -163,7 +163,7 @@ public class EditProfileController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		usuario = new UsuarioDaoImpl().findByEmail(Session.getUsuario().getEmail()).get(0);
+		usuario = Session.getUsuario();
 		EditProfileEnderecoController.usuario = usuario;
 		fields();
 		maskFields();

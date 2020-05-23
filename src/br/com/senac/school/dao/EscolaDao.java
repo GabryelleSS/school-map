@@ -8,7 +8,9 @@ public interface EscolaDao {
 
 	List<Escola> findByBairro(String bairro);
 
-	List<Escola> findByLatElong(double latitude,double longitude);
+	List<Escola> findByNameOrType(String value);
+
+	List<Escola> findByLatElong(double latitude, double longitude);
 
 	Escola findById(int id);
 

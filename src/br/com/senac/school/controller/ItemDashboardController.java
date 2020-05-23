@@ -5,6 +5,7 @@ import java.io.IOException;
 import br.com.senac.school.dao.EscolaDao;
 import br.com.senac.school.dao.EscolaDaoImpl;
 import br.com.senac.school.model.Escola;
+import br.com.senac.school.session.EscolasCache;
 import br.com.senac.school.util.DashboardPaneContent;
 import br.com.senac.school.util.VIEWS_NAMES;
 import javafx.fxml.FXML;
@@ -182,11 +183,8 @@ public class ItemDashboardController {
 	}
 
 	private void selectedItem(int id) {
-		if (dao == null) {
-			dao = new EscolaDaoImpl();
-		}
 
-		Escola escola = dao.findById(id);
+		Escola escola = EscolasCache.getEscola(id);
 
 		try {
 			loadItemSelected(escola);

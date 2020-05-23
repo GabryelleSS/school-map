@@ -42,8 +42,8 @@
                            <children>
                               <HBox alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="366.0">
                                  <children>
-                                    <TextField prefWidth="317.0" promptText="Pesquisar..." styleClass="submenu-search" />
-                                    <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="41.0" styleClass="submenu-search-btn">
+                                    <TextField fx:id="fieldSearch" prefWidth="317.0" promptText="Pesquisar..." styleClass="submenu-search" />
+                                    <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#btnSearch" prefHeight="34.0" prefWidth="41.0" styleClass="submenu-search-btn">
                                        <graphic>
                                           <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="submenu-search-btn">
                                              <image>
@@ -67,10 +67,14 @@
             </JFXToolbar>
             <StackPane fx:id="content" layoutX="220.0" layoutY="70.0" prefHeight="530.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
                <children>
+                  <AnchorPane prefHeight="200.0" prefWidth="1000.0" style="-fx-background-color: white;" />
                   <ScrollPane prefHeight="500.0" prefWidth="981.0" style="-fx-background-color: white;">
                     <content>
                         <VBox fx:id="items" prefHeight="529.0" prefWidth="982.0" style="-fx-background-color: white;" />
                     </content>
+                     <StackPane.margin>
+                        <Insets top="30.0" />
+                     </StackPane.margin>
                   </ScrollPane>
                </children>
             </StackPane>
@@ -136,7 +140,7 @@
                                     <Image url="@../../assets/image/icons8-settings-50.png" />
                                  </image>
                               </ImageView>
-                              <Label layoutX="86.0" layoutY="24.0" text="Configurações">
+                              <Label layoutX="86.0" layoutY="24.0" text="Favoritas">
                                  <font>
                                     <Font name="Ebrima" size="13.0" />
                                  </font>

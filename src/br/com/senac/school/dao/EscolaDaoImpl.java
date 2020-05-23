@@ -56,6 +56,50 @@ public class EscolaDaoImpl implements EscolaDao {
 		return list;
 
 	}
+	@Override
+	public List<Escola> findByNameOrType(String value) {
+		List<Escola> list = new ArrayList<>();
+		
+		String sql = "SELECT * FROM escola WHERE nome LIKE ? OR tipo LIKE ? LIMIT 30";
+		
+		try {
+			openConnection();
+			try (PreparedStatement ps = conn.prepareStatement(sql)) {
+				ps.setString(1, "%".concat(value).concat("%"));
+				ps.setString(2, "%".concat(value).concat("%"));
+				ps.execute();
+				
+				try (ResultSet rs = ps.getResultSet()) {
+					while (rs.next()) {
+						String tipo = rs.getString("tipo");
+						String nome = rs.getString("nome");
+						String telefone1 = rs.getString("telefone1");
+						String telefone2 = rs.getString("telefone2");
+						String cod_distrito = rs.getString("cod_distrito");
+						String distrito = rs.getString("distrito");
+						String endereco = rs.getString("endereco");
+						String bairro_esc = rs.getString("bairro");
+						boolean situacao = rs.getBoolean("ativa");
+						String cep = rs.getString("cep");
+						int numero = rs.getInt("numero");
+						int id = rs.getInt("id");
+						
+						Escola escola = new Escola(id, tipo, nome, situacao, telefone1, telefone2, cod_distrito,
+								distrito, endereco, bairro_esc, cep, numero);
+						
+						list.add(escola);
+					}
+				}
+			}
+			
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		} finally {
+			closeConnection();
+		}
+		return list;
+		
+	}
 
 	@Override
 	public Escola findById(int id) {

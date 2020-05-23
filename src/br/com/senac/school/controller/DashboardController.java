@@ -6,15 +6,11 @@ import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import com.jfoenix.controls.JFXDrawer;
-import com.jfoenix.controls.JFXHamburger;
-import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
-
 import br.com.senac.school.dao.EscolaDao;
 import br.com.senac.school.dao.EscolaDaoImpl;
 import br.com.senac.school.model.EnderecoUsuario;
 import br.com.senac.school.model.Escola;
-import br.com.senac.school.model.Usuario;
+import br.com.senac.school.session.EscolasCache;
 import br.com.senac.school.session.Session;
 import br.com.senac.school.util.Alert;
 import br.com.senac.school.util.DashboardPaneContent;
@@ -23,11 +19,12 @@ import br.com.senac.school.util.VIEWS_NAMES;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -35,10 +32,10 @@ import javafx.scene.layout.VBox;
 public class DashboardController implements Initializable {
 
 	@FXML
-	private JFXHamburger menuHamburguer;
+	private Button btnSearch;
 
 	@FXML
-	private JFXDrawer drawer;
+	private TextField fieldSearch;
 
 	@FXML
 	private VBox items;
@@ -52,10 +49,15 @@ public class DashboardController implements Initializable {
 	private ObservableList<Escola> listOfSchools;
 
 	private static boolean searchWithoutReturn;
-	private static boolean welcomeMessage = true;;
+	private static boolean welcomeMessage = true;
+	private static boolean searchActive = false;
+	private static boolean searchNotResult = false;
+	private static String searchField;
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+		fieldSearch.setVisible(true);
+		btnSearch.setVisible(true);
 		loadSchools();
 		DashboardPaneContent.pane = content;
 		DashboardPaneContent.root = root;
@@ -70,13 +72,21 @@ public class DashboardController implements Initializable {
 			listOfSchools = FXCollections.observableArrayList(searchData.getValue());
 			int size = listOfSchools.size();
 
+			if (searchNotResult) {
+				Alert.show("Nenhuma escola encontrada",
+						"Infelizmente não encontramos nenhuma escola com esse nome ou tipo.", root);
+				searchNotResult = false;
+				searchActive = false;
+			}
 			if (searchWithoutReturn) {
-				
-				Alert.show("Nenhuma escola encontrada", "Infelizmente não encontramos escolas próximas ao seu endereço,\n"
-						+ "porem você pode realizar buscas pelo nome da escola no campo logo acima.", root);
+
+				Alert.show("Nenhuma escola encontrada",
+						"Infelizmente não encontramos escolas próximas ao seu endereço,\n"
+								+ "porem você pode realizar buscas pelo nome da escola no campo logo acima.",
+						root);
 
 			} else {
-				
+				searchActive = false;
 				welcomeMessage();
 
 				try {
@@ -138,10 +148,12 @@ public class DashboardController implements Initializable {
 	}
 
 	private void welcomeMessage() {
-		if(welcomeMessage) {
-			Alert.show("Seja bem-vindo!", "Bem-vindo ao School Map, listamos as escolas mais próximas do seu endereço,\n"
-					+ "você pode procurar escolas pelo nome no campo logo acima.  ", root);
-			welcomeMessage=false;
+		if (welcomeMessage) {
+			Alert.show("Seja bem-vindo!",
+					"Bem-vindo ao School Map, listamos as escolas mais próximas do seu endereço,\n"
+							+ "você pode procurar escolas pelo nome no campo logo acima.  ",
+					root);
+			welcomeMessage = false;
 		}
 	}
 
@@ -155,17 +167,49 @@ public class DashboardController implements Initializable {
 		@Override
 		protected List<Escola> call() throws Exception {
 			EnderecoUsuario endereco = Session.getUsuario().getEndereco();
-			EscolaDao dao = new EscolaDaoImpl();
 
-			List<Escola> list = dao.findByLatElong(endereco.getLatitude(), endereco.getLongitude());
+			if (searchActive) {
+				List<Escola> list = new EscolaDaoImpl().findByNameOrType(searchField);
 
-			if (list.isEmpty()) {
-				searchWithoutReturn = true;
+				if (list.isEmpty()) {
+					searchNotResult = true;
+					list = EscolasCache.escolas();
+				} else {
+					EscolasCache.add(list);
+				}
+				return list;
+			} else {
+				if (!EscolasCache.escolas().isEmpty()) {
+					return EscolasCache.escolas();
+				} else {
+					EscolaDao dao = new EscolaDaoImpl();
+
+					List<Escola> list = dao.findByLatElong(endereco.getLatitude(), endereco.getLongitude());
+					EscolasCache.add(list);
+
+					if (list.isEmpty()) {
+						searchWithoutReturn = true;
+					}
+
+					return list;
+				}
 			}
-			return list;
 		}
 
 	};
+
+	@FXML
+	void btnSearch(ActionEvent event) {
+
+		if (fieldSearch.getText().trim().isEmpty()) {
+			Alert.show("Campo obrigatório", "Por favor preencher o campo para realizar a pesquisa.", root);
+		} else {
+			searchField = fieldSearch.getText();
+			searchActive = true;
+			new LoadViews().load(root, VIEWS_NAMES.DASHBOARD);
+		}
+
+	}
 
 	@FXML
 	void configurations(MouseEvent event) {
@@ -174,24 +218,33 @@ public class DashboardController implements Initializable {
 
 	@FXML
 	void editProfile(MouseEvent event) {
+		fieldSearch.setVisible(false);
+		btnSearch.setVisible(false);
 		new LoadViews().load(content, VIEWS_NAMES.EDIT_PROFILE);
 
 	}
 
 	@FXML
 	void home(MouseEvent event) {
+		fieldSearch.setVisible(true);
+		btnSearch.setVisible(true);
 		new LoadViews().load(root, VIEWS_NAMES.DASHBOARD);
 
 	}
+
 	@FXML
 	void logs(MouseEvent event) {
+		fieldSearch.setVisible(false);
+		btnSearch.setVisible(false);
+
 		new LoadViews().load(content, VIEWS_NAMES.LOGS);
-		
+
 	}
 
 	@FXML
 	void logout(MouseEvent event) {
 		Session.removeUsuario();
+		EscolasCache.clean();
 		new LoadViews().load(root, VIEWS_NAMES.LOGIN);
 	}
 
