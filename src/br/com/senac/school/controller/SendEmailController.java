@@ -56,8 +56,9 @@ public class SendEmailController implements Initializable {
 		String token = fieldToken.getText();
 
 		if (token.equals(String.valueOf(this.token))) {
+			int id = persistUsuario(usuario);
+			usuario.setId(id);
 			Session.setUsuario(usuario);
-			persistUsuario(usuario);
 			loadDashboard();
 
 		} else {
@@ -75,7 +76,7 @@ public class SendEmailController implements Initializable {
 
 	@FXML
 	void btnResendToken(MouseEvent event) {
-		Alert.show("Token enviado","Enviamos novamente o token, por favor verifique o seu e-mail.", root);
+		Alert.show("Token enviado", "Enviamos novamente o token, por favor verifique o seu e-mail.", root);
 		sendEmailResendToken();
 	}
 
@@ -83,9 +84,10 @@ public class SendEmailController implements Initializable {
 		new LoadViews().load(root, VIEWS_NAMES.DASHBOARD);
 	}
 
-	private void persistUsuario(Usuario usuario) {
+	private int persistUsuario(Usuario usuario) {
 		UsuarioDao dao = new UsuarioDaoImpl();
-		dao.save(usuario);
+		return dao.save(usuario);
+
 	}
 
 }

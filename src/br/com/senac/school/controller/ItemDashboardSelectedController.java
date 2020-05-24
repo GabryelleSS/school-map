@@ -1,15 +1,24 @@
 package br.com.senac.school.controller;
 
+import br.com.senac.school.dao.EscolaDao;
+import br.com.senac.school.dao.EscolaDaoImpl;
 import br.com.senac.school.model.Escola;
+import br.com.senac.school.session.EscolasCache;
+import br.com.senac.school.session.Session;
 import br.com.senac.school.util.DashboardPaneContent;
 import br.com.senac.school.util.LoadViews;
 import br.com.senac.school.util.VIEWS_NAMES;
 import javafx.fxml.FXML;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 public class ItemDashboardSelectedController {
+
+	@FXML
+	private ImageView imageMark;
 
 	@FXML
 	private Label nome;
@@ -41,6 +50,9 @@ public class ItemDashboardSelectedController {
 	@FXML
 	private Label distrito;
 
+	private int id = 0;
+	private Escola escola;
+
 	@FXML
 	void btnBackItems(MouseEvent event) {
 		new LoadViews().load(DashboardPaneContent.root, VIEWS_NAMES.DASHBOARD);
@@ -53,6 +65,13 @@ public class ItemDashboardSelectedController {
 	}
 
 	private void loadCard(Escola escola, ContextMenu menu) {
+		id = escola.getId();
+		this.escola = escola;
+
+		if (EscolasCache.isFavorited(id)) {
+			imageMark.setImage(new Image("/br/com/senac/assets/image/bookmark-selected.png"));
+		}
+
 		nome.setText(String.valueOf(escola.getNome()));
 		bairro.setText(String.valueOf(escola.getBairro()));
 		distrito.setText(String.valueOf(escola.getDistrito()));
@@ -76,4 +95,21 @@ public class ItemDashboardSelectedController {
 		cep.setContextMenu(menu);
 
 	}
+
+	@FXML
+	void btnFavorited(MouseEvent event) {
+		EscolaDao dao = new EscolaDaoImpl();
+
+		if (EscolasCache.isFavorited(id)) {
+			EscolasCache.deslike(id);
+			dao.dislike(Session.getUsuario().getId(), id);
+			imageMark.setImage(new Image("/br/com/senac/assets/image/bookmark.png"));
+		} else {
+			EscolasCache.favorite(id, escola);
+			dao.favorited(Session.getUsuario().getId(), id);
+			imageMark.setImage(new Image("/br/com/senac/assets/image/bookmark-selected.png"));
+		}
+
+	}
+
 }

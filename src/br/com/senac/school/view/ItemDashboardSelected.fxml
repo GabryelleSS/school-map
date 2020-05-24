@@ -6,6 +6,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="494.0" prefWidth="972.0" styleClass="item-container" stylesheets="@../../assets/css/itemDashboard.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
@@ -14,7 +15,7 @@
          <children>
             <AnchorPane prefHeight="88.0" prefWidth="600.0" styleClass="item-card-selected-header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label fx:id="nome" layoutX="124.0" layoutY="33.0" prefHeight="28.0" prefWidth="462.0" textFill="WHITE">
+                  <Label fx:id="nome" layoutX="124.0" layoutY="33.0" prefHeight="28.0" prefWidth="360.0" textFill="WHITE">
                      <font>
                         <Font name="Ebrima Bold" size="14.0" />
                      </font>
@@ -23,6 +24,19 @@
                      <image>
                         <Image url="@../../assets/image/icons8-school-64.png" />
                      </image>
+                  </ImageView>
+                  <Circle fill="WHITE" layoutX="544.0" layoutY="44.0" radius="25.0" stroke="WHITE" strokeType="INSIDE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Circle>
+                  <ImageView fx:id="imageMark" fitHeight="29.0" fitWidth="42.0" layoutX="530.0" layoutY="30.0" onMouseClicked="#btnFavorited" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../assets/image/bookmark.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                </children>
             </AnchorPane>

@@ -3,7 +3,6 @@ package br.com.senac.school.controller;
 import java.io.IOException;
 
 import br.com.senac.school.dao.EscolaDao;
-import br.com.senac.school.dao.EscolaDaoImpl;
 import br.com.senac.school.model.Escola;
 import br.com.senac.school.session.EscolasCache;
 import br.com.senac.school.util.DashboardPaneContent;

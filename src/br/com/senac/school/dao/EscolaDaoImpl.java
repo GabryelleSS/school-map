@@ -4,9 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.senac.school.model.EnderecoUsuario;
 import br.com.senac.school.model.Escola;
 
 public class EscolaDaoImpl implements EscolaDao {
@@ -56,19 +58,20 @@ public class EscolaDaoImpl implements EscolaDao {
 		return list;
 
 	}
+
 	@Override
 	public List<Escola> findByNameOrType(String value) {
 		List<Escola> list = new ArrayList<>();
-		
+
 		String sql = "SELECT * FROM escola WHERE nome LIKE ? OR tipo LIKE ? LIMIT 30";
-		
+
 		try {
 			openConnection();
 			try (PreparedStatement ps = conn.prepareStatement(sql)) {
 				ps.setString(1, "%".concat(value).concat("%"));
 				ps.setString(2, "%".concat(value).concat("%"));
 				ps.execute();
-				
+
 				try (ResultSet rs = ps.getResultSet()) {
 					while (rs.next()) {
 						String tipo = rs.getString("tipo");
@@ -83,22 +86,22 @@ public class EscolaDaoImpl implements EscolaDao {
 						String cep = rs.getString("cep");
 						int numero = rs.getInt("numero");
 						int id = rs.getInt("id");
-						
+
 						Escola escola = new Escola(id, tipo, nome, situacao, telefone1, telefone2, cod_distrito,
 								distrito, endereco, bairro_esc, cep, numero);
-						
+
 						list.add(escola);
 					}
 				}
 			}
-			
+
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		} finally {
 			closeConnection();
 		}
 		return list;
-		
+
 	}
 
 	@Override
@@ -147,7 +150,7 @@ public class EscolaDaoImpl implements EscolaDao {
 	@Override
 	public List<Escola> findByLatElong(double latitude, double longitude) {
 		List<Escola> list = new ArrayList<>();
-		
+
 		final int LIMITE = 30;
 
 		String sql = "CALL EscolasPorLatELong(?,?,?)";
@@ -206,6 +209,103 @@ public class EscolaDaoImpl implements EscolaDao {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+		}
+	}
+
+	@Override
+	public void favorited(int user, int escola) {
+
+		String sql = "INSERT INTO favoritos (id_escola,id_usuario) VALUES (?,?)";
+
+		try {
+			openConnection();
+
+			try (PreparedStatement ps = conn.prepareStatement(sql)) {
+
+				ps.setInt(1, escola);
+				ps.setInt(2, user);
+
+				ps.executeUpdate();
+
+			}
+
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+
+	}
+
+	@Override
+	public List<Escola> favorites(int user) {
+		List<Escola> list = new ArrayList<Escola>();
+
+		String sql = "SELECT * FROM escola e INNER JOIN favoritos f ON e.id = f.id_escola WHERE f.id_usuario = ?";
+
+		try {
+			openConnection();
+			try (PreparedStatement ps = conn.prepareStatement(sql)) {
+				ps.setInt(1, user);
+				ps.execute();
+
+				try (ResultSet rs = ps.getResultSet()) {
+					while (rs.next()) {
+						String tipo = rs.getString("tipo");
+						String nome = rs.getString("nome");
+						String telefone1 = rs.getString("telefone1");
+						String telefone2 = rs.getString("telefone2");
+						String cod_distrito = rs.getString("cod_distrito");
+						String distrito = rs.getString("distrito");
+						String endereco = rs.getString("endereco");
+						String bairro_esc = rs.getString("bairro");
+						boolean situacao = rs.getBoolean("ativa");
+						String cep = rs.getString("cep");
+						int numero = rs.getInt("numero");
+						int id = rs.getInt("id");
+
+						Escola escola = new Escola(id, tipo, nome, situacao, telefone1, telefone2, cod_distrito,
+								distrito, endereco, bairro_esc, cep, numero);
+
+						list.add(escola);
+					}
+				}
+			}
+
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		} finally {
+			closeConnection();
+		}
+		return list;
+
+	}
+
+	@Override
+	public void dislike(int user, int escola) {
+
+		String sql = "DELETE FROM favoritos WHERE id_escola = ? && id_usuario = ?";
+
+		try {
+			openConnection();
+
+			try (PreparedStatement ps = conn.prepareStatement(sql)) {
+
+				ps.setInt(1, escola);
+				ps.setInt(2, user);
+
+				ps.executeUpdate();
+
+			}
+
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
 		}
 	}
 }

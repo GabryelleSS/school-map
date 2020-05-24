@@ -24,6 +24,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
@@ -45,6 +46,9 @@ public class DashboardController implements Initializable {
 
 	@FXML
 	private StackPane root;
+	
+	@FXML
+	private Label labelDashboard;
 
 	private ObservableList<Escola> listOfSchools;
 
@@ -52,15 +56,27 @@ public class DashboardController implements Initializable {
 	private static boolean welcomeMessage = true;
 	private static boolean searchActive = false;
 	private static boolean searchNotResult = false;
+	private static boolean favoritesActive = false;
 	private static String searchField;
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+		
+		if(favoritesActive) {
+			labelDashboard.setText("Escolas marcadas como favoritas:");
+		}
+		
 		fieldSearch.setVisible(true);
 		btnSearch.setVisible(true);
 		loadSchools();
 		DashboardPaneContent.pane = content;
 		DashboardPaneContent.root = root;
+
+		new Thread(() -> {
+
+			EscolasCache.favorite(new EscolaDaoImpl().favorites(Session.getUsuario().getId()));
+
+		}).start();
 	}
 
 	private void loadSchools() {
@@ -87,6 +103,7 @@ public class DashboardController implements Initializable {
 
 			} else {
 				searchActive = false;
+				favoritesActive = false;
 				welcomeMessage();
 
 				try {
@@ -168,7 +185,15 @@ public class DashboardController implements Initializable {
 		protected List<Escola> call() throws Exception {
 			EnderecoUsuario endereco = Session.getUsuario().getEndereco();
 
-			if (searchActive) {
+			if (favoritesActive) {
+				List<Escola> list = EscolasCache.favorites();
+
+				if (list.isEmpty()) {
+					Alert.show("Sem favoritos", "Você ainda não marcou nenhuma escola como favorita.", root);
+				}
+				return list;
+
+			} else if (searchActive) {
 				List<Escola> list = new EscolaDaoImpl().findByNameOrType(searchField);
 
 				if (list.isEmpty()) {
@@ -212,8 +237,9 @@ public class DashboardController implements Initializable {
 	}
 
 	@FXML
-	void configurations(MouseEvent event) {
-
+	void favorites(MouseEvent event) {
+		favoritesActive = true;
+		new LoadViews().load(root, VIEWS_NAMES.DASHBOARD);
 	}
 
 	@FXML
@@ -226,6 +252,7 @@ public class DashboardController implements Initializable {
 
 	@FXML
 	void home(MouseEvent event) {
+		favoritesActive = false;
 		fieldSearch.setVisible(true);
 		btnSearch.setVisible(true);
 		new LoadViews().load(root, VIEWS_NAMES.DASHBOARD);

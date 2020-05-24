@@ -18,8 +18,8 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	private Connection conn;
 
 	@Override
-	public void save(Usuario usuario) {
-
+	public int save(Usuario usuario) {
+		int id = 0;
 		int endereco_id = saveEndereco(usuario);
 
 		String sql = "INSERT INTO usuario (ativo,celular,cpf,dataNascimento,email,estadoCivil,nome,senha,sexo,telefone,endereco_id,preferencia_contato)"
@@ -28,7 +28,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		try {
 			openConnection();
 
-			try (PreparedStatement ps = conn.prepareStatement(sql)) {
+			try (PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 				ps.setBoolean(1, usuario.isAtivo());
 				ps.setString(2, usuario.getCelular());
 				ps.setString(3, usuario.getCpf());
@@ -43,6 +43,13 @@ public class UsuarioDaoImpl implements UsuarioDao {
 				ps.setString(12, usuario.getPreferenciaContato());
 
 				ps.executeUpdate();
+
+				try (ResultSet rs = ps.getGeneratedKeys()) {
+					while (rs.next()) {
+						id = rs.getInt(1);
+
+					}
+				}
 			}
 
 		} catch (Exception e) {
@@ -50,6 +57,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		} finally {
 			closeConnection();
 		}
+		return id;
 	}
 
 	private int saveEndereco(Usuario usuario) {
@@ -146,7 +154,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 				ps.setString(8, endereco.getUf());
 				ps.setDouble(9, endereco.getLatitude());
 				ps.setDouble(10, endereco.getLongitude());
-				
+
 				ps.setInt(11, endereco.getId());
 
 				ps.execute();
@@ -253,12 +261,12 @@ public class UsuarioDaoImpl implements UsuarioDao {
 						double longitude = rs.getDouble("longitude");
 
 						EnderecoUsuario endereco = new EnderecoUsuario(endereco_usu, bairro, complemento,
-								Integer.valueOf(numero), cep, cidade, estado, uf,latitude,longitude);
+								Integer.valueOf(numero), cep, cidade, estado, uf, latitude, longitude);
 
 						endereco.setId(id_endereco);
 
 						Usuario usuario = new Usuario(nome, cpf, sexo, dataNascimento, estadoCivil, telefone, celular,
-								endereco, email_usu, senha,preferenciaContato);
+								endereco, email_usu, senha, preferenciaContato);
 
 						usuario.setId(id);
 

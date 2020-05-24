@@ -12,7 +12,7 @@ public interface UsuarioDao {
 	
 	void resetPassword(String email, String password);
 
-	void save(Usuario usuario);
+	int save(Usuario usuario);
 
 	void update(Usuario usuario);
 

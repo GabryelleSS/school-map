@@ -16,5 +16,12 @@ public interface EscolaDao {
 
 	void openConnection();
 
+	void favorited(int user, int escola);
+
+	List<Escola> favorites(int user);
+
+	void dislike(int user, int escola);
+
 	void closeConnection();
+
 }
