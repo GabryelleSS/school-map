@@ -8,12 +8,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <StackPane fx:id="root" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.senac.school.controller.HomeController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="main-panel-container" stylesheets="@../../assets/css/mainPanel.css">
          <children>
-            <Label layoutX="108.0" layoutY="211.0" text="Bem-vindo ao School Map">
+            <Label layoutX="108.0" layoutY="211.0" text="Descubra escolas perto de você" textFill="#4087fd">
                <font>
                   <Font name="Ebrima Bold" size="36.0" />
                </font>
@@ -23,17 +24,12 @@
                   <Image url="@../../assets/image/home.png" />
                </image>
             </ImageView>
-            <Label layoutX="108.0" layoutY="273.0" text="It is a long established fact that a reader will be distracted by the a page">
+            <Label layoutX="108.0" layoutY="273.0" text="Sabe aquela busca por escolas próxima a você?" textFill="#464646">
                <font>
                   <Font name="Ebrima" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="108.0" layoutY="294.0" text="using Lorem Ipsum is that it has a more-or-less normal distribution">
-               <font>
-                  <Font name="Ebrima" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="108.0" layoutY="315.0" text="of letters, as opposed to using 'Content here, content here'">
+            <Label layoutX="108.0" layoutY="294.0" text="Agora podemos modernizar sua busca aonde estiver!" textFill="#464646">
                <font>
                   <Font name="Ebrima" size="15.0" />
                </font>
@@ -67,6 +63,11 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
+            <Text fill="#464646" layoutX="108.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aqui na School Map você encontra as escolas próximas ao seu bairro. Venha para o mundo digital!" wrappingWidth="417.099609375">
+               <font>
+                  <Font name="Ebrima" size="15.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </children>
