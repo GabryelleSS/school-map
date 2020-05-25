@@ -63,7 +63,7 @@ public class DashboardController implements Initializable {
 	public void initialize(URL url, ResourceBundle rb) {
 		
 		if(favoritesActive) {
-			labelDashboard.setText("Escolas marcadas como favoritas:");
+			labelDashboard.setText("Escolas marcadas como favorita:");
 		}
 		
 		fieldSearch.setVisible(true);
