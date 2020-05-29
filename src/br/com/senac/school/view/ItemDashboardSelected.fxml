@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="494.0" prefWidth="972.0" styleClass="item-container" stylesheets="@../../assets/css/itemDashboard.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="494.0" prefWidth="972.0" styleClass="item-container" stylesheets="@../../assets/css/itemDashboard.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="186.0" layoutY="79.0" styleClass="item-card-selected">
          <children>
@@ -25,12 +25,12 @@
                         <Image url="@../../assets/image/icons8-school-64.png" />
                      </image>
                   </ImageView>
-                  <Circle fill="WHITE" layoutX="544.0" layoutY="44.0" radius="25.0" stroke="WHITE" strokeType="INSIDE">
+                  <Circle fill="WHITE" layoutX="546.0" layoutY="44.0" radius="25.0" stroke="WHITE" strokeType="INSIDE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Circle>
-                  <ImageView fx:id="imageMark" fitHeight="29.0" fitWidth="42.0" layoutX="530.0" layoutY="30.0" onMouseClicked="#btnFavorited" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imageMark" fitHeight="29.0" fitWidth="42.0" layoutX="532.0" layoutY="30.0" onMouseClicked="#btnFavorited" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../assets/image/bookmark.png" />
                      </image>
@@ -38,6 +38,11 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
+                  <Label layoutX="520.0" layoutY="68.0" text="Favoritar" textFill="WHITE">
+                     <font>
+                        <Font name="Ebrima Bold" size="12.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
             <Label fx:id="tipo" layoutX="25.0" layoutY="157.0" prefHeight="17.0" prefWidth="200.0" text="ESC.PART." AnchorPane.leftAnchor="25.0">
@@ -146,5 +151,10 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
+      <Label layoutX="186.0" layoutY="26.0" text="Escola selecionada:">
+         <font>
+            <Font name="Ebrima Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
