@@ -1,7 +1,7 @@
 # School Map
 
 <h1 align="center">
-  <img alt="Tela Home do sistema" src=".github/Home.png" width="200px" />
+  <img alt="Tela Home do sistema" src="github/Home.PNG" width="200px" />
 </h1>
 
 ## 💻 Tecnologias 
@@ -29,7 +29,7 @@ Os requisitos eram:
 - Desenvolver o projeto visando o usuário, ou seja, utilizando User Experience(UX).
 
 <h1 align="center">
-    <img alt="DevRadar" title="#delicinha" src=".github/Login.png" width="200px" />
+  <img alt="Tela de Login do sistema" src="github/Login.PNG" />
 </h1>
 
 ## 🤔 Como utilizar o projeto?
