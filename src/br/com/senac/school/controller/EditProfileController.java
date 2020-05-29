@@ -7,9 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
@@ -17,9 +14,9 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.RequiredFieldValidator;
-import com.sun.org.apache.bcel.internal.generic.SIPUSH;
 
 import br.com.senac.school.dao.UsuarioDaoImpl;
+import br.com.senac.school.log.Logs;
 import br.com.senac.school.model.Genero;
 import br.com.senac.school.model.Usuario;
 import br.com.senac.school.session.Session;
@@ -41,8 +38,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 
 public class EditProfileController implements Initializable {
-
-	private static Logger logger = LogManager.getLogger(EditProfileController.class);
 
 	@FXML
 	private HBox formFieldsRegisterUser;
@@ -137,7 +132,7 @@ public class EditProfileController implements Initializable {
 		protected Task<Void> createTask() {
 			return new Task<Void>() {
 				protected Void call() throws Exception {
-					logger.info("Realizando alterações no perfil");
+					Logs.info("Realizando alterações no perfil");
 					generateUsuario();
 					new UsuarioDaoImpl().update(usuario);
 					return null;

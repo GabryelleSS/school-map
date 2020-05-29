@@ -4,76 +4,59 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import java.sql.Statement;
 
 import br.com.senac.school.model.Log;
-import br.com.senac.school.session.Session;
 
 public class LogDAO {
-	private static Logger logger = LogManager.getLogger(LogDAO.class);
 
-	private Connection connection = null;
-	private ResultSet rs = null;
-	private PreparedStatement ps = null;
+	private static Connection connection = null;
+	private static PreparedStatement ps = null;
 
-	public List<Log> findAll() {
-
-		List<Log> logs = new ArrayList<Log>();
-
-		String sql = "SELECT * FROM app_logs WHERE ENTRY_DATE > ?";
+	public static int insert(Log log) {
+		String sql = " INSERT INTO app_logs (DATA, EVENTO,LEVEL,IP) VALUES (?,?,?,?)";
 
 		try {
 			connection = ConnectionFactory.getConnection();
-			ps = connection.prepareStatement(sql);
-			ps.setString(1, Session.data);
-			ps.executeQuery();
-			rs = ps.getResultSet();
+			ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			ps.setString(1, log.getData().getValue());
+			ps.setString(2, log.getEvento().getValue());
+			ps.setString(3, log.getLevel().getValue());
+			ps.setString(4, log.getIp().getValue());
+			ps.execute();
 
-			while (rs.next()) {
-
-				String id = rs.getString("LOG_ID");
-				String data = rs.getString("ENTRY_DATE");
-				String logger = rs.getString("LOGGER");
-				String level = rs.getString("LOG_LEVEL");
-				String message = rs.getString("MESSAGE");
-				logs.add(new Log(id, data, logger, level, message));
+			try (ResultSet rs = ps.getGeneratedKeys()) {
+				while (rs.next()) {
+					return rs.getInt(1);
+				}
 			}
 
-			return logs;
-		} catch (Exception e) {
-			logger.error("Erro consultando logs do sistema", e);
+		} catch (SQLException e) {
 		} finally {
 			try {
 				connection.close();
-				rs.close();
 				ps.close();
 			} catch (Exception e) {
-				logger.error("Erro ao fechar os recursos", e);
 			}
 		}
-		return logs;
+		return 0;
+
 	}
 
-	public void remove(Log log) {
+	public static void remove(int id) {
 		String sql = " DELETE FROM app_logs where LOG_ID = ?";
 
 		try {
 			connection = ConnectionFactory.getConnection();
 			ps = connection.prepareStatement(sql);
-			ps.setString(1, log.getId().getValue());
+			ps.setInt(1, id);
 			ps.execute();
 		} catch (SQLException e) {
-			logger.error("Erro ao tentar deletar log", e);
 		} finally {
 			try {
 				connection.close();
 				ps.close();
 			} catch (Exception e) {
-				logger.error("Erro ao fechar os recursos", e);
 			}
 		}
 

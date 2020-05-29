@@ -1,7 +1,7 @@
 package br.com.senac.school.controller;
 
 import java.net.URL;
-import java.util.List;
+import java.util.Collection;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
@@ -12,7 +12,7 @@ import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
-import br.com.senac.school.dao.LogDAO;
+import br.com.senac.school.log.Logs;
 import br.com.senac.school.model.Log;
 import br.com.senac.school.util.Alert;
 import br.com.senac.school.util.DashboardPaneContent;
@@ -33,14 +33,12 @@ public class LogsController implements Initializable {
 	@FXML
 	private JFXTreeTableView<Log> table;
 
-	private LogDAO dao = new LogDAO();
-
 	@SuppressWarnings("unchecked")
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 
 		JFXTreeTableColumn<Log, String> id = new JFXTreeTableColumn<>("ID");
-		id.setPrefWidth(250);
+		id.setPrefWidth(150);
 		id.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Log, String>, ObservableValue<String>>() {
 			@Override
 			public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Log, String> param) {
@@ -49,7 +47,7 @@ public class LogsController implements Initializable {
 		});
 
 		JFXTreeTableColumn<Log, String> data = new JFXTreeTableColumn<>("Data");
-		data.setPrefWidth(150);
+		data.setPrefWidth(198);
 		data.setCellValueFactory(
 				new Callback<TreeTableColumn.CellDataFeatures<Log, String>, ObservableValue<String>>() {
 					@Override
@@ -58,18 +56,26 @@ public class LogsController implements Initializable {
 					}
 				});
 
-		JFXTreeTableColumn<Log, String> logger = new JFXTreeTableColumn<>("Logger");
-		logger.setPrefWidth(250);
-		logger.setCellValueFactory(
+		JFXTreeTableColumn<Log, String> evento = new JFXTreeTableColumn<>("Evento");
+		evento.setPrefWidth(250);
+		evento.setCellValueFactory(
 				new Callback<TreeTableColumn.CellDataFeatures<Log, String>, ObservableValue<String>>() {
 					@Override
 					public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Log, String> param) {
-						return param.getValue().getValue().getLogger();
+						return param.getValue().getValue().getEvento();
 					}
 				});
+		JFXTreeTableColumn<Log, String> ip = new JFXTreeTableColumn<>("IP");
+		ip.setPrefWidth(250);
+		ip.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Log, String>, ObservableValue<String>>() {
+			@Override
+			public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Log, String> param) {
+				return param.getValue().getValue().getIp();
+			}
+		});
 
 		JFXTreeTableColumn<Log, String> level = new JFXTreeTableColumn<>("Nível");
-		level.setPrefWidth(50);
+		level.setPrefWidth(150);
 		level.setCellValueFactory(
 				new Callback<TreeTableColumn.CellDataFeatures<Log, String>, ObservableValue<String>>() {
 					@Override
@@ -78,24 +84,14 @@ public class LogsController implements Initializable {
 					}
 				});
 
-		JFXTreeTableColumn<Log, String> message = new JFXTreeTableColumn<>("Mensagem");
-		message.setPrefWidth(300);
-		message.setCellValueFactory(
-				new Callback<TreeTableColumn.CellDataFeatures<Log, String>, ObservableValue<String>>() {
-					@Override
-					public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Log, String> param) {
-						return param.getValue().getValue().getMessage();
-					}
-				});
-
 		ObservableList<Log> logs = FXCollections.observableArrayList();
 
-		List<Log> list = dao.findAll();
+		Collection<Log> list = Logs.findAll();
 
 		list.forEach(x -> logs.add(x));
 
 		final TreeItem<Log> root = new RecursiveTreeItem<Log>(logs, RecursiveTreeObject::getChildren);
-		table.getColumns().setAll(id, data, logger, level, message);
+		table.getColumns().setAll(id, data, evento, level, ip);
 		table.setRoot(root);
 		table.setShowRoot(false);
 
@@ -147,7 +143,7 @@ public class LogsController implements Initializable {
 	private void removeLog() {
 		TreeItem<Log> item = table.getSelectionModel().getSelectedItem();
 		if (item != null) {
-			dao.remove(item.getValue());
+			Logs.remove(item.getValue().getId().get());
 			table.getSelectionModel().getSelectedItem().getParent().getChildren().remove(item);
 			table.refresh();
 		}

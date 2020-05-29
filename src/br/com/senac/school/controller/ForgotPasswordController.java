@@ -14,6 +14,7 @@ import br.com.senac.school.dao.UsuarioDaoImpl;
 import br.com.senac.school.email.EmailSender;
 import br.com.senac.school.email.GmailService;
 import br.com.senac.school.email.Token;
+import br.com.senac.school.log.Logs;
 import br.com.senac.school.service.MessageService;
 import br.com.senac.school.util.Alert;
 import br.com.senac.school.util.Encrypt;
@@ -76,6 +77,7 @@ public class ForgotPasswordController implements Initializable {
 			String confirm = fieldConfirmPassword.getText();
 
 			if (password.equals(confirm)) {
+				Logs.info("Redefinição de senha");
 
 				resetPasswod(email, password);
 

@@ -8,6 +8,7 @@ import java.util.concurrent.Executors;
 
 import br.com.senac.school.dao.EscolaDao;
 import br.com.senac.school.dao.EscolaDaoImpl;
+import br.com.senac.school.log.Logs;
 import br.com.senac.school.model.EnderecoUsuario;
 import br.com.senac.school.model.Escola;
 import br.com.senac.school.session.EscolasCache;
@@ -270,6 +271,7 @@ public class DashboardController implements Initializable {
 
 	@FXML
 	void logout(MouseEvent event) {
+		Logs.clear();
 		Session.removeUsuario();
 		EscolasCache.clean();
 		new LoadViews().load(root, VIEWS_NAMES.LOGIN);

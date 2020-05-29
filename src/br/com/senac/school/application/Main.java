@@ -1,9 +1,7 @@
 package br.com.senac.school.application;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 
-import br.com.senac.school.session.Session;
 import br.com.senac.school.util.VIEWS_NAMES;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,8 +15,6 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Session.data = LocalDateTime.now().plusHours(3).toString();
-
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(VIEWS_NAMES.SPLASH.getName()));
 			Parent pane = loader.load();
 			Scene mainScene = new Scene(pane);

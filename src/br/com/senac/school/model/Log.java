@@ -9,16 +9,19 @@ public class Log extends RecursiveTreeObject<Log> {
 
 	StringProperty id;
 	StringProperty data;
-	StringProperty logger;
+	StringProperty evento;
 	StringProperty level;
-	StringProperty message;
+	StringProperty ip;
 
-	public Log(String id, String data, String logger, String level, String message) {
-		this.id = new SimpleStringProperty(id);
+	public Log(String data, String evento, String level, String ip) {
+		this.evento = new SimpleStringProperty(evento);
 		this.data = new SimpleStringProperty(data);
-		this.logger = new SimpleStringProperty(logger);
+		this.ip = new SimpleStringProperty(ip);
 		this.level = new SimpleStringProperty(level);
-		this.message = new SimpleStringProperty(message);
+	}
+
+	public void setId(String id) {
+		this.id = new SimpleStringProperty(id);
 	}
 
 	public StringProperty getId() {
@@ -29,16 +32,16 @@ public class Log extends RecursiveTreeObject<Log> {
 		return data;
 	}
 
-	public StringProperty getLogger() {
-		return logger;
+	public StringProperty getEvento() {
+		return evento;
 	}
 
 	public StringProperty getLevel() {
 		return level;
 	}
 
-	public StringProperty getMessage() {
-		return message;
+	public StringProperty getIp() {
+		return ip;
 	}
 
 }

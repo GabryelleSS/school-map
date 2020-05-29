@@ -13,6 +13,7 @@ import com.jfoenix.validation.base.ValidatorBase;
 
 import br.com.senac.school.dao.UsuarioDao;
 import br.com.senac.school.dao.UsuarioDaoImpl;
+import br.com.senac.school.log.Logs;
 import br.com.senac.school.model.Usuario;
 import br.com.senac.school.session.Session;
 import br.com.senac.school.util.Alert;
@@ -100,6 +101,7 @@ public class LoginController implements Initializable {
 				if (!list.isEmpty()) {
 					boolean verify = Encrypt.verify(password, list.get(0).getSenha());
 					if (verify) {
+						Logs.info("LOGIN");
 						Session.setUsuario(list.get(0));
 						loadDashboard();
 					} else {

@@ -8,15 +8,13 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.concurrent.Executors;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.github.gilbertotorrezan.viacep.shared.ViaCEPEndereco;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.RequiredFieldValidator;
 
 import br.com.senac.school.dao.UsuarioDaoImpl;
+import br.com.senac.school.log.Logs;
 import br.com.senac.school.model.EnderecoUsuario;
 import br.com.senac.school.model.Usuario;
 import br.com.senac.school.service.ViaCEPService;
@@ -38,7 +36,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 
 public class EditProfileEnderecoController implements Initializable {
-	private static Logger logger = LogManager.getLogger(EditProfileEnderecoController.class);
 
 	@FXML
 	private JFXTextField fieldRua;
@@ -220,7 +217,7 @@ public class EditProfileEnderecoController implements Initializable {
 		protected Task<Void> createTask() {
 			return new Task<Void>() {
 				protected Void call() throws Exception {
-					logger.info("Realizando alterações no perfil");
+					Logs.info("Realizando alterações no perfil");
 					generateUsuario();
 					new UsuarioDaoImpl().update(usuario);
 					return null;
