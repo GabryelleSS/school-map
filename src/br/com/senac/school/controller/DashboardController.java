@@ -47,7 +47,7 @@ public class DashboardController implements Initializable {
 
 	@FXML
 	private StackPane root;
-	
+
 	@FXML
 	private Label labelDashboard;
 
@@ -62,11 +62,11 @@ public class DashboardController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		
-		if(favoritesActive) {
+
+		if (favoritesActive) {
 			labelDashboard.setText("Escolas marcadas como favorita:");
 		}
-		
+
 		fieldSearch.setVisible(true);
 		btnSearch.setVisible(true);
 		loadSchools();
@@ -274,7 +274,7 @@ public class DashboardController implements Initializable {
 		Logs.clear();
 		Session.removeUsuario();
 		EscolasCache.clean();
-		new LoadViews().load(root, VIEWS_NAMES.LOGIN);
+		new LoadViews().load(root, VIEWS_NAMES.HOME);
 	}
 
 }
