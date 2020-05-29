@@ -1,7 +1,7 @@
 # School Map
 
 <h1 align="center">
-  <img alt="Tela Home do sistema" src="github/Home.PNG" width="200px" />
+  <img alt="Tela Home do sistema" src="github/Home.PNG" />
 </h1>
 
 ## 💻 Tecnologias 
