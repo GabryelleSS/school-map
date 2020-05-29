@@ -158,6 +158,11 @@
                </font>
             </Label>
             <JFXDatePicker fx:id="fieldDateBirth" defaultColor="#4087fd" layoutX="412.0" layoutY="78.0" prefHeight="28.0" prefWidth="345.0" promptText="ex: 06/09/1990 *" styleClass="user-register-field-date-birth" />
+            <ImageView fx:id="spinner" fitHeight="60.0" fitWidth="63.0" layoutX="259.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../assets/image/Spin-1s-200px%20(1).gif" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

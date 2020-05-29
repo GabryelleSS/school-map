@@ -64,9 +64,14 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </ImageView>
-                        <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="250.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageEmail" fitHeight="80.0" fitWidth="80.0" layoutX="250.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../assets/image/icons8-send-email-64.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="spinner" fitHeight="80.0" fitWidth="80.0" layoutX="250.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@../../assets/image/Spin-1s-200px%20(1).gif" />
                            </image>
                         </ImageView>
                      </children>

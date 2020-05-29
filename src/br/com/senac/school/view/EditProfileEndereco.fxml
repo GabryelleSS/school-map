@@ -6,6 +6,8 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
@@ -117,6 +119,11 @@
                   <Font name="Ebrima Bold" size="14.0" />
                </font>
             </Label>
+            <ImageView fx:id="spinner" fitHeight="60.0" fitWidth="63.0" layoutX="302.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../assets/image/Spin-1s-200px%20(1).gif" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

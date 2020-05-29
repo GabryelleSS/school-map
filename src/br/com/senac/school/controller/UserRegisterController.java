@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import com.github.gilbertotorrezan.viacep.shared.ViaCEPEndereco;
 import com.jfoenix.controls.JFXButton;
@@ -33,6 +35,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -122,6 +125,9 @@ public class UserRegisterController implements Initializable {
 	@FXML
 	private JFXCheckBox fieldContactTelefone;
 
+	@FXML
+	private ImageView spinner;
+
 	private double latitude;
 	private double longitude;
 
@@ -208,7 +214,7 @@ public class UserRegisterController implements Initializable {
 				birthDate, maritalStatus, telephone));
 
 		if (nextFields)
-			fieldsRequireds.addAll(Arrays.asList(cep, city, number, district, state, street,preferences));
+			fieldsRequireds.addAll(Arrays.asList(cep, city, number, district, state, street, preferences));
 
 		if (confirmationSamePasswords()) {
 			Alert.show("Senha incorreta", warningModalPassawordIncorrect, root);
@@ -288,27 +294,32 @@ public class UserRegisterController implements Initializable {
 		fieldCep.textProperty().addListener((observable, oldValue, newValue) -> {
 
 			if (newValue.length() == 9) {
+				spinner.setVisible(true);
 
-				Optional<ViaCEPEndereco> consulta = ViaCEPService.consulta(newValue);
+				Executors.newFixedThreadPool(10).submit(() -> {
 
-				String[] cep = newValue.split("-");
+					Optional<ViaCEPEndereco> consulta = ViaCEPService.consulta(newValue);
 
-				Endereco latELong = Api.buscaPorCep(cep[0].concat(cep[1]));
+					String[] cep = newValue.split("-");
 
-				latitude = latELong.getLatitude();
-				longitude = latELong.getLongitude();
+					Endereco latELong = Api.buscaPorCep(cep[0].concat(cep[1]));
 
-				if (consulta.isPresent()) {
-					ViaCEPEndereco endereco = consulta.get();
-					this.fieldStreet.setText(endereco.getLogradouro());
-					this.filedDistrict.setText(endereco.getBairro());
-					this.fieldUF.setText(endereco.getUf());
-					this.fieldState.setText(endereco.getLocalidade());
-				} else {
-					Alert.show("CEP inválido", "Por favor insira um cep válido", root);
-				}
+					latitude = latELong.getLatitude();
+					longitude = latELong.getLongitude();
+
+					if (consulta.isPresent()) {
+						ViaCEPEndereco endereco = consulta.get();
+						this.fieldStreet.setText(endereco.getLogradouro());
+						this.filedDistrict.setText(endereco.getBairro());
+						this.fieldUF.setText(endereco.getUf());
+						this.fieldState.setText(endereco.getLocalidade());
+						spinner.setVisible(false);
+					} else {
+						spinner.setVisible(true);
+						Alert.show("CEP inválido", "Por favor insira um cep válido", root);
+					}
+				});
 			}
-
 		});
 	}
 

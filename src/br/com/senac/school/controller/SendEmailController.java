@@ -16,9 +16,12 @@ import br.com.senac.school.session.Session;
 import br.com.senac.school.util.Alert;
 import br.com.senac.school.util.LoadViews;
 import br.com.senac.school.util.VIEWS_NAMES;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 
@@ -29,6 +32,12 @@ public class SendEmailController implements Initializable {
 
 	@FXML
 	private StackPane root;
+
+	@FXML
+	private ImageView imageEmail;
+
+	@FXML
+	private ImageView spinner;
 
 	private EmailSender service;
 	public static Usuario usuario;
@@ -52,22 +61,41 @@ public class SendEmailController implements Initializable {
 	}
 
 	@FXML
-	void btnRegistration(ActionEvent event) {
+	void btnRegistration(ActionEvent actionEvent) {
+		imageEmail.setVisible(false);
+		spinner.setVisible(true);
 		String token = fieldToken.getText();
 
 		if (token.equals(String.valueOf(this.token))) {
-			int id = persistUsuario(usuario);
-			usuario.setId(id);
-			Session.setUsuario(usuario);
-			loadDashboard();
+
+			register.start();
+			register.setOnSucceeded((event) -> {
+				loadDashboard();
+			});
 
 		} else {
+			imageEmail.setVisible(true);
+			spinner.setVisible(false);
 			Alert.show("Token inválido",
 					"O token está inválido, por favor insira o token enviado para o seu e-mail para concluir o seu cadastro.",
 					root);
-
 		}
 	}
+
+	Service<Void> register = new Service<Void>() {
+		@Override
+		protected Task<Void> createTask() {
+			return new Task<Void>() {
+				@Override
+				protected Void call() throws Exception {
+					int id = persistUsuario(usuario);
+					usuario.setId(id);
+					Session.setUsuario(usuario);
+					return null;
+				}
+			};
+		}
+	};
 
 	@FXML
 	void btnBackRegistration(MouseEvent event) {

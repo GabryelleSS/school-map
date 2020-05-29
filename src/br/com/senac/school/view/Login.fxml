@@ -62,7 +62,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Label>
-                        <Label layoutX="286.0" layoutY="349.0" onMouseClicked="#btnForgotPassword" text="Esqueceu a sua senha ?" textFill="#4087fd">
+                        <Label fx:id="labelForgotPassword" layoutX="286.0" layoutY="349.0" onMouseClicked="#btnForgotPassword" text="Esqueceu a sua senha ?" textFill="#4087fd">
                            <font>
                               <Font name="Ebrima" size="14.0" />
                            </font>
@@ -77,6 +77,11 @@
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="spinner" fitHeight="62.0" fitWidth="62.0" layoutX="269.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@../../assets/image/Spin-1s-200px%20(1).gif" />
+                           </image>
                         </ImageView>
                      </children>
                   </AnchorPane>

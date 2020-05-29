@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.concurrent.Executors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -27,10 +28,13 @@ import br.com.senac.school.util.VIEWS_NAMES;
 import br.com.senac.school.util.Validator;
 import consultaCep.Api;
 import consultaCep.Endereco;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 
 public class EditProfileEnderecoController implements Initializable {
@@ -65,6 +69,9 @@ public class EditProfileEnderecoController implements Initializable {
 
 	@FXML
 	private JFXCheckBox fieldContactTelefone;
+
+	@FXML
+	private ImageView spinner;
 
 	@FXML
 	private StackPane root;
@@ -158,45 +165,69 @@ public class EditProfileEnderecoController implements Initializable {
 		fieldCep.textProperty().addListener((observable, oldValue, newValue) -> {
 
 			if (newValue.length() == 9) {
+				spinner.setVisible(true);
 
-				Optional<ViaCEPEndereco> consulta = ViaCEPService.consulta(newValue);
+				Executors.newFixedThreadPool(10).submit(() -> {
 
-				String[] cep = newValue.split("-");
+					Optional<ViaCEPEndereco> consulta = ViaCEPService.consulta(newValue);
 
-				Endereco latELong = Api.buscaPorCep(cep[0].concat(cep[1]));
+					String[] cep = newValue.split("-");
 
-				latitude = latELong.getLatitude();
-				longitude = latELong.getLongitude();
+					Endereco latELong = Api.buscaPorCep(cep[0].concat(cep[1]));
 
-				if (consulta.isPresent()) {
-					ViaCEPEndereco endereco = consulta.get();
-					this.fieldRua.setText(endereco.getLogradouro());
-					this.fieldBairro.setText(endereco.getBairro());
-					this.fieldUf.setText(endereco.getUf());
-					this.fieldEstado.setText(endereco.getLocalidade());
-				} else {
-					Alert.show("CEP inválido", "Por favor insira um cep válido", DashboardPaneContent.root);
-				}
+					latitude = latELong.getLatitude();
+					longitude = latELong.getLongitude();
+
+					if (consulta.isPresent()) {
+						ViaCEPEndereco endereco = consulta.get();
+						this.fieldRua.setText(endereco.getLogradouro());
+						this.fieldBairro.setText(endereco.getBairro());
+						this.fieldUf.setText(endereco.getUf());
+						this.fieldEstado.setText(endereco.getLocalidade());
+						spinner.setVisible(false);
+					} else {
+						spinner.setVisible(false);
+						Alert.show("CEP inválido", "Por favor insira um cep válido", DashboardPaneContent.root);
+					}
+
+				});
 			}
 
 		});
 	}
 
 	@FXML
-	void btnSaveUpdate(ActionEvent event) {
+	void btnSaveUpdate(ActionEvent actionEvent) {
 
 		if (checkRequiredFields()) {
 			Alert.show("Campos obrigatórios", "Ops! Você precisa preencher os campos obrigatórios.",
 					DashboardPaneContent.root);
 
 		} else {
-			logger.info("Realizando alterações no perfil");
-			generateUsuario();
-			new UsuarioDaoImpl().update(usuario);
-			Alert.show("Alterações efetuadas!", "Suas alterações foram efetuadas com sucesso!",
-					DashboardPaneContent.root);
+			spinner.setVisible(true);
+			task.start();
+			task.setOnSucceeded((event) -> {
+				spinner.setVisible(false);
+				Alert.show("Alterações efetuadas!", "Suas alterações foram efetuadas com sucesso!",
+						DashboardPaneContent.root);
+			});
 		}
 	}
+
+	Service<Void> task = new Service<Void>() {
+
+		@Override
+		protected Task<Void> createTask() {
+			return new Task<Void>() {
+				protected Void call() throws Exception {
+					logger.info("Realizando alterações no perfil");
+					generateUsuario();
+					new UsuarioDaoImpl().update(usuario);
+					return null;
+				}
+			};
+		}
+	};
 
 	public void generateUsuario() {
 		String rua = fieldRua.getText();

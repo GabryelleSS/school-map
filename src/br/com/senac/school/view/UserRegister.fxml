@@ -304,7 +304,18 @@
                               </Label>
                            </children>
                         </VBox>
-                        <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="350.0" />
+                        <VBox alignment="TOP_RIGHT" prefHeight="56.0" prefWidth="621.0">
+                           <children>
+                              <AnchorPane prefHeight="56.0" prefWidth="337.0">
+                                 <children>
+                                    <ImageView fx:id="spinner" fitHeight="56.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../assets/image/Spin-1s-200px%20(1).gif" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                           </children></VBox>
                      </children>
                      <padding>
                         <Insets left="30.0" right="30.0" top="30.0" />

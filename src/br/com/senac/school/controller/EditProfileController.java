@@ -17,6 +17,7 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.RequiredFieldValidator;
+import com.sun.org.apache.bcel.internal.generic.SIPUSH;
 
 import br.com.senac.school.dao.UsuarioDaoImpl;
 import br.com.senac.school.model.Genero;
@@ -29,15 +30,18 @@ import br.com.senac.school.util.LoadViews;
 import br.com.senac.school.util.MaskFX;
 import br.com.senac.school.util.VIEWS_NAMES;
 import br.com.senac.school.util.Validator;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 
 public class EditProfileController implements Initializable {
-	
+
 	private static Logger logger = LogManager.getLogger(EditProfileController.class);
 
 	@FXML
@@ -94,6 +98,9 @@ public class EditProfileController implements Initializable {
 	@FXML
 	private AnchorPane rootEndereco;
 
+	@FXML
+	private ImageView spinner;
+
 	public static Usuario usuario;
 
 	private RequiredFieldValidator validator;
@@ -106,20 +113,38 @@ public class EditProfileController implements Initializable {
 	}
 
 	@FXML
-	void btnSaveProfile(ActionEvent event) {
+	void btnSaveProfile(ActionEvent actionEvent) {
 
 		if (checkRequiredFields()) {
 			Alert.show("Campos obrigatórios", "Ops! Você precisa preencher os campos obrigatórios.",
 					DashboardPaneContent.root);
 
 		} else {
-			logger.info("Realizando alterações no perfil");
-			generateUsuario();
-			new UsuarioDaoImpl().update(usuario);
-			Alert.show("Alterações efetuadas!", "Suas alterações foram efetuadas com sucesso!",
-					DashboardPaneContent.root);
+			spinner.setVisible(true);
+			task.start();
+			task.setOnSucceeded((event) -> {
+				spinner.setVisible(false);
+				Alert.show("Alterações efetuadas!", "Suas alterações foram efetuadas com sucesso!",
+						DashboardPaneContent.root);
+			});
 		}
+
 	}
+
+	Service<Void> task = new Service<Void>() {
+
+		@Override
+		protected Task<Void> createTask() {
+			return new Task<Void>() {
+				protected Void call() throws Exception {
+					logger.info("Realizando alterações no perfil");
+					generateUsuario();
+					new UsuarioDaoImpl().update(usuario);
+					return null;
+				}
+			};
+		}
+	};
 
 	private boolean checkRequiredFields() {
 		boolean firstNameEmpty = fieldFirstName.getText().trim().isEmpty();
@@ -190,7 +215,7 @@ public class EditProfileController implements Initializable {
 		String[] nome = usuario.getNome().split(" ");
 
 		fieldFirstName.setText(nome[0]);
-		if(nome.length>1) {
+		if (nome.length > 1) {
 			fieldLastName.setText(nome[1]);
 		}
 		fieldTephone.setText(usuario.getTelefone());
@@ -225,7 +250,7 @@ public class EditProfileController implements Initializable {
 		String senha = fieldPassword.getText();
 		String celular = fieldCell.getText();
 		String estadoCivil = fieldMaritalStatus.getSelectionModel().getSelectedItem();
-		
+
 		String genero;
 
 		if (fieldMan.isSelected()) {
@@ -249,6 +274,5 @@ public class EditProfileController implements Initializable {
 		usuario.setSexo(genero);
 
 	}
-
 
 }

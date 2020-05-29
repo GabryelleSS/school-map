@@ -20,9 +20,13 @@ import br.com.senac.school.util.Encrypt;
 import br.com.senac.school.util.LoadViews;
 import br.com.senac.school.util.VIEWS_NAMES;
 import br.com.senac.school.util.Validator;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 
@@ -42,6 +46,12 @@ public class LoginController implements Initializable {
 	@FXML
 	private JFXPasswordField fieldPassword;
 
+	@FXML
+	private Label labelForgotPassword;
+
+	@FXML
+	private ImageView spinner;
+
 	private ValidatorBase validator;
 
 	@Override
@@ -51,35 +61,61 @@ public class LoginController implements Initializable {
 	}
 
 	@FXML
-	void btnLogin(ActionEvent event) throws IOException {
+	void btnLogin(ActionEvent actionEvent) throws IOException {
+		labelForgotPassword.setVisible(false);
+		spinner.setVisible(true);
 
 		if (checkRequiredFields()) {
+			labelForgotPassword.setVisible(true);
+			spinner.setVisible(false);
 
 			Alert.show("Campos obrigatórios", "Ops! Você precisa preencher os campos obrigatórios.", root);
 
 		} else {
-			
+
 			String email = fieldEmail.getText();
 			String password = fieldPassword.getText();
 
-			UsuarioDao dao = new UsuarioDaoImpl();
-			List<Usuario> list = dao.findByEmail(email);
+			Service<List<Usuario>> searchUsuario = new Service<List<Usuario>>() {
 
-			if (!list.isEmpty()) {
-				boolean verify = Encrypt.verify(password, list.get(0).getSenha());
-				if (verify) {
-					Session.setUsuario(list.get(0));
-					loadDashboard();
-				} else {
-					Alert.show("Senha inválida", "Ops! A senha está incorreta!", root);
+				@Override
+				protected Task<List<Usuario>> createTask() {
+					return new Task<List<Usuario>>() {
+
+						protected List<Usuario> call() throws Exception {
+							UsuarioDao dao = new UsuarioDaoImpl();
+							List<Usuario> list = dao.findByEmail(email);
+							return list;
+						}
+					};
 				}
-			} else {
-				Alert.show("E-mail não cadastrado",
-						"Parece que você ainda não possui um cadastro conosco, faça já, é simples e rapido.", root);
-			}
+			};
 
+			searchUsuario.start();
+
+			searchUsuario.setOnSucceeded((event) -> {
+
+				List<Usuario> list = searchUsuario.getValue();
+
+				if (!list.isEmpty()) {
+					boolean verify = Encrypt.verify(password, list.get(0).getSenha());
+					if (verify) {
+						Session.setUsuario(list.get(0));
+						loadDashboard();
+					} else {
+						labelForgotPassword.setVisible(true);
+						spinner.setVisible(false);
+						Alert.show("Senha inválida", "Ops! A senha está incorreta!", root);
+					}
+				} else {
+					labelForgotPassword.setVisible(true);
+					spinner.setVisible(false);
+					Alert.show("E-mail não cadastrado",
+							"Parece que você ainda não possui um cadastro conosco, faça já, é simples e rapido.", root);
+				}
+
+			});
 		}
-
 	}
 
 	@FXML
