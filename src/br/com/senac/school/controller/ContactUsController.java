@@ -17,6 +17,9 @@ import br.com.senac.school.model.ContactUs;
 import br.com.senac.school.model.Usuario;
 import br.com.senac.school.session.Session;
 import br.com.senac.school.util.Alert;
+import br.com.senac.school.util.LoadViews;
+import br.com.senac.school.util.MaskFX;
+import br.com.senac.school.util.VIEWS_NAMES;
 import br.com.senac.school.util.Validator;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
@@ -24,6 +27,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 
 public class ContactUsController implements Initializable {
@@ -55,12 +59,15 @@ public class ContactUsController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		Usuario usuario = Session.getUsuario();
-		fieldEmail.setText(usuario.getEmail());
-		fieldCpf.setText(usuario.getCpf());
-		fieldName.setText(usuario.getNome());
 
+		if (usuario != null) {
+			fieldEmail.setText(usuario.getEmail());
+			fieldCpf.setText(usuario.getCpf());
+			fieldName.setText(usuario.getNome());
+		}
 		fieldType.getItems().addAll(Arrays.asList("Crítica", "Dúvida", "Elogio", "Sugestão"));
 		fieldRequired();
+		MaskFX.cpfField(fieldCpf);
 	}
 
 	@FXML
@@ -129,5 +136,10 @@ public class ContactUsController implements Initializable {
 			}
 		}
 		return false;
+	}
+
+	@FXML
+	void btnBackHome(MouseEvent event) {
+		new LoadViews().load(root, VIEWS_NAMES.HOME);
 	}
 }

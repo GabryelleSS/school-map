@@ -30,4 +30,9 @@ public class HomeController {
 
 	}
 
+	@FXML
+	void btnContact(MouseEvent event) {
+		new LoadViews().load(root, VIEWS_NAMES.CONTACT_US_MENU);
+	}
+
 }

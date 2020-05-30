@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="root" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.senac.school.controller.ContactUsController">
+   <children>
+      <AnchorPane prefHeight="600.0" prefWidth="1200.0" styleClass="home-container" stylesheets="@../../assets/css/login.css">
+         <children>
+            <Pane layoutX="450.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <AnchorPane layoutX="152.0" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: white;">
+                     <children>
+                        <Label layoutX="146.0" layoutY="123.0" text="Envie suas dúvidas, sugestões ou críticas." textFill="#a3a3a3">
+                           <font>
+                              <Font name="Ebrima Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="146.0" layoutY="76.0" text="Fale conosco" textFill="#545454">
+                           <font>
+                              <Font name="Ebrima Bold" size="36.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="26.0" fitWidth="41.0" layoutX="78.0" layoutY="50.0" onMouseClicked="#btnBackHome" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../assets/image/icons8-back-26.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <ImageView fx:id="spinner" fitHeight="164.0" fitWidth="143.0" layoutX="253.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@../../assets/image/Spin-1s-200px%20(1).gif" />
+                           </image>
+                        </ImageView>
+                        <VBox layoutX="146.0" layoutY="162.0" prefHeight="331.0" prefWidth="371.0">
+                           <children>
+                              <JFXTextField fx:id="fieldName" focusColor="#4087fd" labelFloat="true" prefHeight="35.0" promptText="Nome*">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </JFXTextField>
+                              <JFXTextField fx:id="fieldCpf" focusColor="#4087fd" labelFloat="true" prefHeight="35.0" promptText="CPF*">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </JFXTextField>
+                              <JFXTextField fx:id="fieldEmail" focusColor="#4087fd" labelFloat="true" prefHeight="35.0" promptText="E-mail*">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </JFXTextField>
+                              <JFXComboBox fx:id="fieldType" focusColor="#4087fd" labelFloat="true" prefHeight="35.0" prefWidth="417.0" promptText="Tipo solicitação*">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </JFXComboBox>
+                              <JFXTextArea fx:id="fieldMessage" focusColor="#4087fd" labelFloat="true" prefHeight="89.0" prefWidth="371.0" promptText="Mensagem*">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </JFXTextArea>
+                           </children>
+                        </VBox>
+                        <JFXButton layoutX="427.0" layoutY="503.0" onAction="#btnSend" stylesheets="@../../assets/css/userRegister.css" text="Enviar">
+                           <styleClass>
+                              <String fx:value="user-register-btn" />
+                              <String fx:value="user-register-btn-next" />
+                           </styleClass>
+                        </JFXButton>
+                        <Label layoutX="146.0" layoutY="514.0" text="Campos obrigatórios (*)">
+                           <font>
+                              <Font name="Ebrima Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </Pane>
+            <VBox layoutX="158.0" layoutY="115.0" prefHeight="280.0" prefWidth="279.0">
+               <children>
+                  <ImageView fitHeight="282.0" fitWidth="283.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../assets/image/user2.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+            <Label alignment="CENTER" layoutX="253.0" layoutY="385.0" text="Bem vindo ao" textAlignment="JUSTIFY" textFill="WHITE">
+               <font>
+                  <Font name="Ebrima Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="240.0" layoutY="403.0" text="SCHOOL MAP" textFill="WHITE">
+               <font>
+                  <Font name="Ebrima Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
