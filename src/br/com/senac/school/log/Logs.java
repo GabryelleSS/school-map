@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.concurrent.Executors;
 import java.util.logging.Level;
 
 import br.com.senac.school.dao.LogDAO;
@@ -21,11 +22,12 @@ public class Logs {
 	}
 
 	public static void info(String evento) {
-		Log log = create(evento);
-		int id = LogDAO.insert(log);
-		log.setId(String.valueOf(id));
-
-		logs.put(String.valueOf(id), log);
+		Executors.newCachedThreadPool().submit(() -> {
+			Log log = create(evento);
+			int id = LogDAO.insert(log);
+			log.setId(String.valueOf(id));
+			logs.put(String.valueOf(id), log);
+		});
 	}
 
 	public static Collection<Log> findAll() {
@@ -33,10 +35,11 @@ public class Logs {
 	}
 
 	public static void remove(String id) {
+		Executors.newCachedThreadPool().submit(() -> {
+			LogDAO.remove(Integer.valueOf(id));
+		});
 
-		LogDAO.remove(Integer.valueOf(id));
 		logs.remove(id);
-
 	}
 
 	public static void clear() {

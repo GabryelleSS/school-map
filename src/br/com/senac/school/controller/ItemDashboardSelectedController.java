@@ -1,5 +1,8 @@
 package br.com.senac.school.controller;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import br.com.senac.school.dao.EscolaDao;
 import br.com.senac.school.dao.EscolaDaoImpl;
 import br.com.senac.school.model.Escola;
@@ -98,15 +101,25 @@ public class ItemDashboardSelectedController {
 
 	@FXML
 	void btnFavorited(MouseEvent event) {
+		ExecutorService service = Executors.newCachedThreadPool();
+
 		EscolaDao dao = new EscolaDaoImpl();
 
 		if (EscolasCache.isFavorited(id)) {
 			EscolasCache.deslike(id);
-			dao.dislike(Session.getUsuario().getId(), id);
+
+			service.submit(() -> {
+				dao.dislike(Session.getUsuario().getId(), id);
+			});
+
 			imageMark.setImage(new Image("/br/com/senac/assets/image/bookmark.png"));
 		} else {
 			EscolasCache.favorite(id, escola);
-			dao.favorited(Session.getUsuario().getId(), id);
+			
+			service.submit(() -> {
+				dao.favorited(Session.getUsuario().getId(), id);
+			});
+			
 			imageMark.setImage(new Image("/br/com/senac/assets/image/bookmark-selected.png"));
 		}
 

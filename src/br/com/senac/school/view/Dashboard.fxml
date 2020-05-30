@@ -7,7 +7,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -73,7 +72,7 @@
             </JFXToolbar>
             <StackPane fx:id="content" layoutX="220.0" layoutY="70.0" prefHeight="530.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
                <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="1000.0" style="-fx-background-color: white;">
+                  <AnchorPane prefHeight="200.0" prefWidth="1000.0" style="-fx-background-color: #fafafa;">
                      <children>
                         <Label fx:id="labelDashboard" layoutX="95.0" layoutY="14.0" text="Escolas encontradas:">
                            <font>
@@ -105,7 +104,7 @@
             </StackPane>
             <AnchorPane layoutY="117.0" prefHeight="530.0" prefWidth="190.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="70.0">
                <children>
-                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="0.0">
+                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="200.0" style="-fx-background-color: #fafafa;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Pane onMouseClicked="#home" prefHeight="84.0" prefWidth="240.0" styleClass="menu-options" stylesheets="@../../assets/css/menu.css">
                            <children>
@@ -197,9 +196,6 @@
                            </cursor>
                         </Pane>
                      </children>
-                     <effect>
-                        <DropShadow height="0.0" radius="4.75" />
-                     </effect>
                      <padding>
                         <Insets top="45.0" />
                      </padding>
