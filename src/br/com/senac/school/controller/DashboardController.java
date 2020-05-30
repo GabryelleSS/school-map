@@ -27,6 +27,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -50,6 +51,9 @@ public class DashboardController implements Initializable {
 
 	@FXML
 	private Label labelDashboard;
+
+	@FXML
+	private ImageView spinner;
 
 	private ObservableList<Escola> listOfSchools;
 
@@ -94,6 +98,7 @@ public class DashboardController implements Initializable {
 						"Infelizmente não encontramos nenhuma escola com esse nome ou tipo.", root);
 				searchNotResult = false;
 				searchActive = false;
+				spinner.setVisible(false);
 			}
 			if (searchWithoutReturn) {
 
@@ -102,12 +107,14 @@ public class DashboardController implements Initializable {
 								+ "porem você pode realizar buscas pelo nome da escola no campo logo acima.",
 						root);
 
+				spinner.setVisible(false);
 			} else {
 				searchActive = false;
 				favoritesActive = false;
 				welcomeMessage();
 
 				try {
+					items.getChildren().clear();
 
 					boolean itsOdd = false;
 
@@ -158,6 +165,7 @@ public class DashboardController implements Initializable {
 							}
 						}
 					}
+					spinner.setVisible(false);
 				} catch (Exception e) {
 					throw new RuntimeException(e);
 				}

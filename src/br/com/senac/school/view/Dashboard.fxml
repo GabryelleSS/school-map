@@ -83,7 +83,19 @@
                      </children></AnchorPane>
                   <ScrollPane prefHeight="500.0" prefWidth="981.0" style="-fx-background-color: white;">
                     <content>
-                        <VBox fx:id="items" prefHeight="529.0" prefWidth="982.0" style="-fx-background-color: white;" />
+                        <VBox fx:id="items" prefHeight="529.0" prefWidth="982.0" style="-fx-background-color: white;">
+                           <children>
+                              <AnchorPane prefHeight="433.0" prefWidth="982.0">
+                                 <children>
+                                    <ImageView fx:id="spinner" fitHeight="99.0" fitWidth="142.0" layoutX="442.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../assets/image/Spin-1s-200px%20(1).gif" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
                     </content>
                      <StackPane.margin>
                         <Insets top="40.0" />
