@@ -106,14 +106,14 @@
                <children>
                   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="200.0" style="-fx-background-color: #fafafa;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Pane onMouseClicked="#home" prefHeight="84.0" prefWidth="240.0" styleClass="menu-options" stylesheets="@../../assets/css/menu.css">
+                        <Pane onMouseClicked="#home" prefHeight="60.0" prefWidth="240.0" styleClass="menu-options" stylesheets="@../../assets/css/menu.css">
                            <children>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="25.0" layoutY="19.0">
+                              <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="25.0" layoutY="18.0">
                                  <image>
                                     <Image url="@../../assets/image/icons8-home-50.png" />
                                  </image>
                               </ImageView>
-                              <Label layoutX="84.0" layoutY="24.0" text="Home">
+                              <Label layoutX="84.0" layoutY="23.0" text="Home">
                                  <font>
                                     <Font name="Ebrima" size="13.0" />
                                  </font>
@@ -123,14 +123,14 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Pane>
-                        <Pane onMouseClicked="#editProfile" prefHeight="84.0" prefWidth="240.0" styleClass="menu-options" stylesheets="@../../assets/css/menu.css">
+                        <Pane onMouseClicked="#editProfile" prefHeight="60.0" prefWidth="240.0" styleClass="menu-options" stylesheets="@../../assets/css/menu.css">
                            <children>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="25.0" layoutY="19.0">
+                              <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="25.0" layoutY="18.0">
                                  <image>
                                     <Image url="@../../assets/image/icons8-customer-50.png" />
                                  </image>
                               </ImageView>
-                              <Label layoutX="84.0" layoutY="24.0" text="Editar Pefil">
+                              <Label layoutX="84.0" layoutY="23.0" text="Editar Pefil">
                                  <font>
                                     <Font name="Ebrima" size="13.0" />
                                  </font>
@@ -140,14 +140,14 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Pane>
-                        <Pane onMouseClicked="#logs" prefHeight="84.0" prefWidth="240.0" styleClass="menu-options" stylesheets="@../../assets/css/menu.css">
+                        <Pane onMouseClicked="#logs" prefHeight="60.0" prefWidth="240.0" styleClass="menu-options" stylesheets="@../../assets/css/menu.css">
                            <children>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="25.0" layoutY="19.0">
+                              <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="25.0" layoutY="18.0">
                                  <image>
                                     <Image url="@../../assets/image/icons8-log-50.png" />
                                  </image>
                               </ImageView>
-                              <Label layoutX="84.0" layoutY="24.0" text="LOGS">
+                              <Label layoutX="84.0" layoutY="23.0" text="LOGS">
                                  <font>
                                     <Font name="Ebrima" size="13.0" />
                                  </font>
@@ -157,14 +157,14 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Pane>
-                        <Pane onMouseClicked="#favorites" prefHeight="84.0" prefWidth="240.0" styleClass="menu-options" stylesheets="@../../assets/css/menu.css">
+                        <Pane onMouseClicked="#favorites" prefHeight="60.0" prefWidth="240.0" styleClass="menu-options" stylesheets="@../../assets/css/menu.css">
                            <children>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="27.0" layoutY="19.0">
+                              <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="27.0" layoutY="18.0">
                                  <image>
                                     <Image url="@../../assets/image/icons8-favorite-folder-50.png" />
                                  </image>
                               </ImageView>
-                              <Label layoutX="86.0" layoutY="24.0" text="Favoritas">
+                              <Label layoutX="86.0" layoutY="23.0" text="Favoritas">
                                  <font>
                                     <Font name="Ebrima" size="13.0" />
                                  </font>
@@ -174,8 +174,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Pane>
-                        <Pane prefHeight="84.0" prefWidth="240.0" />
-                        <Pane onMouseClicked="#logout" prefHeight="84.0" prefWidth="240.0" styleClass="menu-options" stylesheets="@../../assets/css/menu.css">
+                        <Pane onMouseClicked="#logout" prefHeight="60.0" prefWidth="240.0" styleClass="menu-options" stylesheets="@../../assets/css/menu.css">
                            <children>
                               <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="27.0" layoutY="18.0">
                                  <image>
@@ -189,7 +188,7 @@
                               </Label>
                            </children>
                            <VBox.margin>
-                              <Insets top="80.0" />
+                              <Insets />
                            </VBox.margin>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -197,7 +196,7 @@
                         </Pane>
                      </children>
                      <padding>
-                        <Insets top="45.0" />
+                        <Insets top="40.0" />
                      </padding>
                   </VBox>
                </children>
