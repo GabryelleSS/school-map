@@ -62,7 +62,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Label>
-                        <Label fx:id="labelForgotPassword" layoutX="286.0" layoutY="349.0" onMouseClicked="#btnForgotPassword" text="Esqueceu a sua senha ?" textFill="#4087fd">
+                        <Label fx:id="labelForgotPassword" layoutX="286.0" layoutY="349.0" onMouseClicked="#btnForgotPassword" text="Esqueceu a sua senha?" textFill="#4087fd">
                            <font>
                               <Font name="Ebrima" size="14.0" />
                            </font>

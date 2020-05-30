@@ -56,7 +56,7 @@ public class GmailService implements EmailSender {
 				simpleEmail.buildMimeMessage();
 				simpleEmail.sendMimeMessage();
 			} catch (Exception e) {
-				e.printStackTrace();
+				
 			}
 
 		};

@@ -313,6 +313,15 @@ public class UserRegisterController implements Initializable {
 						this.fieldUF.setText(endereco.getUf());
 						this.fieldState.setText(endereco.getLocalidade());
 						spinner.setVisible(false);
+						
+						fieldComplement.setDisable(false);
+						fieldCity.setDisable(false);
+						fieldStreet.setDisable(false);
+						fieldState.setDisable(false);
+						fieldUF.setDisable(false);
+						fieldNumber.setDisable(false);
+						filedDistrict.setDisable(false);
+						
 					} else {
 						spinner.setVisible(true);
 						Alert.show("CEP inválido", "Por favor insira um cep válido", root);

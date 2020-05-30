@@ -56,7 +56,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="70.0" prefWidth="664.0">
                            <children>
-                              <JFXTextField fx:id="fieldStreet" focusColor="#1890ff" labelFloat="true" promptText="Rua*" styleClass="user-register-field-address">
+                              <JFXTextField fx:id="fieldStreet" disable="true" focusColor="#1890ff" labelFloat="true" promptText="Rua*" styleClass="user-register-field-address">
                                  <opaqueInsets>
                                     <Insets right="20.0" />
                                  </opaqueInsets>
@@ -82,7 +82,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0">
                            <children>
-                              <JFXTextField fx:id="fieldNumber" focusColor="#1890ff" labelFloat="true" promptText="Número*" styleClass="user-register-field-address">
+                              <JFXTextField fx:id="fieldNumber" disable="true" focusColor="#1890ff" labelFloat="true" promptText="Número*" styleClass="user-register-field-address">
                                  <HBox.margin>
                                     <Insets right="30.0" />
                                  </HBox.margin>
@@ -90,7 +90,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </JFXTextField>
-                              <JFXTextField fx:id="filedDistrict" focusColor="#1890ff" labelFloat="true" promptText="Bairro*" styleClass="user-register-field-address">
+                              <JFXTextField fx:id="filedDistrict" disable="true" focusColor="#1890ff" labelFloat="true" promptText="Bairro*" styleClass="user-register-field-address">
                                  <HBox.margin>
                                     <Insets left="15.0" />
                                  </HBox.margin>
@@ -102,7 +102,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0">
                            <children>
-                              <JFXTextField fx:id="fieldComplement" focusColor="#1890ff" labelFloat="true" promptText="Complemento" styleClass="user-register-field-address">
+                              <JFXTextField fx:id="fieldComplement" disable="true" focusColor="#1890ff" labelFloat="true" promptText="Complemento" styleClass="user-register-field-address">
                                  <HBox.margin>
                                     <Insets right="30.0" />
                                  </HBox.margin>
@@ -110,7 +110,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </JFXTextField>
-                              <JFXTextField fx:id="fieldCity" focusColor="#1890ff" labelFloat="true" promptText="Cidade*" styleClass="user-register-field-address">
+                              <JFXTextField fx:id="fieldCity" disable="true" focusColor="#1890ff" labelFloat="true" promptText="Cidade*" styleClass="user-register-field-address">
                                  <HBox.margin>
                                     <Insets left="15.0" />
                                  </HBox.margin>
@@ -122,7 +122,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0">
                            <children>
-                              <JFXTextField fx:id="fieldState" focusColor="#1890ff" labelFloat="true" promptText="Estado*" styleClass="user-register-field-address">
+                              <JFXTextField fx:id="fieldState" disable="true" focusColor="#1890ff" labelFloat="true" promptText="Estado*" styleClass="user-register-field-address">
                                  <HBox.margin>
                                     <Insets right="30.0" />
                                  </HBox.margin>
@@ -130,7 +130,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </JFXTextField>
-                              <JFXTextField fx:id="fieldUF" focusColor="#1890ff" labelFloat="true" promptText="UF*" styleClass="user-register-field-address">
+                              <JFXTextField fx:id="fieldUF" disable="true" focusColor="#1890ff" labelFloat="true" promptText="UF*" styleClass="user-register-field-address">
                                  <HBox.margin>
                                     <Insets left="15.0" />
                                  </HBox.margin>
