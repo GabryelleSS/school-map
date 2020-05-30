@@ -12,6 +12,7 @@ public enum VIEWS_NAMES {
 	MENU_HAMBURGUER("/br/com/senac/school/view/Menu.fxml"),
 	SPLASH("/br/com/senac/school/view/Splash.fxml"),
 	ITEM_SELECTED("/br/com/senac/school/view/itemDashboardSelected.fxml"),
+	CONTACT_US("/br/com/senac/school/view/Contact-us.fxml"),
 	
 	EDIT_PROFILE("/br/com/senac/school/view/EditProfile.fxml"),
 	EDIT_PROFILE_ENDERECO("/br/com/senac/school/view/EditProfileEndereco.fxml"),

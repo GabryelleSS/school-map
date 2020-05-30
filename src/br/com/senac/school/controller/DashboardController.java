@@ -258,6 +258,12 @@ public class DashboardController implements Initializable {
 		new LoadViews().load(content, VIEWS_NAMES.EDIT_PROFILE);
 
 	}
+	@FXML
+	void contact(MouseEvent event) {
+		fieldSearch.setVisible(false);
+		btnSearch.setVisible(false);
+		new LoadViews().load(content, VIEWS_NAMES.CONTACT_US);
+	}
 
 	@FXML
 	void home(MouseEvent event) {

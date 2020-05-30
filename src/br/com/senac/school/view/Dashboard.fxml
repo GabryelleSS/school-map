@@ -174,6 +174,23 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Pane>
+                        <Pane onMouseClicked="#contact" prefHeight="60.0" prefWidth="240.0" styleClass="menu-options" stylesheets="@../../assets/css/menu.css">
+                           <children>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="27.0" layoutY="18.0">
+                                 <image>
+                                    <Image url="@../../assets/image/phone%20(1).png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="86.0" layoutY="23.0" text="Fale conosco">
+                                 <font>
+                                    <Font name="Ebrima" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Pane>
                         <Pane onMouseClicked="#logout" prefHeight="60.0" prefWidth="240.0" styleClass="menu-options" stylesheets="@../../assets/css/menu.css">
                            <children>
                               <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="27.0" layoutY="18.0">
