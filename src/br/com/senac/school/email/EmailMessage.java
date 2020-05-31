@@ -25,7 +25,7 @@ public class EmailMessage {
 	}
 
 	public EmailMessage generate(String receiver, int token, String subject, String body) {
-		Properties properties = LoadProperties.load(PROPERTIES_PATH);
+		Properties properties = new LoadProperties().load(PROPERTIES_PATH);
 
 		subject = properties.getProperty(subject);
 		body = properties.getProperty(body).concat(" ").concat(String.valueOf(token));

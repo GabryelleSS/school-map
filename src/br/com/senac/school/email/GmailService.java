@@ -9,8 +9,8 @@ import br.com.senac.school.util.LoadProperties;
 
 public class GmailService implements EmailSender {
 
-	private final String PROPERTIE_EMAIL = "email.properties";
-	private final String PROPERTIE_GMAIL = "gmail.properties";
+	private final String PROPERTIE_EMAIL = "/br/com/senac/properties/email.properties";
+	private final String PROPERTIE_GMAIL = "/br/com/senac/properties/gmail.properties";
 
 	private SimpleEmail simpleEmail;
 	private String hostName;
@@ -26,8 +26,8 @@ public class GmailService implements EmailSender {
 	}
 
 	private void loadProperties() {
-		Properties emailProperties = LoadProperties.load(PROPERTIE_EMAIL);
-		Properties gmailProperties = LoadProperties.load(PROPERTIE_GMAIL);
+		Properties emailProperties = new LoadProperties().load(PROPERTIE_EMAIL);
+		Properties gmailProperties = new LoadProperties().load(PROPERTIE_GMAIL);
 
 		email = emailProperties.getProperty("email");
 		password = emailProperties.getProperty("password");
@@ -56,7 +56,7 @@ public class GmailService implements EmailSender {
 				simpleEmail.buildMimeMessage();
 				simpleEmail.sendMimeMessage();
 			} catch (Exception e) {
-				
+
 			}
 
 		};
