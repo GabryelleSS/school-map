@@ -15,20 +15,18 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <StackPane fx:id="root" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.senac.school.controller.EditProfileController">
    <children>
       <AnchorPane prefHeight="507.0" prefWidth="972.0" style="-fx-background-color: white;">
          <children>
-            <Label layoutX="79.0" layoutY="14.0" text="Dados Pessoais">
+            <Label layoutX="144.0" layoutY="13.0" text="Dados Pessoais" textFill="#545454">
                <font>
-                  <Font name="Ebrima" size="24.0" />
+                  <Font name="Ebrima Bold" size="30.0" />
                </font>
             </Label>
-            <Line endX="70.0" layoutX="172.0" layoutY="49.0" startX="-93.0" />
-            <HBox alignment="BASELINE_RIGHT" layoutX="433.0" layoutY="454.0" prefHeight="35.0" prefWidth="363.0">
+            <HBox alignment="BASELINE_RIGHT" layoutX="609.0" layoutY="456.0" prefHeight="35.0" prefWidth="214.0">
                <children>
                   <JFXButton buttonType="RAISED" onAction="#btnSaveProfile" stylesheets="@../../assets/css/userRegister.css" text="Salvar">
                      <styleClass>
@@ -46,11 +44,8 @@
                      </styleClass>
                   </JFXButton>
                </children>
-               <padding>
-                  <Insets right="40.0" />
-               </padding>
             </HBox>
-            <VBox layoutX="78.0" layoutY="70.0" prefHeight="200.0" prefWidth="310.0">
+            <VBox layoutX="144.0" layoutY="71.0" prefHeight="200.0" prefWidth="310.0">
                <children>
                   <JFXTextField fx:id="fieldFirstName" focusColor="#1890ff" labelFloat="true" prefHeight="30.0" prefWidth="290.0" promptText="Nome*" styleClass="user-register-field">
                      <VBox.margin>
@@ -84,7 +79,7 @@
                   </JFXTextField>
                </children>
             </VBox>
-            <VBox layoutX="412.0" layoutY="142.0" prefHeight="312.0" prefWidth="350.0">
+            <VBox layoutX="478.0" layoutY="143.0" prefHeight="312.0" prefWidth="350.0">
                <children>
                   <StackPane />
                   <HBox alignment="CENTER_LEFT" prefHeight="92.0" prefWidth="310.0">
@@ -152,13 +147,13 @@
                   </JFXTextField>
                </children>
             </VBox>
-            <Label layoutX="78.0" layoutY="463.0" text="Campos obrigatórios (*)">
+            <Label layoutX="144.0" layoutY="464.0" text="Campos obrigatórios (*)">
                <font>
                   <Font name="Ebrima Bold" size="14.0" />
                </font>
             </Label>
-            <JFXDatePicker fx:id="fieldDateBirth" defaultColor="#4087fd" layoutX="412.0" layoutY="78.0" prefHeight="28.0" prefWidth="345.0" promptText="ex: 06/09/1990 *" styleClass="user-register-field-date-birth" />
-            <ImageView fx:id="spinner" fitHeight="60.0" fitWidth="63.0" layoutX="259.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <JFXDatePicker fx:id="fieldDateBirth" defaultColor="#4087fd" layoutX="478.0" layoutY="79.0" prefHeight="28.0" prefWidth="345.0" promptText="ex: 06/09/1990 *" styleClass="user-register-field-date-birth" />
+            <ImageView fx:id="spinner" fitHeight="60.0" fitWidth="63.0" layoutX="372.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../../assets/image/Spin-1s-200px%20(1).gif" />
                </image>

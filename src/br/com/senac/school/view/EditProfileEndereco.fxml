@@ -12,20 +12,18 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <StackPane fx:id="root" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.senac.school.controller.EditProfileEnderecoController">
    <children>
       <AnchorPane prefHeight="507.0" prefWidth="972.0" style="-fx-background-color: white;">
          <children>
-            <Label layoutX="80.0" layoutY="14.0" text="Dados de Endereço">
+            <Label layoutX="144.0" layoutY="13.0" text="Dados de Endereço" textFill="#545454">
                <font>
-                  <Font name="Ebrima" size="24.0" />
+                  <Font name="Ebrima Bold" size="30.0" />
                </font>
             </Label>
-            <Line endX="113.0" layoutX="173.0" layoutY="49.0" startX="-93.0" />
-            <VBox layoutX="73.0" layoutY="70.0" prefHeight="200.0" prefWidth="310.0" AnchorPane.leftAnchor="79.0">
+            <VBox layoutX="142.0" layoutY="83.0" prefHeight="200.0" prefWidth="310.0" AnchorPane.leftAnchor="142.0">
                <children>
                   <JFXTextField fx:id="fieldRua" focusColor="#1890ff" labelFloat="true" prefHeight="30.0" prefWidth="290.0" promptText="Rua*" styleClass="user-register-field">
                      <VBox.margin>
@@ -45,7 +43,7 @@
                   <JFXTextField fx:id="fieldEstado" focusColor="#1890ff" labelFloat="true" promptText="Estado*" styleClass="user-register-field" />
                </children>
             </VBox>
-            <VBox layoutX="417.0" layoutY="80.0" prefHeight="200.0" prefWidth="350.0">
+            <VBox layoutX="480.0" layoutY="93.0" prefHeight="200.0" prefWidth="350.0">
                <children>
                   <JFXTextField fx:id="fieldCep" focusColor="#1890ff" labelFloat="true" prefHeight="25.0" prefWidth="305.0" promptText="CEP*" styleClass="user-register-field-address">
                      <VBox.margin>
@@ -70,7 +68,7 @@
                   </JFXTextField>
                </children>
             </VBox>
-            <HBox alignment="BASELINE_RIGHT" layoutX="256.0" layoutY="406.0" prefHeight="35.0" prefWidth="511.0">
+            <HBox alignment="BASELINE_RIGHT" layoutX="621.0" layoutY="406.0" prefHeight="35.0" prefWidth="211.0">
                <children>
                   <JFXButton buttonType="RAISED" onAction="#backEditProfile" stylesheets="@../../assets/css/userRegister.css" text="Voltar">
                      <styleClass>
@@ -89,7 +87,7 @@
                   </JFXButton>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="214.0" layoutY="338.0" prefHeight="68.0" prefWidth="350.0">
+            <HBox alignment="CENTER_LEFT" layoutX="279.0" layoutY="338.0" prefHeight="68.0" prefWidth="350.0">
                <children>
                   <Label text="Prefêrencia de contato*">
                      <HBox.margin>
@@ -114,12 +112,12 @@
                   </JFXCheckBox>
                </children>
             </HBox>
-            <Label layoutX="80.0" layoutY="415.0" text="Campos obrigatórios (*)">
+            <Label layoutX="145.0" layoutY="415.0" text="Campos obrigatórios (*)">
                <font>
                   <Font name="Ebrima Bold" size="14.0" />
                </font>
             </Label>
-            <ImageView fx:id="spinner" fitHeight="60.0" fitWidth="63.0" layoutX="302.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="spinner" fitHeight="60.0" fitWidth="63.0" layoutX="432.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../../assets/image/Spin-1s-200px%20(1).gif" />
                </image>

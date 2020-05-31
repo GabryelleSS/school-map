@@ -139,6 +139,10 @@ public class EditProfileController implements Initializable {
 				}
 			};
 		}
+
+		protected void succeeded() {
+			reset();
+		};
 	};
 
 	private boolean checkRequiredFields() {

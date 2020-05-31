@@ -224,6 +224,10 @@ public class EditProfileEnderecoController implements Initializable {
 				}
 			};
 		}
+
+		protected void succeeded() {
+			reset();
+		};
 	};
 
 	public void generateUsuario() {
