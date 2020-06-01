@@ -6,7 +6,7 @@ import br.com.senac.school.util.LoadProperties;
 
 public class EmailMessage {
 
-	private final String PROPERTIES_PATH = "email.properties";
+	private final String PROPERTIES_PATH = "/br/com/senac/properties/email.properties";
 
 	private String receiver;
 	private String subject;

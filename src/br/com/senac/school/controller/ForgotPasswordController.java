@@ -21,11 +21,15 @@ import br.com.senac.school.util.Encrypt;
 import br.com.senac.school.util.LoadViews;
 import br.com.senac.school.util.VIEWS_NAMES;
 import br.com.senac.school.util.Validator;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 
 public class ForgotPasswordController implements Initializable {
 
@@ -50,6 +54,12 @@ public class ForgotPasswordController implements Initializable {
 	@FXML
 	private JFXPasswordField fieldConfirmPassword;
 
+	@FXML
+	private ImageView spinner;
+
+	@FXML
+	private Text labelText;
+
 	private static int token = 0;
 	private static String email;
 	private UsuarioDao dao;
@@ -67,12 +77,11 @@ public class ForgotPasswordController implements Initializable {
 		if (pass || conf) {
 			alertFieldRequired(root3);
 
-		} else if(!fieldPassword.getText().equals(fieldConfirmPassword.getText())) {
-			
+		} else if (!fieldPassword.getText().equals(fieldConfirmPassword.getText())) {
+
 			Alert.show("Senha incorreta", "Ops! As senhas estão diferentes!", root3);
-			
-		
-		}else {
+
+		} else {
 			String password = fieldPassword.getText();
 			String confirm = fieldConfirmPassword.getText();
 
@@ -91,24 +100,55 @@ public class ForgotPasswordController implements Initializable {
 		}
 	}
 
+	Service<Boolean> taskVefifyEmail = new Service<Boolean>() {
+
+		@Override
+		protected Task<Boolean> createTask() {
+			return new Task<Boolean>() {
+				@Override
+				protected Boolean call() throws Exception {
+					if (dao == null) {
+						dao = new UsuarioDaoImpl();
+					}
+
+					return dao.verify(fieldEmail.getText());
+
+				}
+			};
+		}
+
+		protected void succeeded() {
+			reset();
+		};
+	};
+
 	@FXML
-	void btnSend(ActionEvent event) {
+	void btnSend(ActionEvent actionEvent) {
 
 		if (checkRequiredFields(List.of(fieldEmail))) {
 			alertFieldRequired(root1);
 		} else {
-
+			spinner.setVisible(true);
+			labelText.setOpacity(0.39);
+			fieldEmail.setOpacity(0.39);
 			email = fieldEmail.getText();
+			taskVefifyEmail.start();
 
-			if (verifyEmail(email)) {
-				validateFields++;
-				sendEmailReset(email);
-				loadView(VIEWS_NAMES.FORGOT_PASSWORD_TOKEN, root1);
+			taskVefifyEmail.setOnSucceeded((event) -> {
 
-			} else {
-				Alert.show("E-mail não cadastrado",
-						"Parece que você ainda não possui um cadastro conosco faça já, é simples e rapido.", root1);
-			}
+				if (taskVefifyEmail.getValue()) {
+					validateFields++;
+					sendEmailReset(email);
+					spinner.setVisible(false);
+					loadView(VIEWS_NAMES.FORGOT_PASSWORD_TOKEN, root1);
+				} else {
+					spinner.setVisible(false);
+					labelText.setOpacity(1);
+					fieldEmail.setOpacity(1);
+					Alert.show("E-mail não cadastrado",
+							"Parece que você ainda não possui um cadastro conosco faça já, é simples e rapido.", root1);
+				}
+			});
 		}
 	}
 
@@ -155,13 +195,6 @@ public class ForgotPasswordController implements Initializable {
 
 	public void loadView(VIEWS_NAMES view, StackPane pane) {
 		new LoadViews().load(pane, view);
-	}
-
-	public boolean verifyEmail(String email) {
-		if (dao == null) {
-			dao = new UsuarioDaoImpl();
-		}
-		return dao.verify(email);
 	}
 
 	private void resetPasswod(String email, String password) {

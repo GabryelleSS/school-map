@@ -1,6 +1,7 @@
 package br.com.senac.school.util;
 
 import java.io.IOException;
+import java.net.URL;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,7 +14,8 @@ public class LoadViews {
 		new Thread(() -> {
 
 			try {
-				Parent view = FXMLLoader.load(getClass().getResource(name.getName()));
+				URL url = getClass().getResource(name.getName());
+				Parent view = FXMLLoader.load(url);
 				pane.getChildren().clear();
 				pane.getChildren().add(view);
 			} catch (IOException e) {

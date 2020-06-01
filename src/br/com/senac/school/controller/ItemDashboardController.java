@@ -1,6 +1,7 @@
 package br.com.senac.school.controller;
 
 import java.io.IOException;
+import java.net.URL;
 
 import br.com.senac.school.dao.EscolaDao;
 import br.com.senac.school.model.Escola;
@@ -193,7 +194,8 @@ public class ItemDashboardController {
 	}
 
 	private void loadItemSelected(Escola escola) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource(VIEWS_NAMES.ITEM_SELECTED.getName()));
+		URL url = getClass().getResource(VIEWS_NAMES.ITEM_SELECTED.getName());
+		FXMLLoader loader = new FXMLLoader(url);
 
 		ItemDashboardSelectedController controller = new ItemDashboardSelectedController();
 		loader.setController(controller);
