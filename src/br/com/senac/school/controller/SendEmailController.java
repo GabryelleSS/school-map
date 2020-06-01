@@ -10,6 +10,7 @@ import br.com.senac.school.dao.UsuarioDaoImpl;
 import br.com.senac.school.email.EmailSender;
 import br.com.senac.school.email.GmailService;
 import br.com.senac.school.email.Token;
+import br.com.senac.school.log.Logs;
 import br.com.senac.school.model.Usuario;
 import br.com.senac.school.service.MessageService;
 import br.com.senac.school.session.Session;
@@ -67,7 +68,7 @@ public class SendEmailController implements Initializable {
 		String token = fieldToken.getText();
 
 		if (token.equals(String.valueOf(this.token))) {
-
+			Logs.info("Realizando cadastro");
 			register.start();
 			register.setOnSucceeded((event) -> {
 				loadDashboard();
@@ -95,6 +96,11 @@ public class SendEmailController implements Initializable {
 				}
 			};
 		}
+
+		protected void succeeded() {
+			reset();
+		};
+
 	};
 
 	@FXML

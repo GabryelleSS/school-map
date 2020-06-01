@@ -101,6 +101,10 @@ public class ContactUsController implements Initializable {
 				}
 			};
 		}
+
+		protected void succeeded() {
+			reset();
+		};
 	};
 
 	private ContactUs generate() {

@@ -90,6 +90,10 @@ public class LoginController implements Initializable {
 						}
 					};
 				}
+
+				protected void succeeded() {
+					reset();
+				};
 			};
 
 			searchUsuario.start();
