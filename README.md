@@ -26,7 +26,7 @@ Os requisitos eram:
 
 - Utilizar o paradigma da programação orientada a objetos(POO).
 - Integração com Banco de Dados consumindo uma API do Estado de São Paulo.
-- Aplicair Estrutura de Dados no código.
+- Aplicar Estrutura de Dados no código.
 - Desenvolver o projeto visando o usuário, ou seja, utilizando User Experience(UX).
 
 <h1 align="center">
