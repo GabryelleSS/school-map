@@ -8,9 +8,10 @@
 
 Esse projeto foi desenvolvido com todas essas tecnologias:
 
-- [Java-SDK-9](https://docs.oracle.com/javase/9/docs/api/overview-summary.html)
+- [Java-SDK-11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
 - [JavaFx](https://openjfx.io/)
 - [Scene Buider](https://gluonhq.com/)
+- [JavaFX Material Design Library](https://github.com/jfoenixadmin/JFoenix)
 - [MySQL-workbench](https://www.mysql.com/products/workbench/)
 - [Eclipse](https://www.eclipse.org/)
 
@@ -34,4 +35,12 @@ Os requisitos eram:
 
 ## 🤔 Como utilizar o projeto?
 
-- Faça um clone desse repositório.
+<ol>
+  <li>Faça um clone desse repositório.</li>
+  <li>Vá até a IDE Eclipse > File > Import > Maven > <em>Existing Maven Projects</em> > Browser</li>
+  <li>Seleciona o projeto que você clonou do repositório.</li>
+  <li>Seleciona o checkbox do arquivo Pom.xml > Finish.</li>
+  <li>Selecione o projeto dentro da IDE(Package Explorer).</li>
+  <li>Com o botão direito do mouse click em Run As > Java Application</li>
+  <li>Prontinho! 😁</li>
+</ol>
