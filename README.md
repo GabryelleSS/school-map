@@ -38,9 +38,9 @@ Os requisitos eram:
 <ol>
   <li>Faça um clone desse repositório.</li>
   <li>Vá até a IDE Eclipse > File > Import > Maven > <em>Existing Maven Projects</em> > Browser</li>
-  <li>Seleciona o projeto que você clonou do repositório.</li>
-  <li>Seleciona o checkbox do arquivo Pom.xml > Finish.</li>
+  <li>Selecione o projeto que você clonou do repositório.</li>
+  <li>Marque o checkbox do arquivo Pom.xml > Finish.</li>
   <li>Selecione o projeto dentro da IDE(Package Explorer).</li>
-  <li>Com o botão direito do mouse click em Run As > Java Application</li>
+  <li>Com o botão direito do mouse clique em Run As > Java Application</li>
   <li>Prontinho! 😁</li>
 </ol>
