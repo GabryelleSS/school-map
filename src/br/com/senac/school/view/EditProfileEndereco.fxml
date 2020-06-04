@@ -122,6 +122,11 @@
                   <Image url="@../../assets/image/Spin-1s-200px%20(1).gif" />
                </image>
             </ImageView>
+            <Label fx:id="labelLoading" layoutX="431.0" layoutY="63.0" text="Salvando.." visible="false">
+               <font>
+                  <Font name="Ebrima Bold" size="13.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

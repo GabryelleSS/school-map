@@ -308,11 +308,16 @@
                            <children>
                               <AnchorPane prefHeight="56.0" prefWidth="337.0">
                                  <children>
-                                    <ImageView fx:id="spinner" fitHeight="56.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                    <ImageView fx:id="spinner" fitHeight="56.0" fitWidth="56.0" layoutX="303.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                        <image>
                                           <Image url="@../../assets/image/Spin-1s-200px%20(1).gif" />
                                        </image>
                                     </ImageView>
+                                    <Label fx:id="labelLoading" layoutX="192.0" layoutY="33.0" text="Consultando CEP.." visible="false">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </AnchorPane>
                            </children></VBox>

@@ -53,6 +53,9 @@ public class DashboardController implements Initializable {
 	private Label labelDashboard;
 
 	@FXML
+	private Label labelLoading;
+
+	@FXML
 	private ImageView spinner;
 
 	private ObservableList<Escola> listOfSchools;
@@ -99,6 +102,7 @@ public class DashboardController implements Initializable {
 				searchNotResult = false;
 				searchActive = false;
 				spinner.setVisible(false);
+				labelLoading.setVisible(false);
 			}
 			if (searchWithoutReturn) {
 
@@ -108,6 +112,7 @@ public class DashboardController implements Initializable {
 						root);
 
 				spinner.setVisible(false);
+				labelLoading.setVisible(false);
 			} else {
 				searchActive = false;
 				favoritesActive = false;
@@ -166,6 +171,7 @@ public class DashboardController implements Initializable {
 						}
 					}
 					spinner.setVisible(false);
+					labelLoading.setVisible(false);
 				} catch (Exception e) {
 					throw new RuntimeException(e);
 				}
@@ -258,6 +264,7 @@ public class DashboardController implements Initializable {
 		new LoadViews().load(content, VIEWS_NAMES.EDIT_PROFILE);
 
 	}
+
 	@FXML
 	void contact(MouseEvent event) {
 		fieldSearch.setVisible(false);

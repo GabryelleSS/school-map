@@ -22,6 +22,7 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
@@ -39,6 +40,9 @@ public class SendEmailController implements Initializable {
 
 	@FXML
 	private ImageView spinner;
+
+	@FXML
+	private Label labelLoading;
 
 	private EmailSender service;
 	public static Usuario usuario;
@@ -65,6 +69,8 @@ public class SendEmailController implements Initializable {
 	void btnRegistration(ActionEvent actionEvent) {
 		imageEmail.setVisible(false);
 		spinner.setVisible(true);
+		labelLoading.setVisible(true);
+
 		String token = fieldToken.getText();
 
 		if (token.equals(String.valueOf(this.token))) {
@@ -77,6 +83,7 @@ public class SendEmailController implements Initializable {
 		} else {
 			imageEmail.setVisible(true);
 			spinner.setVisible(false);
+			labelLoading.setVisible(false);
 			Alert.show("Token inválido",
 					"O token está inválido, por favor insira o token enviado para o seu e-mail para concluir o seu cadastro.",
 					root);

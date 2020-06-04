@@ -172,6 +172,20 @@ public class MaskFX {
 
 	}
 
+	public static String formattedCep(String cep) {
+		String parte1, parte2;
+		if (cep.toString().length() < 8) {
+			parte1 = "0".concat(cep.substring(0, 4));
+			parte2 = cep.substring(4);
+
+		} else {
+			parte1 = cep.substring(0, 5);
+			parte2 = cep.substring(5);
+		}
+
+		return parte1.concat("-").concat(parte2);
+	}
+
 	public static void numericField(final TextField textField) {
 		textField.lengthProperty().addListener((ChangeListener) new ChangeListener<Number>() {
 

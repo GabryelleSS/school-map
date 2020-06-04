@@ -32,6 +32,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 
@@ -69,6 +70,9 @@ public class EditProfileEnderecoController implements Initializable {
 
 	@FXML
 	private ImageView spinner;
+
+	@FXML
+	private Label labelLoading;
 
 	@FXML
 	private StackPane root;
@@ -163,6 +167,10 @@ public class EditProfileEnderecoController implements Initializable {
 
 			if (newValue.length() == 9) {
 				spinner.setVisible(true);
+				labelLoading.setVisible(true);
+				labelLoading.setText("Consultando CEP..");
+				labelLoading.setLayoutX(407);
+				labelLoading.setLayoutY(63);
 
 				Executors.newFixedThreadPool(10).submit(() -> {
 
@@ -182,8 +190,10 @@ public class EditProfileEnderecoController implements Initializable {
 						this.fieldUf.setText(endereco.getUf());
 						this.fieldEstado.setText(endereco.getLocalidade());
 						spinner.setVisible(false);
+						labelLoading.setVisible(false);
 					} else {
 						spinner.setVisible(false);
+						labelLoading.setVisible(false);
 						Alert.show("CEP inválido", "Por favor insira um cep válido", DashboardPaneContent.root);
 					}
 
@@ -202,9 +212,14 @@ public class EditProfileEnderecoController implements Initializable {
 
 		} else {
 			spinner.setVisible(true);
+			labelLoading.setVisible(true);
+			labelLoading.setText("Salvando..");
+			labelLoading.setLayoutX(431);
+			labelLoading.setLayoutY(63);
 			task.start();
 			task.setOnSucceeded((event) -> {
 				spinner.setVisible(false);
+				labelLoading.setVisible(false);
 				Alert.show("Alterações efetuadas!", "Suas alterações foram efetuadas com sucesso!",
 						DashboardPaneContent.root);
 			});

@@ -104,13 +104,13 @@ public class ItemDashboardController {
 
 	private void loadCard1(Escola escola, ContextMenu menu) {
 		idCard1.setText(String.valueOf(escola.getId()));
-		nomeCard1.setText(String.valueOf(escola.getNome()));
-		bairroCard1.setText(String.valueOf(escola.getBairro()));
-		distritoCard1.setText(String.valueOf(escola.getDistrito()));
-		enderecoCard1.setText(String.valueOf(escola.getEndereco()));
+		nomeCard1.setText(escola.getNome());
+		bairroCard1.setText(escola.getBairro());
+		distritoCard1.setText(escola.getDistrito());
+		enderecoCard1.setText(escola.getEndereco());
 		numeroCard1.setText(String.valueOf(escola.getNumero()));
-		telefoneCard1.setText(String.valueOf(escola.getTelefone1()));
-		tipoCard1.setText(String.valueOf(escola.getTipo()));
+		telefoneCard1.setText(escola.getTelefone1());
+		tipoCard1.setText(escola.getTipo());
 
 		idCard1.setContextMenu(menu);
 		nomeCard1.setContextMenu(menu);
@@ -124,13 +124,13 @@ public class ItemDashboardController {
 
 	private void loadCard2(Escola escola, ContextMenu menu) {
 		idCard2.setText(String.valueOf(escola.getId()));
-		nomeCard2.setText(String.valueOf(escola.getNome()));
-		bairroCard2.setText(String.valueOf(escola.getBairro()));
-		distritoCard2.setText(String.valueOf(escola.getDistrito()));
-		enderecoCard2.setText(String.valueOf(escola.getEndereco()));
+		nomeCard2.setText(escola.getNome());
+		bairroCard2.setText(escola.getBairro());
+		distritoCard2.setText(escola.getDistrito());
+		enderecoCard2.setText(escola.getEndereco());
 		numeroCard2.setText(String.valueOf(escola.getNumero()));
-		telefoneCard2.setText(String.valueOf(escola.getTelefone1()));
-		tipoCard2.setText(String.valueOf(escola.getTipo()));
+		telefoneCard2.setText(escola.getTelefone1());
+		tipoCard2.setText(escola.getTipo());
 
 		idCard2.setContextMenu(menu);
 		nomeCard2.setContextMenu(menu);
@@ -144,13 +144,13 @@ public class ItemDashboardController {
 
 	private void loadCard3(Escola escola, ContextMenu menu) {
 		idCard3.setText(String.valueOf(escola.getId()));
-		nomeCard3.setText(String.valueOf(escola.getNome()));
-		bairroCard3.setText(String.valueOf(escola.getBairro()));
-		distritoCard3.setText(String.valueOf(escola.getDistrito()));
-		enderecoCard3.setText(String.valueOf(escola.getEndereco()));
+		nomeCard3.setText(escola.getNome());
+		bairroCard3.setText(escola.getBairro());
+		distritoCard3.setText(escola.getDistrito());
+		enderecoCard3.setText(escola.getEndereco());
 		numeroCard3.setText(String.valueOf(escola.getNumero()));
-		telefoneCard3.setText(String.valueOf(escola.getTelefone1()));
-		tipoCard3.setText(String.valueOf(escola.getTipo()));
+		telefoneCard3.setText(escola.getTelefone1());
+		tipoCard3.setText(escola.getTipo());
 
 		idCard3.setContextMenu(menu);
 		nomeCard3.setContextMenu(menu);

@@ -32,6 +32,7 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -96,6 +97,9 @@ public class EditProfileController implements Initializable {
 	@FXML
 	private ImageView spinner;
 
+	@FXML
+	private Label labelLoading;
+
 	public static Usuario usuario;
 
 	private RequiredFieldValidator validator;
@@ -116,9 +120,11 @@ public class EditProfileController implements Initializable {
 
 		} else {
 			spinner.setVisible(true);
+			labelLoading.setVisible(true);
 			task.start();
 			task.setOnSucceeded((event) -> {
 				spinner.setVisible(false);
+				labelLoading.setVisible(false);
 				Alert.show("Alterações efetuadas!", "Suas alterações foram efetuadas com sucesso!",
 						DashboardPaneContent.root);
 			});

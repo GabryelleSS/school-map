@@ -10,6 +10,7 @@ import br.com.senac.school.session.EscolasCache;
 import br.com.senac.school.session.Session;
 import br.com.senac.school.util.DashboardPaneContent;
 import br.com.senac.school.util.LoadViews;
+import br.com.senac.school.util.MaskFX;
 import br.com.senac.school.util.VIEWS_NAMES;
 import javafx.fxml.FXML;
 import javafx.scene.control.ContextMenu;
@@ -75,16 +76,19 @@ public class ItemDashboardSelectedController {
 			imageMark.setImage(new Image("/br/com/senac/assets/image/bookmark-selected.png"));
 		}
 
-		nome.setText(String.valueOf(escola.getNome()));
-		bairro.setText(String.valueOf(escola.getBairro()));
-		distrito.setText(String.valueOf(escola.getDistrito()));
-		codDistrito.setText(String.valueOf(escola.getCod_distrito()));
-		endereco.setText(String.valueOf(escola.getEndereco()));
+		nome.setText(escola.getNome());
+		bairro.setText(escola.getBairro());
+		distrito.setText(escola.getDistrito());
+		codDistrito.setText(escola.getCod_distrito());
+		endereco.setText(escola.getEndereco());
 		numero.setText(String.valueOf(escola.getNumero()));
-		telefone1.setText(String.valueOf(escola.getTelefone1()));
-		telefone2.setText(String.valueOf(escola.getTelefone2()));
-		tipo.setText(String.valueOf(escola.getTipo()));
-		cep.setText(String.valueOf(escola.getCep()));
+		telefone1.setText(escola.getTelefone1());
+		telefone2.setText(escola.getTelefone2());
+		tipo.setText(escola.getTipo());
+
+		if (escola.getCep() != null) {
+			cep.setText(MaskFX.formattedCep(escola.getCep()));
+		}
 
 		nome.setContextMenu(menu);
 		bairro.setContextMenu(menu);
@@ -115,11 +119,11 @@ public class ItemDashboardSelectedController {
 			imageMark.setImage(new Image("/br/com/senac/assets/image/bookmark.png"));
 		} else {
 			EscolasCache.favorite(id, escola);
-			
+
 			service.submit(() -> {
 				dao.favorited(Session.getUsuario().getId(), id);
 			});
-			
+
 			imageMark.setImage(new Image("/br/com/senac/assets/image/bookmark-selected.png"));
 		}
 

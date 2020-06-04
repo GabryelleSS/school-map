@@ -34,6 +34,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -126,6 +127,9 @@ public class UserRegisterController implements Initializable {
 
 	@FXML
 	private ImageView spinner;
+
+	@FXML
+	private Label labelLoading;
 
 	private double latitude;
 	private double longitude;
@@ -294,6 +298,7 @@ public class UserRegisterController implements Initializable {
 
 			if (newValue.length() == 9) {
 				spinner.setVisible(true);
+				labelLoading.setVisible(true);
 
 				Executors.newFixedThreadPool(10).submit(() -> {
 
@@ -313,7 +318,8 @@ public class UserRegisterController implements Initializable {
 						this.fieldUF.setText(endereco.getUf());
 						this.fieldState.setText(endereco.getLocalidade());
 						spinner.setVisible(false);
-						
+						labelLoading.setVisible(false);
+
 						fieldComplement.setDisable(false);
 						fieldCity.setDisable(false);
 						fieldStreet.setDisable(false);
@@ -321,9 +327,10 @@ public class UserRegisterController implements Initializable {
 						fieldUF.setDisable(false);
 						fieldNumber.setDisable(false);
 						filedDistrict.setDisable(false);
-						
+
 					} else {
-						spinner.setVisible(true);
+						spinner.setVisible(false);
+						labelLoading.setVisible(false);
 						Alert.show("CEP inválido", "Por favor insira um cep válido", root);
 					}
 				});

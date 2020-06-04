@@ -86,11 +86,16 @@
                            <children>
                               <AnchorPane prefHeight="433.0" prefWidth="982.0">
                                  <children>
-                                    <ImageView fx:id="spinner" fitHeight="99.0" fitWidth="142.0" layoutX="442.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="spinner" fitHeight="99.0" fitWidth="142.0" layoutX="442.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../../assets/image/Spin-1s-200px%20(1).gif" />
                                        </image>
                                     </ImageView>
+                                    <Label fx:id="labelLoading" layoutX="424.0" layoutY="233.0" text="Carregando escolas..">
+                                       <font>
+                                          <Font name="Ebrima Bold" size="14.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </AnchorPane>
                            </children>
