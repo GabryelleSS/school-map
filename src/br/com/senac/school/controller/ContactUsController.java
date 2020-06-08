@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -26,6 +27,7 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
@@ -53,6 +55,12 @@ public class ContactUsController implements Initializable {
 	@FXML
 	private ImageView spinner;
 
+	@FXML
+	private Label labelSendMessage;
+
+	@FXML
+	private JFXButton btnSend;
+
 	private RequiredFieldValidator validator;
 
 	@Override
@@ -76,17 +84,39 @@ public class ContactUsController implements Initializable {
 		if (checkRequiredFields()) {
 			Alert.show("Campos obrigatórios", "Ops! Você precisa preencher os campos obrigatórios.", root);
 		} else {
-			spinner.setVisible(true);
+			setSpinnerOn();
 			task.start();
 
 			task.setOnSucceeded((event) -> {
-				spinner.setVisible(false);
+				setSpinnerOff();
 
 				Alert.show("Recebemos a sua mensagem!",
 						"Obrigado por seu contato! Sua mensagem foi enviada para nossa equipe de atendimento.", root);
 
 			});
 		}
+	}
+
+	private void setSpinnerOn() {
+		spinner.setVisible(true);
+		labelSendMessage.setVisible(true);
+		fieldCpf.setDisable(true);
+		fieldEmail.setDisable(true);
+		fieldMessage.setDisable(true);
+		fieldName.setDisable(true);
+		fieldType.setDisable(true);
+		btnSend.setDisable(true);
+	}
+
+	private void setSpinnerOff() {
+		spinner.setVisible(false);
+		labelSendMessage.setVisible(false);
+		fieldCpf.setDisable(false);
+		fieldEmail.setDisable(false);
+		fieldMessage.setDisable(false);
+		fieldName.setDisable(false);
+		fieldType.setDisable(false);
+		btnSend.setDisable(false);
 	}
 
 	Service<Void> task = new Service<Void>() {

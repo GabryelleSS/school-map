@@ -76,7 +76,7 @@
                               </JFXTextArea>
                            </children>
                         </VBox>
-                        <JFXButton layoutX="427.0" layoutY="503.0" onAction="#btnSend" stylesheets="@../../assets/css/userRegister.css" text="Enviar">
+                        <JFXButton fx:id="btnSend" layoutX="427.0" layoutY="503.0" onAction="#btnSend" stylesheets="@../../assets/css/userRegister.css" text="Enviar">
                            <styleClass>
                               <String fx:value="user-register-btn" />
                               <String fx:value="user-register-btn-next" />
@@ -85,6 +85,11 @@
                         <Label layoutX="146.0" layoutY="514.0" text="Campos obrigatórios (*)">
                            <font>
                               <Font name="Ebrima Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelSendMessage" layoutX="284.0" layoutY="355.0" text="Enviando.." visible="false">
+                           <font>
+                              <Font name="Ebrima Bold" size="16.0" />
                            </font>
                         </Label>
                      </children>

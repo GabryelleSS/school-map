@@ -83,12 +83,6 @@ public class EditProfileController implements Initializable {
 	private JFXTextField fieldTephone;
 
 	@FXML
-	private JFXButton btnBack;
-
-	@FXML
-	private JFXButton btnNextField;
-
-	@FXML
 	private StackPane root;
 
 	@FXML
@@ -99,6 +93,15 @@ public class EditProfileController implements Initializable {
 
 	@FXML
 	private Label labelLoading;
+
+	@FXML
+	private Label labelGender;
+
+	@FXML
+	private JFXButton btnSaveProfile;
+
+	@FXML
+	private JFXButton btnNextEditProfile;
 
 	public static Usuario usuario;
 
@@ -119,17 +122,56 @@ public class EditProfileController implements Initializable {
 					DashboardPaneContent.root);
 
 		} else {
-			spinner.setVisible(true);
-			labelLoading.setVisible(true);
+			setSpinnerOn();
 			task.start();
 			task.setOnSucceeded((event) -> {
-				spinner.setVisible(false);
-				labelLoading.setVisible(false);
+				setSpinnerOff();
 				Alert.show("Alterações efetuadas!", "Suas alterações foram efetuadas com sucesso!",
 						DashboardPaneContent.root);
 			});
 		}
 
+	}
+
+	private void setSpinnerOn() {
+		labelLoading.setVisible(true);
+		spinner.setVisible(true);
+		fieldCell.setDisable(true);
+		fieldConfirmPassword.setDisable(true);
+		fieldCPF.setDisable(true);
+		fieldDateBirth.setDisable(true);
+		fieldEmail.setDisable(true);
+		fieldFirstName.setDisable(true);
+		fieldLastName.setDisable(true);
+		fieldMan.setDisable(true);
+		fieldMaritalStatus.setDisable(true);
+		fieldNoGender.setDisable(true);
+		fieldPassword.setDisable(true);
+		fieldTephone.setDisable(true);
+		fieldWoman.setDisable(true);
+		labelGender.setDisable(true);
+		btnNextEditProfile.setDisable(true);
+		btnSaveProfile.setDisable(true);
+	}
+	private void setSpinnerOff() {
+		labelLoading.setVisible(false);
+		spinner.setVisible(false);
+		fieldCell.setDisable(false);
+		fieldConfirmPassword.setDisable(false);
+		fieldCPF.setDisable(false);
+		fieldDateBirth.setDisable(false);
+		fieldEmail.setDisable(false);
+		fieldFirstName.setDisable(false);
+		fieldLastName.setDisable(false);
+		fieldMan.setDisable(false);
+		fieldMaritalStatus.setDisable(false);
+		fieldNoGender.setDisable(false);
+		fieldPassword.setDisable(false);
+		fieldTephone.setDisable(false);
+		fieldWoman.setDisable(false);
+		labelGender.setDisable(false);
+		btnNextEditProfile.setDisable(false);
+		btnSaveProfile.setDisable(false);
 	}
 
 	Service<Void> task = new Service<Void>() {

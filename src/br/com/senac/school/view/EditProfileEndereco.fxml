@@ -70,7 +70,7 @@
             </VBox>
             <HBox alignment="BASELINE_RIGHT" layoutX="621.0" layoutY="406.0" prefHeight="35.0" prefWidth="211.0">
                <children>
-                  <JFXButton buttonType="RAISED" onAction="#backEditProfile" stylesheets="@../../assets/css/userRegister.css" text="Voltar">
+                  <JFXButton fx:id="backEditProfile" buttonType="RAISED" onAction="#backEditProfile" stylesheets="@../../assets/css/userRegister.css" text="Voltar">
                      <styleClass>
                         <String fx:value="user-register-btn-cancel" />
                         <String fx:value="user-register-btn" />
@@ -79,7 +79,7 @@
                         <Insets right="15.0" />
                      </HBox.margin>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" onAction="#btnSaveUpdate" stylesheets="@../../assets/css/userRegister.css" text="Salvar">
+                  <JFXButton fx:id="btnSaveUpdate" buttonType="RAISED" onAction="#btnSaveUpdate" stylesheets="@../../assets/css/userRegister.css" text="Salvar">
                      <styleClass>
                         <String fx:value="user-register-btn-next" />
                         <String fx:value="user-register-btn" />
@@ -89,7 +89,7 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="279.0" layoutY="338.0" prefHeight="68.0" prefWidth="350.0">
                <children>
-                  <Label text="Prefêrencia de contato*">
+                  <Label fx:id="labelPreference" text="Prefêrencia de contato*">
                      <HBox.margin>
                         <Insets right="25.0" />
                      </HBox.margin>
@@ -117,14 +117,14 @@
                   <Font name="Ebrima Bold" size="14.0" />
                </font>
             </Label>
-            <ImageView fx:id="spinner" fitHeight="60.0" fitWidth="63.0" layoutX="432.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="spinner" fitHeight="168.0" fitWidth="169.0" layoutX="380.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../../assets/image/Spin-1s-200px%20(1).gif" />
                </image>
             </ImageView>
-            <Label fx:id="labelLoading" layoutX="431.0" layoutY="63.0" text="Salvando.." visible="false">
+            <Label fx:id="labelLoading" layoutX="424.0" layoutY="292.0" text="Salvando.." visible="false">
                <font>
-                  <Font name="Ebrima Bold" size="13.0" />
+                  <Font name="Ebrima Bold" size="16.0" />
                </font>
             </Label>
          </children>

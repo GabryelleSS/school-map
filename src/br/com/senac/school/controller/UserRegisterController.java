@@ -129,6 +129,9 @@ public class UserRegisterController implements Initializable {
 	private ImageView spinner;
 
 	@FXML
+	private Label labelPreference;
+
+	@FXML
 	private Label labelLoading;
 
 	private double latitude;
@@ -297,8 +300,7 @@ public class UserRegisterController implements Initializable {
 		fieldCep.textProperty().addListener((observable, oldValue, newValue) -> {
 
 			if (newValue.length() == 9) {
-				spinner.setVisible(true);
-				labelLoading.setVisible(true);
+				setSpinnerOn();
 
 				Executors.newFixedThreadPool(10).submit(() -> {
 
@@ -327,15 +329,40 @@ public class UserRegisterController implements Initializable {
 						fieldUF.setDisable(false);
 						fieldNumber.setDisable(false);
 						filedDistrict.setDisable(false);
+						btnBack.setDisable(false);
+						btnNextField.setDisable(false);
+						labelPreference.setDisable(false);
+						fieldContactTelefone.setDisable(false);
+						fieldContactEmail.setDisable(false);
 
 					} else {
-						spinner.setVisible(false);
-						labelLoading.setVisible(false);
+						setSpinnerOff();
 						Alert.show("CEP inválido", "Por favor insira um cep válido", root);
 					}
 				});
 			}
 		});
+	}
+
+	private void setSpinnerOff() {
+		spinner.setVisible(false);
+		labelLoading.setVisible(false);
+		btnBack.setDisable(false);
+		btnNextField.setDisable(false);
+		labelPreference.setDisable(false);
+		labelPreference.setDisable(false);
+		fieldContactTelefone.setDisable(false);
+		fieldContactEmail.setDisable(false);
+	}
+
+	private void setSpinnerOn() {
+		spinner.setVisible(true);
+		labelLoading.setVisible(true);
+		btnBack.setDisable(true);
+		btnNextField.setDisable(true);
+		labelPreference.setDisable(true);
+		fieldContactTelefone.setDisable(true);
+		fieldContactEmail.setDisable(true);
 	}
 
 	public Usuario generateUsuario() {

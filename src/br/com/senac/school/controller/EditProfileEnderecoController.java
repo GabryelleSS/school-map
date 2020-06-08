@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import java.util.concurrent.Executors;
 
 import com.github.gilbertotorrezan.viacep.shared.ViaCEPEndereco;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.RequiredFieldValidator;
@@ -76,6 +77,15 @@ public class EditProfileEnderecoController implements Initializable {
 
 	@FXML
 	private StackPane root;
+
+	@FXML
+	private JFXButton backEditProfile;
+
+	@FXML
+	private JFXButton btnSaveUpdate;
+
+	@FXML
+	private Label labelPreference;
 
 	public static Usuario usuario;
 
@@ -166,11 +176,10 @@ public class EditProfileEnderecoController implements Initializable {
 		fieldCep.textProperty().addListener((observable, oldValue, newValue) -> {
 
 			if (newValue.length() == 9) {
-				spinner.setVisible(true);
-				labelLoading.setVisible(true);
+				setSpinnerOn();
 				labelLoading.setText("Consultando CEP..");
-				labelLoading.setLayoutX(407);
-				labelLoading.setLayoutY(63);
+				labelLoading.setLayoutX(396);
+				labelLoading.setLayoutY(292);
 
 				Executors.newFixedThreadPool(10).submit(() -> {
 
@@ -189,11 +198,9 @@ public class EditProfileEnderecoController implements Initializable {
 						this.fieldBairro.setText(endereco.getBairro());
 						this.fieldUf.setText(endereco.getUf());
 						this.fieldEstado.setText(endereco.getLocalidade());
-						spinner.setVisible(false);
-						labelLoading.setVisible(false);
+						setSpinnerOff();
 					} else {
-						spinner.setVisible(false);
-						labelLoading.setVisible(false);
+						setSpinnerOff();
 						Alert.show("CEP inválido", "Por favor insira um cep válido", DashboardPaneContent.root);
 					}
 
@@ -201,6 +208,46 @@ public class EditProfileEnderecoController implements Initializable {
 			}
 
 		});
+	}
+
+	private void setSpinnerOn() {
+		spinner.setVisible(true);
+		labelLoading.setVisible(true);
+		labelLoading.setText("Consultando CEP..");
+		labelLoading.setLayoutX(396);
+		labelLoading.setLayoutY(292);
+
+		fieldBairro.setDisable(true);
+		fieldCep.setDisable(true);
+		fieldCidade.setDisable(true);
+		fieldComplemento.setDisable(true);
+		fieldContactEmail.setDisable(true);
+		fieldContactTelefone.setDisable(true);
+		fieldEstado.setDisable(true);
+		fieldNumero.setDisable(true);
+		fieldRua.setDisable(true);
+		fieldUf.setDisable(true);
+		labelPreference.setDisable(true);
+		btnSaveUpdate.setDisable(true);
+		backEditProfile.setDisable(true);
+	}
+	
+	private void setSpinnerOff() {
+		spinner.setVisible(false);
+		labelLoading.setVisible(false);
+		fieldBairro.setDisable(false);
+		fieldCep.setDisable(false);
+		fieldCidade.setDisable(false);
+		fieldComplemento.setDisable(false);
+		fieldContactEmail.setDisable(false);
+		fieldContactTelefone.setDisable(false);
+		fieldEstado.setDisable(false);
+		fieldNumero.setDisable(false);
+		fieldRua.setDisable(false);
+		fieldUf.setDisable(false);
+		labelPreference.setDisable(false);
+		btnSaveUpdate.setDisable(false);
+		backEditProfile.setDisable(false);
 	}
 
 	@FXML
@@ -211,15 +258,13 @@ public class EditProfileEnderecoController implements Initializable {
 					DashboardPaneContent.root);
 
 		} else {
-			spinner.setVisible(true);
-			labelLoading.setVisible(true);
+			setSpinnerOn();
 			labelLoading.setText("Salvando..");
-			labelLoading.setLayoutX(431);
-			labelLoading.setLayoutY(63);
+			labelLoading.setLayoutX(424);
+			labelLoading.setLayoutY(292);
 			task.start();
 			task.setOnSucceeded((event) -> {
-				spinner.setVisible(false);
-				labelLoading.setVisible(false);
+				setSpinnerOff();
 				Alert.show("Alterações efetuadas!", "Suas alterações foram efetuadas com sucesso!",
 						DashboardPaneContent.root);
 			});

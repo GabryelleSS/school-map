@@ -25,7 +25,7 @@
                               <Font size="14.0" />
                            </font>
                         </JFXTextField>
-                        <JFXButton buttonType="RAISED" layoutX="150.0" layoutY="387.0" onAction="#btnRegistration" prefHeight="50.0" prefWidth="300.0" styleClass="home-login-btn" text="Concluir" textFill="WHITE">
+                        <JFXButton fx:id="btnRegistration" buttonType="RAISED" layoutX="150.0" layoutY="387.0" onAction="#btnRegistration" prefHeight="50.0" prefWidth="300.0" styleClass="home-login-btn" text="Concluir" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -33,7 +33,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </JFXButton>
-                        <Label layoutX="237.0" layoutY="346.0" text="Ainda não recebeu?" textFill="#a3a3a3">
+                        <Label fx:id="labelResendToken" layoutX="237.0" layoutY="346.0" text="Ainda não recebeu?" textFill="#a3a3a3">
                            <font>
                               <Font name="Ebrima" size="14.0" />
                            </font>
@@ -48,7 +48,7 @@
                               <Font name="Ebrima Bold" size="30.0" />
                            </font>
                         </Label>
-                        <Label layoutX="372.0" layoutY="346.0" onMouseClicked="#btnResendToken" text="Reenviar" textFill="#4087fd">
+                        <Label fx:id="btnResendToken" layoutX="372.0" layoutY="346.0" onMouseClicked="#btnResendToken" text="Reenviar" textFill="#4087fd">
                            <font>
                               <Font name="Ebrima" size="14.0" />
                            </font>
@@ -76,7 +76,7 @@
                         </ImageView>
                         <Label fx:id="labelLoading" layoutX="219.0" layoutY="249.0" text="Finalizando cadastro.." visible="false">
                            <font>
-                              <Font name="Ebrima Bold" size="14.0" />
+                              <Font name="Ebrima Bold" size="16.0" />
                            </font>
                         </Label>
                      </children>

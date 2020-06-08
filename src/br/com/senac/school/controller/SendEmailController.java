@@ -3,6 +3,7 @@ package br.com.senac.school.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 
 import br.com.senac.school.dao.UsuarioDao;
@@ -44,6 +45,15 @@ public class SendEmailController implements Initializable {
 	@FXML
 	private Label labelLoading;
 
+	@FXML
+	private JFXButton btnRegistration;
+
+	@FXML
+	private Label labelResendToken;
+
+	@FXML
+	private Label btnResendToken;
+
 	private EmailSender service;
 	public static Usuario usuario;
 	private int token;
@@ -70,6 +80,10 @@ public class SendEmailController implements Initializable {
 		imageEmail.setVisible(false);
 		spinner.setVisible(true);
 		labelLoading.setVisible(true);
+		btnRegistration.setDisable(true);
+		btnResendToken.setDisable(true);
+		labelResendToken.setDisable(true);
+		fieldToken.setDisable(true);
 
 		String token = fieldToken.getText();
 
@@ -84,6 +98,10 @@ public class SendEmailController implements Initializable {
 			imageEmail.setVisible(true);
 			spinner.setVisible(false);
 			labelLoading.setVisible(false);
+			btnRegistration.setDisable(false);
+			btnResendToken.setDisable(false);
+			labelResendToken.setDisable(false);
+			fieldToken.setDisable(false);
 			Alert.show("Token inválido",
 					"O token está inválido, por favor insira o token enviado para o seu e-mail para concluir o seu cadastro.",
 					root);

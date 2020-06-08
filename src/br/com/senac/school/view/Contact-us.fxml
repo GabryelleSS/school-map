@@ -50,7 +50,7 @@
                         </JFXTextArea>
                      </children>
                   </VBox>
-                  <JFXButton layoutX="439.0" layoutY="332.0" onAction="#btnSend" stylesheets="@../../assets/css/userRegister.css" text="Enviar">
+                  <JFXButton fx:id="btnSend" layoutX="439.0" layoutY="332.0" onAction="#btnSend" stylesheets="@../../assets/css/userRegister.css" text="Enviar">
                      <styleClass>
                         <String fx:value="user-register-btn" />
                         <String fx:value="user-register-btn-next" />
@@ -73,12 +73,20 @@
                   <Font name="Ebrima Bold" size="30.0" />
                </font>
             </Label>
+            <ImageView fx:id="spinner" fitHeight="166.0" fitWidth="150.0" layoutX="407.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../assets/image/Spin-1s-200px%20(1).gif" />
+               </image>
+            </ImageView>
+            <Label fx:id="labelSendMessage" layoutX="444.0" layoutY="313.0" text="Enviando.." visible="false">
+               <font>
+                  <Font name="Ebrima Bold" size="16.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
          </children>
       </AnchorPane>
-      <ImageView fx:id="spinner" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@../../assets/image/Spin-1s-200px%20(1).gif" />
-         </image>
-      </ImageView>
    </children>
 </StackPane>

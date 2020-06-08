@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.base.IFXValidatableControl;
@@ -26,6 +27,7 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
@@ -59,6 +61,13 @@ public class ForgotPasswordController implements Initializable {
 
 	@FXML
 	private Text labelText;
+
+	@FXML
+	private Label labelSend;
+	
+    @FXML
+    private JFXButton btnSend;
+
 
 	private static int token = 0;
 	private static String email;
@@ -130,7 +139,10 @@ public class ForgotPasswordController implements Initializable {
 		} else {
 			spinner.setVisible(true);
 			labelText.setOpacity(0.39);
-			fieldEmail.setOpacity(0.39);
+			fieldEmail.setDisable(true);
+			btnSend.setDisable(true);
+			
+
 			email = fieldEmail.getText();
 			taskVefifyEmail.start();
 
@@ -144,7 +156,8 @@ public class ForgotPasswordController implements Initializable {
 				} else {
 					spinner.setVisible(false);
 					labelText.setOpacity(1);
-					fieldEmail.setOpacity(1);
+					fieldEmail.setDisable(false);
+					btnSend.setDisable(false);
 					Alert.show("E-mail não cadastrado",
 							"Parece que você ainda não possui um cadastro conosco faça já, é simples e rapido.", root1);
 				}

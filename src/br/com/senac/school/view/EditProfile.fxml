@@ -28,7 +28,7 @@
             </Label>
             <HBox alignment="BASELINE_RIGHT" layoutX="609.0" layoutY="456.0" prefHeight="35.0" prefWidth="214.0">
                <children>
-                  <JFXButton buttonType="RAISED" onAction="#btnSaveProfile" stylesheets="@../../assets/css/userRegister.css" text="Salvar">
+                  <JFXButton fx:id="btnSaveProfile" buttonType="RAISED" onAction="#btnSaveProfile" stylesheets="@../../assets/css/userRegister.css" text="Salvar">
                      <styleClass>
                         <String fx:value="user-register-btn-cancel" />
                         <String fx:value="user-register-btn" />
@@ -37,7 +37,7 @@
                         <Insets right="15.0" />
                      </HBox.margin>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" onAction="#nextEditProfile" stylesheets="@../../assets/css/userRegister.css" text="Pŕoximo">
+                  <JFXButton fx:id="btnNextEditProfile" buttonType="RAISED" onAction="#nextEditProfile" stylesheets="@../../assets/css/userRegister.css" text="Pŕoximo">
                      <styleClass>
                         <String fx:value="user-register-btn-next" />
                         <String fx:value="user-register-btn" />
@@ -84,7 +84,7 @@
                   <StackPane />
                   <HBox alignment="CENTER_LEFT" prefHeight="92.0" prefWidth="310.0">
                      <children>
-                        <Label text="Gênero">
+                        <Label fx:id="labelGender" text="Gênero">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -153,14 +153,14 @@
                </font>
             </Label>
             <JFXDatePicker fx:id="fieldDateBirth" defaultColor="#4087fd" layoutX="478.0" layoutY="79.0" prefHeight="28.0" prefWidth="345.0" promptText="ex: 06/09/1990 *" styleClass="user-register-field-date-birth" />
-            <ImageView fx:id="spinner" fitHeight="60.0" fitWidth="63.0" layoutX="372.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="spinner" fitHeight="168.0" fitWidth="169.0" layoutX="380.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../../assets/image/Spin-1s-200px%20(1).gif" />
                </image>
             </ImageView>
-            <Label fx:id="labelLoading" layoutX="371.0" layoutY="63.0" text="Salvando.." visible="false">
+            <Label fx:id="labelLoading" layoutX="424.0" layoutY="292.0" text="Salvando.." visible="false">
                <font>
-                  <Font name="Ebrima Bold" size="13.0" />
+                  <Font name="Ebrima Bold" size="16.0" />
                </font>
             </Label>
          </children>

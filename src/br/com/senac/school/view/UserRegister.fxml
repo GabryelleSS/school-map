@@ -142,7 +142,7 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="68.0" prefWidth="556.0">
                            <children>
-                              <Label text="Prefêrencia de contato*">
+                              <Label fx:id="labelPreference" text="Prefêrencia de contato*">
                                  <HBox.margin>
                                     <Insets right="25.0" />
                                  </HBox.margin>
@@ -306,20 +306,7 @@
                         </VBox>
                         <VBox alignment="TOP_RIGHT" prefHeight="56.0" prefWidth="621.0">
                            <children>
-                              <AnchorPane prefHeight="56.0" prefWidth="337.0">
-                                 <children>
-                                    <ImageView fx:id="spinner" fitHeight="56.0" fitWidth="56.0" layoutX="303.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                                       <image>
-                                          <Image url="@../../assets/image/Spin-1s-200px%20(1).gif" />
-                                       </image>
-                                    </ImageView>
-                                    <Label fx:id="labelLoading" layoutX="192.0" layoutY="33.0" text="Consultando CEP.." visible="false">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </AnchorPane>
+                              <AnchorPane prefHeight="56.0" prefWidth="337.0" />
                            </children></VBox>
                      </children>
                      <padding>
@@ -341,6 +328,16 @@
                   <Label layoutX="29.0" layoutY="529.0" text="Campos obrigatórios (*)">
                      <font>
                         <Font name="Ebrima" size="14.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="spinner" fitHeight="172.0" fitWidth="169.0" layoutX="260.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../../assets/image/Spin-1s-200px%20(1).gif" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="labelLoading" layoutX="276.0" layoutY="352.0" text="Consultando CEP.." visible="false">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
                </children>
