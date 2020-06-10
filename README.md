@@ -44,3 +44,15 @@ Os requisitos eram:
   <li>Com o botão direito do mouse clique em Run As > Java Application</li>
   <li>Prontinho! 😁</li>
 </ol>
+
+## ⚠️ <b>Psiu!</b>
+
+### Se acontecer algum erro enquanto você tenta executar o programa, siga o passo a passo: 😉
+
+<ol>
+  <li>Clique em <b>Run As</b> > <b>Run Configurations...</b> > <b>Java Application</b> > <b>Arguments</b> > <b>VM Arguments</b></li>
+</ol>
+
+Agora adicione como <em>argumento </em><a href="github/arguments.txt" download>clique aqui.</a>
+
+Pronto! Tente executar o programa novamente.
